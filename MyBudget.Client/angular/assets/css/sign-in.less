@@ -1,0 +1,62 @@
+﻿.sing-in-container {
+    .logo-panel {
+        padding: 20px 0 30px;
+
+        .budget-icon {
+            display: block;
+            margin: auto;
+            background-image: url('../img/budget.png');
+            background-size: 118px;
+            width: 118px;
+            height: 118px;
+        }
+    }
+
+    form[name=signin-form] {
+
+        margin: 0 20px;
+
+        .form-group {
+
+            .input-group {
+
+                &:not(:first-of-type) {
+
+                    .input-group-addon {
+                        border-top-left-radius: 0;
+                    }
+
+                    .form-control {
+                        border-top-right-radius: 0;
+                    }
+                }
+
+                &:first-of-type {
+                    .input-group-addon {
+                        border-bottom-left-radius: 0;
+                    }
+
+                    .form-control {
+                        border-bottom-right-radius: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .signin-footer-panel {
+        background: #413B17;
+        color: white;
+        position: absolute;
+        height: @footerHeight;
+        width: 100%;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+
+        span{
+            padding-top: 15px;
+            display: block;
+        }
+    }
+}

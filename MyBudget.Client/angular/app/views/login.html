@@ -1,0 +1,22 @@
+﻿<div class="container sing-in-container">
+    <div class="logo-panel">
+        <span class="budget-icon"></span>
+    </div>
+    <form role="form" name="signin-form">
+        <div class="form-group">
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                <input type="text" class="form-control" placeholder="Username" ng-model="username" required>
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                <input type="password" class="form-control" placeholder="Password" ng-model="password" required>
+            </div>
+        </div>
+        <button class="btn btn-default btn-block btn-lg" type="submit" ng-click="login(username, password)">Sign in</button>
+        <h3 class="text-danger text-center">{{message}}</h3>
+    </form>
+    <div class="signin-footer-panel">
+        <span>myBudget application</span>
+    </div>
+</div>

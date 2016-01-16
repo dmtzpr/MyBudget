@@ -1,0 +1,65 @@
+<div status-bar-directive></div>
+<div class="expense-container text-center" ng-hide="isAddCategoryShowed || isAddSubcategoryShowed">
+    <div class="input-block">
+        <p class="pull-left">Category</p>
+        <p class="pull-right">Subcategory</p>
+        <select class="form-control pull-left" ng-model="expenseModel.categoryId"
+                ng-options="category.id as category.name for category in categories" ng-change="updateSubcategorySelect()">
+            <option value="">-- choose category --</option>
+        </select>
+        <select class="form-control pull-right" ng-model="expenseModel.subcategoryId"
+                ng-options="subcategory.id as subcategory.name for subcategory in subcategories">
+            <option value="">-- choose subcategory --</option>
+        </select>
+    </div>
+    <div class="input-block">
+        <div class="btn-group pull-left" role="group">
+            <button type="button" class="btn btn-default" ng-click="deleteExpenseCategory(expenseModel.categoryId)">Delete</button>
+            <button type="button" class="btn btn-default" ng-click="showAddCategoryForm()">Add</button>
+        </div>
+        <div class="btn-group pull-right btn-group-justified" role="group">
+            <button type="button" class="btn btn-default" ng-click="deleteExpenseSubcategory(expenseModel.categoryId, expenseModel.subcategoryId)">Delete</button>
+            <button type="button" class="btn btn-default" ng-click="showAddSubcategoryForm()">Add</button>
+        </div>
+    </div>
+    <div class="input-block">
+        <p>Date</p>
+        <span class="input-group">
+            <input type="text" class="form-control" datepicker-popup="MM.dd.yyyy" ng-model="expenseModel.date" is-open="opened" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openDatepicker($event)">
+                    <i class="fa fa-calendar"></i>
+                </button>
+            </span>
+        </span>
+    </div>
+    <div class="input-block">
+        <p>Amount</p>
+        <input type="number" class="form-control" name="points" min="0" step="1" ng-model="expenseModel.amount">
+    </div>
+    <div class="input-block">
+        <p>Pay from</p>
+        <select class="form-control" ng-model="selectedPaymentTypeId"
+                ng-options="paymentType.id as (paymentType.name + ' - ' + paymentType.balance + ' $') for paymentType in paymentTypes">
+            <option value="">-- choose pay from --</option>
+        </select>
+    </div>
+    <div class="input-block">
+        <p>Note</p>
+        <textarea class="form-control" ng-model="expenseModel.note"></textarea>
+    </div>
+</div>
+<div class="add-category-container text-center" ng-show="isAddCategoryShowed">
+    <div class="input-block">
+        <p>Input new category name</p>
+        <input type="text" class="form-control" ng-model="newCategoryName">
+    </div>
+</div>
+<div class="add-subcategory-container text-center" ng-show="isAddSubcategoryShowed">
+    <div class="input-block">
+        <p>Category : {{selectedCategoryName}}</p>
+        <p>Input new subcategory name</p>
+        <input type="text" class="form-control" ng-model="newSubcategoryName">
+    </div>
+</div>
+<div navigation-menu-directive></div>

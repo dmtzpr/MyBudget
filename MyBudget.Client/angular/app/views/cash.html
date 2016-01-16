@@ -1,0 +1,24 @@
+﻿<div status-bar-directive></div>
+<div class="add-cash-container text-center">
+    <div class="input-block">
+        <p>Date</p>
+        <span class="input-group">
+            <input type="text" class="form-control" datepicker-popup="MM.dd.yyyy" ng-model="cashModel.date" is-open="opened" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openDatepicker($event)">
+                    <i class="fa fa-calendar"></i>
+                </button>
+            </span>
+        </span>
+    </div>
+    <div class="input-block">
+        <p>Amount</p>
+        <input type="number" class="form-control" name="points" min="0" step="1" ng-model="cashModel.amount">
+    </div>
+    <div class="input-block">
+        <p>Note</p>
+        <textarea class="form-control" ng-model="cashModel.note"></textarea>
+    </div>
+
+</div>
+<div navigation-menu-directive></div>

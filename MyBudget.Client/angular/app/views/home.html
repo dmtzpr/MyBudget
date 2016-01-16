@@ -1,0 +1,102 @@
+<div class="status-bar">
+    <div class="row">
+        <div class="col-xs-6">
+            <span>
+                <i class="fa fa-user"></i>
+                {{username}}
+            </span>
+        </div>
+        <div class="col-xs-6">
+            <span>Balance: {{totalBalance()}} $</span>
+        </div>
+    </div>
+</div>
+<div class="">
+    <div class="row show-grid ">
+        <div class="col-xs-6 credit-card-area">
+
+            <div class="area-icon">
+                <i class="fa fa-credit-card fa-3x fa-fw"></i>
+            </div>
+            <div class="area-info">
+                <div>Debit cards</div>
+                <div>{{cardsBalance}} $</div>
+            </div>
+            <div class="area-button">
+                <a href="#/debitcards">
+                    <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-6 cash-area">
+            <div class="area-icon">
+                <i class="fa fa-money fa-3x fa-fw"></i>
+            </div>
+            <div class="area-info">
+                <div>Cash</div>
+                <div>{{cashBalance}} $</div>
+            </div>
+            <div class="area-button">
+                <a href="#/addcash">
+                    <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row show-grid">
+        <div class="col-xs-6 budget-area">
+            <div class="area-icon">
+                <i class="fa fa-folder fa-3x fa-fw"></i>
+            </div>
+            <div class="area-info">
+                <div>Budget</div>
+                <div>{{monthBudget}} $</div>
+            </div>
+            <div class="area-button">
+                <a href="#/budget">
+                    <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-6 expenses-area">
+            <div class="area-icon">
+                <i class="fa fa-shopping-cart fa-3x fa-fw"></i>
+            </div>
+            <div class="area-info">
+                <div>Expenses</div>
+                <div>{{totalExpensesAmount}} $</div>
+            </div>
+            <div class="area-button">
+                <a href="#/expense">
+                    <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row show-grid">
+        <h4 class="text-center">Current month balance</h4>
+    </div>
+    <div class="row show-grid month-balance-area">
+        <div class="col-xs-4 month-income-area">
+            <div class="area-info">
+                <div>Income</div>
+                <div>{{currentMonthIncomeAmount}} $</div>
+            </div>
+        </div>
+        <div class="col-xs-4 month-total-area">
+            <div class="area-info">
+                <div>Total</div>
+                <div>{{currentMontTotalAmount()}} $</div>
+            </div>
+        </div>
+        <div class="col-xs-4 month-expenses-area">
+            <div class="area-info">
+                <div>Expenses</div>
+                <div>{{currentMonthExpensesAmount}} $</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div navigation-menu-directive></div>

@@ -1,0 +1,41 @@
+<div status-bar-directive></div>
+<div class="add-cash-container text-center" ng-hide="isAddDebitCardFormShowed">
+    <div class="input-block">
+        <p>Select debit card</p>
+        <select class="form-control" ng-model="selectedCardId"
+                ng-options="debitCard.id as debitCard.name for debitCard in debitCards">
+            <option value="">-- choose debit card --</option>
+        </select>
+    </div>
+    <div class="input-block">
+        <a class="btn btn-default pull-left" ng-click="deleteDebitCard(selectedCardId)">Delete debit card</a>
+        <a class="btn btn-default pull-right" ng-click="showAddDebitCardForm()">Add debit card</a>
+    </div>
+    <div class="input-block">
+        <p>Date</p>
+        <span class="input-group">
+            <input type="text" class="form-control" datepicker-popup="MM.dd.yyyy" ng-model="replenishmentModel.date" is-open="opened" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openDatepicker($event)">
+                    <i class="fa fa-calendar"></i>
+                </button>
+            </span>
+        </span>
+    </div>
+    <div class="input-block">
+        <p>Amount</p>
+        <input type="number" class="form-control" name="points" min="0" step="1" ng-model="replenishmentModel.amount">
+    </div>
+    <div class="input-block">
+        <p>Note</p>
+        <textarea class="form-control" ng-model="replenishmentModel.note"></textarea>
+    </div>
+
+</div>
+<div class="add-debit-card-container text-center" ng-show="isAddDebitCardFormShowed">
+    <div class="input-block">
+        <p>Input debit card name</p>
+        <input type="text" class="form-control" ng-model="newDebitCardName">
+    </div>
+</div>
+<div navigation-menu-directive></div>

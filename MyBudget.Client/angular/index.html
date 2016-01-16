@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="myBudgetApp">
+<head>
+    <title>My budget application</title>
+    <link href="assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/base.css">
+
+    <script src="assets/js/chart.js"></script>
+    <script src="assets/js/angular.js"></script>
+    <script src="assets/js/angular-route.js"></script>
+    <script src="assets/js/angular-chart.js"></script>
+    <script src="assets/js/ui-bootstrap.js"></script>
+
+    <script src="app/app.js"></script>
+
+    <script src="app/directives/navigationMenuDirective.js"></script>
+    <script src="app/directives/statusBarDirective.js"></script>
+
+    <script src="app/controllers/loginController.js"></script>
+    <script src="app/controllers/homeController.js"></script>
+    <script src="app/controllers/settingsController.js"></script>
+    <script src="app/controllers/cashController.js"></script>
+    <script src="app/controllers/debitCardsController.js"></script>
+    <script src="app/controllers/expenseController.js"></script>
+    <script src="app/controllers/budgetController.js"></script>
+    <script src="app/controllers/pieCharController.js"></script>
+    <script src="app/controllers/barChartController.js"></script>
+
+    <script src="app/services/loginService.js"></script>
+    <script src="app/services/cashService.js"></script>
+    <script src="app/services/debitCardsService.js"></script>
+    <script src="app/services/expenseService.js"></script>
+    <script src="app/services/budgetService.js"></script>
+</head>
+<body>
+    <div ng-view></div>
+</body>
+</html>
