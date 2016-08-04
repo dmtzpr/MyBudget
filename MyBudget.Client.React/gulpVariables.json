@@ -1,0 +1,27 @@
+{
+  "sources": {
+    "jsPaths": [
+      "./app/js/app.js"
+    ],
+    "lessPaths": [
+      "./node_modules/bootstrap/less/bootstrap.less",
+      "./node_modules/font-awesome/less/font-awesome.less",
+      "./app/**/*.less"
+    ],
+    "fontPaths": [
+      "./node_modules/font-awesome/fonts/*",
+      "./node_modules/bootstrap/fonts/*"
+    ],
+    "imgPaths": [
+      "./app/img/*"
+    ],
+    "htmlPaths": [
+      "./app/*.html"
+    ]
+  },
+  "outputPath": "./build",
+  "jsOutputPath": "./build/js",
+  "cssOutputPath": "./build/css/",
+  "imgOutputPath": "./build/img/",
+  "fontOutputPath": "./build/fonts/"
+}
