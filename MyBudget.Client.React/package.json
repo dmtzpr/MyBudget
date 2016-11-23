@@ -30,6 +30,9 @@
     "node": ">=0.10.32"
   },
   "dependencies": {
-    "react": "^0.14.7"
+    "jwt-decode": "^2.1.0",
+    "react": "^0.14.7",
+    "reqwest": "^2.0.5",
+    "when": "^3.7.7"
   }
 }

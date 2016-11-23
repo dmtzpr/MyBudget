@@ -7,6 +7,7 @@ var React = require('react'),
 var LoginActions = require('../../../actions/login-actions'),
     LoginStore = require('../../../stores/login-store');
 
+var AuthenticationService = require('../../../services/authentication-service');
 
 var Login = React.createClass({
     getInitialState: function () {
@@ -60,7 +61,7 @@ var Login = React.createClass({
 
     _onSignInButtonClick: function () {
         if (this.state.username && this.state.password) {
-            LoginActions.login(this.state.username, this.state.password);
+            AuthenticationService.login(this.state.username, this.state.password);
         }
     },
 

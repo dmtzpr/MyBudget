@@ -19,6 +19,13 @@ var Home = require('./components/home/jsx/home'),
     Main = require('./components/main/jsx/main');
 
 var LoginStore = require('./stores/login-store');
+var LoginActions = require('./actions/login-actions');
+
+
+var jwt = localStorage.getItem('jwt');
+if (jwt) {
+    LoginActions.login(jwt);
+}
 
 var App = React.createClass({
     getInitialState: function () {
