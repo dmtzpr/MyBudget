@@ -49,6 +49,14 @@ router.post('/authenticate', function (req, res) {
     });
 });
 
+router.get('/logout', function (req, res) {
+    addResponseHeaders(res);
+    res.status(200).send({
+        success: true,
+        message: 'User is logged out'
+    });
+});
+
 router.use(function (req, res, next) {
     addResponseHeaders(res);
 
