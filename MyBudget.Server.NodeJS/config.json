@@ -1,0 +1,10 @@
+{
+  "port": 8081,
+  "security": {
+    "privateKey": "mybudgetsectertoken",
+    "tokenLife": 86400
+  },
+  "mongoose": {
+    "uri": "mongodb://admin:admin@jello.modulusmongo.net:27017/zy7mebUh"
+  }
+}
