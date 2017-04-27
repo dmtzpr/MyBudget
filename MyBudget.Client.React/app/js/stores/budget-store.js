@@ -1,13 +1,11 @@
-'use strict';
-
 var AppDispatcher = require('../dispatcher/app-dispatcher'),
     EventEmitter = require('events').EventEmitter,
     assign = require('object-assign');
 
 var BudgetConstants = require('../constants/budget-constants'),
-    CHANGE_EVENT = require('../config').ChangeEventName;
+    CHANGE_EVENT = require('../config').CHANGE_EVENT_NAME;
 
-var _monthBudget = 1500; //mock data
+var _monthBudget = 0;
 
 var BudgetStore = assign({}, EventEmitter.prototype, {
     emitChange: function () {
@@ -35,9 +33,15 @@ var BudgetStore = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function (action) {
     switch (action.actionType) {
-        case BudgetConstants.MY_BUDGET_SET_NEW_MONTH_BUDGET:
-            _monthBudget = action.budget;
+        case BudgetConstants.MY_BUDGET_RECEIVE_BUDGET_DATA:
+            _monthBudget = action.monthBudget;
             BudgetStore.emitChange();
+            break;
+        case BudgetConstants.MY_BUDGET_SET_NEW_MONTH_BUDGET:
+            if (_monthBudget !== action.monthBudget) {
+                _monthBudget = action.monthBudget;
+                BudgetStore.emitChange();
+            }
             break;
     }
 });

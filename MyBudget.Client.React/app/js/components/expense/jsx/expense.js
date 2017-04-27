@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react'),
     ReactRouter = require('react-router'),
     browserHistory = ReactRouter.browserHistory,
@@ -22,7 +20,7 @@ var Expense = React.createClass({
             subcategoryId: null,
             paymentTypeId: null,
             amount: 0,
-            date: moment().format(AppConfig.Date.dateFormat),
+            date: moment().format(AppConfig.Date.DATE_FORMAT),
             note: '',
             isAddCategoryFormShow: false,
             isAddSubcategoryFormShow: false,
@@ -31,20 +29,32 @@ var Expense = React.createClass({
         }
     },
 
-    _onOkButtonClick: function () {
+    _getExpenseModel: function () {
+        var state = this.state;
+
+        return {
+            categoryId: state.categoryId,
+            subcategoryId: state.subcategoryId,
+            amount: state.amount,
+            date: state.date,
+            note: state.note
+        }
+    },
+
+    _onAddExpenseButtonClick: function () {
         var state = this.state;
 
         if (state.categoryId && state.subcategoryId && state.paymentTypeId !== null && state.amount > 0) {
             if (state.paymentTypeId === 0) {
                 if (CashStore.getCashBalance() >= state.amount) {
-                    CashActions.addExpense(state);
-                    this._addExpense();
+                    CashActions.addExpense();
+                    this._addExpense(this._getExpenseModel());
                 } else {
                     alert('too little cash balance');
                 }
             } else {
                 if (CardsStore.getDebitCardBlanceById(state.paymentTypeId) >= state.amount) {
-                    CardsActions.addExpense(state.paymentTypeId, state);
+                    CardsActions.addExpense(state.paymentTypeId, this._getExpenseModel());
                     this._addExpense();
                 } else {
                     alert('too little balance on selected card');
@@ -56,7 +66,7 @@ var Expense = React.createClass({
     },
 
     _addExpense: function () {
-        ExpenseActions.addExpense(this.state);
+        ExpenseActions.addExpense(this._getExpenseModel());
         browserHistory.push('/');
     },
 
@@ -164,7 +174,7 @@ var Expense = React.createClass({
         return (
             <div>
                 <StatusBar statusBarTitle="Add expense"
-                           okButtonClick={this._onOkButtonClick}/>
+                           okButtonClick={this._onAddExpenseButtonClick}/>
                 <div className="expense-container container text-center content-layer">
                     <div className="input-block">
                         <p className="pull-left">Category</p>
@@ -249,9 +259,9 @@ var Expense = React.createClass({
                         <p>Date</p>
                         <DateTimeField
                             dateTime={this.state.date}
-                            format={AppConfig.Date.dateFormat}
+                            format={AppConfig.Date.DATE_FORMAT}
                             viewMode="date"
-                            inputFormat={AppConfig.Date.dateFormat}
+                            inputFormat={AppConfig.Date.DATE_FORMAT}
                             onChange={this._onDateChange}
                         />
                     </div>

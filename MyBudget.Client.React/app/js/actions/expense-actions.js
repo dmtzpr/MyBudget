@@ -1,5 +1,3 @@
-'use strict';
-
 var AppDispatcher = require('../dispatcher/app-dispatcher'),
     ExpenseConstants = require('../constants/expense-constants');
 

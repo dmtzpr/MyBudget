@@ -1,15 +1,11 @@
-'use strict';
-
 var EventEmitter = require('events').EventEmitter,
-    assign = require('object-assign'),
-    jwt_decode = require('jwt-decode');
+    assign = require('object-assign');
 
 var AppDispatcher = require('../dispatcher/app-dispatcher'),
     LoginConstants = require('../constants/login-constants'),
-    CHANGE_EVENT = require('../config').ChangeEventName;
+    CHANGE_EVENT = require('../config').CHANGE_EVENT_NAME;
 
-var _user = null,
-    _jwt = null;
+var _user = null;
 
 var LoginStore = assign({}, EventEmitter.prototype, {
     emitChange: function () {
@@ -36,24 +32,21 @@ var LoginStore = assign({}, EventEmitter.prototype, {
     },
 
     getLoggedUsername: function () {
-        return _user._doc.name;
+        return _user.name;
     },
 
     getJwt: function () {
-        return _jwt
+        return _user.token;
     }
 });
 
 AppDispatcher.register(function (action) {
     switch (action.actionType) {
         case LoginConstants.MY_BUDGET_LOGIN:
-            _jwt = action.jwt;
-            _user = jwt_decode(_jwt);
+            _user = action.user;
             LoginStore.emitChange();
             break;
-
         case LoginConstants.MY_BUDGET_LOGOUT:
-            _jwt = null;
             _user = null;
             LoginStore.emitChange();
             break;

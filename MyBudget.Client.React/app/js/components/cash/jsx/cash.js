@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react'),
     DateTimeField = require('react-bootstrap-datetimepicker'),
     ReactRouter = require('react-router'),
@@ -13,13 +11,13 @@ var StatusBar = require('../../status-bar/jsx/status-bar'),
 var Cash = React.createClass({
     getInitialState: function () {
         return {
-            date: moment().format(AppConfig.Date.dateFormat),
+            date: moment().format(AppConfig.Date.DATE_FORMAT),
             amount: 0,
             note: ''
         }
     },
 
-    _onOkButtonClick: function () {
+    _onAddCashButtonClick: function () {
         CashActions.addCash(this.state);
         browserHistory.push('/');
     },
@@ -40,15 +38,15 @@ var Cash = React.createClass({
         return (
             <div>
                 <StatusBar statusBarTitle="Add cash"
-                           okButtonClick={this._onOkButtonClick}/>
+                           okButtonClick={this._onAddCashButtonClick}/>
                 <div className="add-cash-container container text-center content-layer">
                     <div className="input-block">
                         <p>Date</p>
                         <DateTimeField
                             dateTime={this.state.date}
-                            format={AppConfig.Date.dateFormat}
+                            format={AppConfig.Date.DATE_FORMAT}
                             viewMode="date"
-                            inputFormat={AppConfig.Date.dateFormat}
+                            inputFormat={AppConfig.Date.DATE_FORMAT}
                             onChange={this._onDateChange}
                         />
                     </div>

@@ -1,7 +1,7 @@
 module.exports = {
     Date: {
-        dateFormat: 'DD.MM.YYYY'
+        DATE_FORMAT: 'DD.MM.YYYY'
     },
-
-    ChangeEventName: 'change'
+    CHANGE_EVENT_NAME: 'change',
+    WEB_API_BASE_URL: 'http://localhost:8081/api/'
 };

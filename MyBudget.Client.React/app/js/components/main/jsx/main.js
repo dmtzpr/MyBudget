@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react'),
     NavigationMenu = require('../../navigation-menu/jsx/navigation-menu');
 

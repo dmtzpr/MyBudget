@@ -1,24 +1,22 @@
-'use strict';
-
 var AppDispatcher = require('../dispatcher/app-dispatcher'),
-    LoginConstants = require('../constants/login-constants');
+    LoginConstants = require('../constants/login-constants'),
+    WebApi = require('../utils/web-api');
 
 var LoginActions = {
-    login: function (jwt) {
-        var savedJwt = localStorage.getItem('jwt');
-        AppDispatcher.dispatch({
-            actionType: LoginConstants.MY_BUDGET_LOGIN,
-            jwt: jwt
+    login: function (login, password) {
+        WebApi.login(login, password).then(function (data) {
+            AppDispatcher.dispatch({
+                actionType: LoginConstants.MY_BUDGET_LOGIN,
+                user: data.user
+            });
         });
-
-        if (savedJwt !== jwt) {
-            localStorage.setItem('jwt', jwt);
-        }
     },
 
     logout: function () {
-        AppDispatcher.dispatch({
-            actionType: LoginConstants.MY_BUDGET_LOGOUT
+        WebApi.logout().then(function (data) {
+            AppDispatcher.dispatch({
+                actionType: LoginConstants.MY_BUDGET_LOGOUT
+            });
         });
     }
 };

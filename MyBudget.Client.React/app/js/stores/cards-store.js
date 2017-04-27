@@ -1,12 +1,10 @@
-'use strict';
-
 var AppDispatcher = require('../dispatcher/app-dispatcher'),
     EventEmitter = require('events').EventEmitter,
     assign = require('object-assign');
 
 
 var CardsConstants = require('../constants/cards-constants'),
-    CHANGE_EVENT = require('../config').ChangeEventName;
+    CHANGE_EVENT = require('../config').CHANGE_EVENT_NAME;
 
 //mock data
 var _debitCardsCollection = [{

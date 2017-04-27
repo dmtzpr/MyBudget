@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react'),
     DateTimeField = require('react-bootstrap-datetimepicker'),
     ReactRouter = require('react-router'),
@@ -15,7 +13,7 @@ var Cards = React.createClass({
     getInitialState: function () {
         return {
             selectedCardId: 0,
-            date: moment().format(AppConfig.Date.dateFormat),
+            date: moment().format(AppConfig.Date.DATE_FORMAT),
             amount: 0,
             note: '',
             newDebitCardName: '',
@@ -23,9 +21,13 @@ var Cards = React.createClass({
         }
     },
 
-    _onOkButtonClick: function () {
+    _onRechargeCardButtonClick: function () {
         if (this.state.selectedCardId && this.state.amount > 0) {
-            CardsActions.rechargeDebitCard(this.state.selectedCardId, this.state);
+            CardsActions.rechargeDebitCard(this.state.selectedCardId, {
+                amount: this.state.amount,
+                date: this.state.date,
+                note: this.state.note
+            });
             browserHistory.push('/');
         } else {
             alert('please input correct amount or select debit card');
@@ -50,7 +52,7 @@ var Cards = React.createClass({
 
     _onDeleteDebitCardClick: function () {
         if (this.state.selectedCardId !== 0) {
-            CardsStore.deleteDebitCard(this.state.selectedCardId);
+            CardsActions.deleteDebitCard(this.state.selectedCardId);
             this.setState({selectedCardId: 0});
         } else {
             alert('please select debit card');
@@ -88,7 +90,7 @@ var Cards = React.createClass({
         return (
             <div>
                 <StatusBar statusBarTitle="Add balance to debit card"
-                           okButtonClick={this._onOkButtonClick}/>
+                           okButtonClick={this._onRechargeCardButtonClick}/>
                 <div className="add-cash-container container text-center content-layer">
                     <div className="input-block">
                         <p>Select debit card</p>
@@ -130,9 +132,9 @@ var Cards = React.createClass({
                         <p>Date</p>
                         <DateTimeField
                             dateTime={this.state.date}
-                            format={AppConfig.Date.dateFormat}
+                            format={AppConfig.Date.DATE_FORMAT}
                             viewMode="date"
-                            inputFormat={AppConfig.Date.dateFormat}
+                            inputFormat={AppConfig.Date.DATE_FORMAT}
                             onChange={this._onDateChange}
                         />
                     </div>

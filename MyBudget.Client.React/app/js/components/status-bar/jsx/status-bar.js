@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react'),
     ReactPropTypes = React.PropTypes,
     browserHistory = require('react-router').browserHistory;

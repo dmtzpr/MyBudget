@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react'),
     ReactDOM = require('react-dom'),
     ReactRouter = require('react-router'),
@@ -19,13 +17,6 @@ var Home = require('./components/home/jsx/home'),
     Main = require('./components/main/jsx/main');
 
 var LoginStore = require('./stores/login-store');
-var LoginActions = require('./actions/login-actions');
-
-
-var jwt = localStorage.getItem('jwt');
-if (jwt) {
-    LoginActions.login(jwt);
-}
 
 var App = React.createClass({
     getInitialState: function () {
@@ -87,6 +78,7 @@ var App = React.createClass({
         );
     }
 });
+
 
 ReactDOM.render((
         <App />
