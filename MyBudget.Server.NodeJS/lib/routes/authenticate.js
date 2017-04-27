@@ -37,9 +37,9 @@ router.post('/authenticate', function (req, res) {
                     res.status(200).send({
                         success: true,
                         message: 'Enjoy your token!',
-                        token: token,
                         user: {
                             name: user.name,
+                            token: token,
                             id: user.id
                         }
                     });
