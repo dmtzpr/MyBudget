@@ -1,8 +1,15 @@
 var request = require('reqwest'),
     {WEB_API_BASE_URL} = require('../config');
 
-var jwt = null,
+var user = localStorage.getItem('user'),
+    jwt = null,
     userId = null;
+
+if (user) {
+    user = JSON.parse(user);
+    jwt = user.token;
+    userId = user.id;
+}
 
 var WebApi = {
     getMonthBudget: function () {

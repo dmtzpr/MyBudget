@@ -28,6 +28,12 @@ var LoginStore = assign({}, EventEmitter.prototype, {
     },
 
     isLoggedIn: function () {
+        var user = localStorage.getItem('user');
+
+        if (user) {
+            _user = JSON.parse(user);
+        }
+
         return !!_user;
     },
 
@@ -43,10 +49,12 @@ var LoginStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (action) {
     switch (action.actionType) {
         case LoginConstants.MY_BUDGET_LOGIN:
+            localStorage.setItem('user', JSON.stringify(action.user));
             _user = action.user;
             LoginStore.emitChange();
             break;
         case LoginConstants.MY_BUDGET_LOGOUT:
+            localStorage.removeItem('user');
             _user = null;
             LoginStore.emitChange();
             break;
