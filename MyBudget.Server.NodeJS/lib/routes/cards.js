@@ -33,7 +33,7 @@ router.post('/', function (req, res) {
 
     cash.save(function (err) {
         if (!err) {
-            log.info("New cash created with id: %s", cash.id);
+            log.info('New cash created with id: %s', cash.id);
             return res.status(200).send({
                 success: true,
                 cash: cash
@@ -70,7 +70,7 @@ router.put('/:id', function (req, res) {
 
         card.save(function (err) {
             if (!err) {
-                log.info("Card with id: %s updated", card.id);
+                log.info('Card with id: %s updated', card.id);
                 return res.status(200).send({
                     success: true,
                     card: card
@@ -96,7 +96,7 @@ router.put('/:id', function (req, res) {
 router.delete('/:id', function (req, res) {
     Card.findByIdAndRemove(req.params.id, function (err, card) {
         if (!err) {
-            log.info("Card with id: %s removed", card.id);
+            log.info('Card with id: %s removed', card.id);
             return res.status(200).send({
                 success: true
             });

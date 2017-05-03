@@ -32,7 +32,7 @@ router.post('/', function (req, res) {
 
     cash.save(function (err) {
         if (!err) {
-            log.info("New cash created with id: %s", cash.id);
+            log.info('New cash created with id: %s', cash.id);
             return res.status(200).send({
                 success: true,
                 cash: cash

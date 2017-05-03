@@ -40,7 +40,7 @@ router.post('/', function (req, res) {
 
         budget.save(function (err) {
             if (!err) {
-                log.info("Budget with user id: %s updated", budget.id);
+                log.info('Budget with user id: %s updated', budget.id);
                 return res.status(200).send({
                     success: true,
                     budget: budget
@@ -72,7 +72,7 @@ router.put('/', function (req, res) {
 
     budget.save(function (err) {
         if (!err) {
-            log.info("New budget created with id: %s", budget.id);
+            log.info('New budget created with id: %s', budget.id);
             return res.status(200).send({
                 success: true,
                 budget: budget
