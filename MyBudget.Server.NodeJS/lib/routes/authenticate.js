@@ -7,14 +7,7 @@ var lib = process.cwd() + '/lib/',
     log = require(lib + 'log')(module),
     User = require(lib + 'models/user');
 
-function addResponseHeaders(res) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "*");
-}
-
 router.post('/authenticate', function (req, res) {
-    addResponseHeaders(res);
-
     User.findOne({
         login: req.body.login
     }, function (err, user) {
@@ -50,7 +43,6 @@ router.post('/authenticate', function (req, res) {
 });
 
 router.get('/logout', function (req, res) {
-    addResponseHeaders(res);
     res.status(200).send({
         success: true,
         message: 'User is logged out'
@@ -58,8 +50,6 @@ router.get('/logout', function (req, res) {
 });
 
 router.use(function (req, res, next) {
-    addResponseHeaders(res);
-
     var token = req.body.token || req.query['token'];
 
     if (token) {
