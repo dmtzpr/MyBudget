@@ -1,12 +1,92 @@
 {
+    "parser": "babel-eslint",
     "extends": "airbnb",
-    "env": {
-        "browser": true
+    "globals": {
+        "window": true,
+        "document": true,
+        "CKEDITOR": true,
+        "FormData": true,
+        "location": true,
+        "localStorage": true,
+        "CustomEvent": true
     },
     "rules": {
+        "radix": "off",
         "indent": [
             "error",
-            2
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "react/jsx-indent": [
+            "error",
+            4
+        ],
+        "react/jsx-indent-props": [
+            "error",
+            4
+        ],
+        "jsx-quotes": [
+            "error",
+            "prefer-single"
+        ],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "no-mixed-operators": "off",
+        "react/jsx-filename-extension": [
+            "error",
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+        "import/no-extraneous-dependencies": "off",
+        "import/no-unresolved": "off",
+        "import/extensions": "off",
+        "jsx-a11y/interactive-supports-focus": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "react/no-array-index-key": "off",
+        "max-len": [
+            "error",
+            120,
+            {
+                "ignoreStrings": true,
+                "ignoreRegExpLiterals": true
+            }
+        ],
+        "import/prefer-default-export": "off",
+        "no-underscore-dangle": [
+            "error",
+            {
+                "allow": [
+                    "__data__",
+                    "_children",
+                    "_isHideText",
+                    "_radius",
+                    "_editor",
+                    "_editorUIElement",
+                    "_value",
+                    "_state",
+                    "_i",
+                    "__emitChange"
+                ]
+            }
+        ],
+        "no-useless-escape": "off",
+        "react/no-danger": 0,
+        "react/prop-types": [
+            "error",
+            {
+                "ignore": [
+                    "params"
+                ]
+            }
         ]
     }
 }
