@@ -50,3 +50,6 @@ MyBudget.Client/.idea/.name
 node_modules/
 build/
 *.log
+MyBudget.Client.React-Redux/public/bundle.js
+MyBudget.Client.React-Redux/public/bundle.js
+*.css

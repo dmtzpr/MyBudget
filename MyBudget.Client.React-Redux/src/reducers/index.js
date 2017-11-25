@@ -1,10 +1,9 @@
-import { combineReducers } from 'redux'
-import todos from './todos'
-import visibilityFilter from './visibilityFilter'
+import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 
-const todoApp = combineReducers({
-  todos,
-  visibilityFilter
-})
+import authentication from './authentication';
 
-export default todoApp
+export default combineReducers({
+    routing: routerReducer,
+    authentication,
+});

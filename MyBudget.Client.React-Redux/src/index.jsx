@@ -1,15 +1,31 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { createStore } from 'redux';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './components/App';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import { Route } from 'react-router';
+import createHistory from 'history/createBrowserHistory';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
+
+import './styles/layout.less';
+import Login from './containers/login';
+
 import reducer from './reducers';
 
-const store = createStore(reducer);
+const history = createHistory();
+const middleware = routerMiddleware(history);
 
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(middleware, thunk)));
+
+ReactDOM.render(
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            <div>
+                <Route exact path='/' component={Login} />
+                <Route path='/login' component={Login} />
+            </div>
+        </ConnectedRouter >
+    </Provider>,
+    document.getElementById('mybudgetapp'),
 );
