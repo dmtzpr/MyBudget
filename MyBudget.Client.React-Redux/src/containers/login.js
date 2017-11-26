@@ -5,6 +5,7 @@ import { login } from '../actions/user';
 
 const mapStateToProps = state => ({
     loggingIn: state.authentication.loggingIn,
+    isSignInFailed: state.authentication.isSignInFailed,
 });
 
 const mapDispatchToProps = dispatch => ({

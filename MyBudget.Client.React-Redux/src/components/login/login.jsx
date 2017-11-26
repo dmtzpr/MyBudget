@@ -37,7 +37,7 @@ class Login extends React.PureComponent {
     }
 
     render() {
-        const { loggingIn } = this.props;
+        const { loggingIn, isSignInFailed } = this.props;
         const { username, password, submitted } = this.state;
 
         return (
@@ -48,7 +48,7 @@ class Login extends React.PureComponent {
                 <Row>
                     <Col md={6} mdOffset={3}>
                         <Form name='form' className='signin-form' onSubmit={this.handleSubmit}>
-                            <FormGroup validationState={submitted && (!username && !password) ? 'error' : null} >
+                            <FormGroup validationState={isSignInFailed || (submitted && (!username && !password)) ? 'error' : null} >
                                 <InputGroup bsSize='large' >
                                     <InputGroup.Addon>
                                         <Glyphicon glyph='user' />
@@ -82,6 +82,7 @@ class Login extends React.PureComponent {
 }
 
 Login.propTypes = {
+    isSignInFailed: PropTypes.bool,
     loggingIn: PropTypes.bool,
     onLogin: PropTypes.func.isRequired,
 };

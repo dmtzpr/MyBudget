@@ -16,7 +16,9 @@ export default function authentication(state = initialState, action) {
                 user: action.user,
             };
         case ActionTypes.LOGIN_FAILURE:
-            return {};
+            return {
+                isSignInFailed: true,
+            };
         case ActionTypes.LOGOUT:
             return {};
         default:
