@@ -1,4 +1,4 @@
-import ActionTypes from '../constants/expenses';
+import ActionTypes from '../constants/expense-categories';
 
 const initialState = [{
     id: 1,
@@ -128,7 +128,7 @@ const initialState = [{
     }],
 }];
 
-export default function expenses(state = initialState, action) {
+export default function expenseCategories(state = initialState, action) {
     switch (action.type) {
         case ActionTypes.ADD_EXPENSE_CATEGORY:
             return [
