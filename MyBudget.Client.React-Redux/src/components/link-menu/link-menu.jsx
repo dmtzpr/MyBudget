@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Col, Glyphicon } from 'react-bootstrap';
 
 class LinkMenu extends React.PureComponent {
@@ -17,8 +18,7 @@ class LinkMenu extends React.PureComponent {
                     <div>{balance} $</div>
                 </div>
                 <div className='area-button'>
-                    <Glyphicon glyph='chevron-right' />
-                    {/* <Link to="/cards"><i className="fa fa-chevron-right"></i></Link> */}
+                    <Link to={link}><Glyphicon glyph='chevron-right' /></Link>
                 </div>
             </Col>
         );

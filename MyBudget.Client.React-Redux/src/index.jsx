@@ -11,6 +11,7 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import './styles/layout.less';
 import Home from './components/home/home.jsx';
 import Login from './containers/login';
+import NavigationMenu from './components/navigation-menu/navigation-menu.jsx';
 
 import reducer from './reducers';
 
@@ -25,6 +26,7 @@ ReactDOM.render(
             <div>
                 <Route exact path='/' component={Home} />
                 <Route path='/login' component={Login} />
+                <NavigationMenu />
             </div>
         </ConnectedRouter >
     </Provider>,
