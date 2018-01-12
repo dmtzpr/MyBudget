@@ -1,7 +1,7 @@
 import { ActionTypes } from '../constants/user';
 
 const user = JSON.parse(localStorage.getItem('user'));
-const initialState = user ? { loggedIn: true, user } : {};
+const initialState = { loggedIn: true, user: 'Dima123' }; //user ? { loggedIn: true, user: 'Dima123' } : {};
 
 export default function authentication(state = initialState, action) {
     switch (action.type) {

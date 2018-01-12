@@ -14,25 +14,29 @@ class Home extends React.PureComponent {
     }
 
     render() {
+        const totalBalance = this.props.cashBalance + this.props.cardsBalance;
+        const availableBudget = this.props.monthBudget - this.props.currentMonthExpensesAmount;
+        const currentMonthTotalBalance = this.props.currentMonthIncomeAmount - this.props.currentMonthExpensesAmount;
+
         return (
             <Grid>
-                <Header userName={'Dima'} totalBalance={12231} />
+                <Header userName={this.props.userName} totalBalance={totalBalance} />
                 <div className='content-layer'>
                     <Row className='show-grid'>
-                        <LinkMenu name='credit-card-area' glyph='credit-card' label='Debit cards' balance={23} link='/cards' />
-                        <LinkMenu name='cash-area' glyph='briefcase' label='Cash' balance={23} link='/cash' />
+                        <LinkMenu name='credit-card-area' glyph='credit-card' label='Debit cards' balance={this.props.cardsBalance} link='/cards' />
+                        <LinkMenu name='cash-area' glyph='briefcase' label='Cash' balance={this.props.cashBalance} link='/cash' />
                     </Row>
                     <Row className='show-grid'>
-                        <LinkMenu name='budget-area' glyph='folder-open' label='Budget' balance={23} link='/budget' />
-                        <LinkMenu name='expenses-area' glyph='shopping-cart' label='Expenses' balance={23} link='/expense' />
+                        <LinkMenu name='budget-area' glyph='folder-open' label='Month budget' balance={this.props.monthBudget} link='/budget' />
+                        <LinkMenu name='expenses-area' glyph='shopping-cart' label='Available budget' balance={availableBudget} link='/expense' />
                     </Row>
                     <Row className='show-grid'>
                         <h4 className='text-center'>Current month balance</h4>
                     </Row>
                     <Row className='show-grid month-balance-area'>
-                        <BalanceArea name='month-income-area' glyph='log-in' label='Income' balance={100} />
-                        <BalanceArea name='month-total-area' glyph='transfer' label='Total' balance={102} />
-                        <BalanceArea name='month-expenses-area' glyph='log-out' label='Expenses' balance={103} />
+                        <BalanceArea name='month-income-area' glyph='log-in' label='Income' balance={this.props.currentMonthIncomeAmount} />
+                        <BalanceArea name='month-total-area' glyph='transfer' label='Total' balance={currentMonthTotalBalance} />
+                        <BalanceArea name='month-expenses-area' glyph='log-out' label='Expenses' balance={this.props.currentMonthExpensesAmount} />
                     </Row>
                 </div>
             </Grid>
@@ -40,5 +44,14 @@ class Home extends React.PureComponent {
     }
 }
 
+Home.propTypes = {
+    userName: PropTypes.string.isRequired,
+    cardsBalance: PropTypes.number.isRequired,
+    cashBalance: PropTypes.number.isRequired,
+    monthBudget: PropTypes.number.isRequired,
+    totalExpensesAmount: PropTypes.number.isRequired,
+    currentMonthIncomeAmount: PropTypes.number.isRequired,
+    currentMonthExpensesAmount: PropTypes.number.isRequired,
+};
 
 export default Home;

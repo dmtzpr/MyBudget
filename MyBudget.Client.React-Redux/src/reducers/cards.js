@@ -6,7 +6,7 @@ const initialState = [{
     balance: 300,
     debitCardRecharges: [{
         amount: 300,
-        date: '14.05.2015',
+        date: '2017-11-02T11:21:00.317Z',
         note: 'my first salary',
     }],
 }, {
@@ -14,8 +14,8 @@ const initialState = [{
     name: 'Many dollars debit card',
     balance: 1500,
     debitCardRecharges: [{
-        amount: 1500,
-        date: '15.05.2015',
+        amount: 1530,
+        date: '2018-01-06T13:21:08.125Z',
         note: 'my second job first salary',
     }],
 }];

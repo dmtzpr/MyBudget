@@ -9,7 +9,7 @@ import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 
 import './styles/layout.less';
-import Home from './components/home/home.jsx';
+import Home from './containers/home';
 import Login from './containers/login';
 import NavigationMenu from './components/navigation-menu/navigation-menu.jsx';
 
