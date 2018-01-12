@@ -6,12 +6,10 @@ const initialState = [{
     subcategories: [{
         id: 1,
         name: 'Groceries',
-    },
-    {
+    }, {
         id: 2,
         name: 'Restaurants',
-    },
-    {
+    }, {
         id: 3,
         name: 'Pet Food/Treats',
     }],
@@ -21,19 +19,16 @@ const initialState = [{
     subcategories: [{
         id: 1,
         name: 'Mortgage',
-    },
-    {
+    }, {
         id: 2,
         name: 'Rent',
-    },
-    {
+    }, {
         id: 3,
         name: 'Property Taxes',
     }, {
         id: 4,
         name: 'Household Repairs',
-    },
-    {
+    }, {
         id: 5,
         name: 'HOA Dues',
     }],
@@ -43,23 +38,19 @@ const initialState = [{
     subcategories: [{
         id: 1,
         name: 'Electricity',
-    },
-    {
+    }, {
         id: 2,
         name: 'Water',
-    },
-    {
+    }, {
         id: 3,
         name: 'Heating',
     }, {
         id: 4,
         name: 'Garbage',
-    },
-    {
+    }, {
         id: 5,
         name: 'Phones',
-    },
-    {
+    }, {
         id: 6,
         name: 'Cable',
     },
