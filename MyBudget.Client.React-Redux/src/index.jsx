@@ -10,6 +10,7 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 
 import './styles/layout.less';
 import Home from './containers/home';
+import Budget from './containers/budget';
 import Login from './containers/login';
 import NavigationMenu from './components/navigation-menu/navigation-menu.jsx';
 
@@ -25,6 +26,7 @@ ReactDOM.render(
         <ConnectedRouter history={history}>
             <div>
                 <Route exact path='/' component={Home} />
+                <Route path='/budget' component={Budget} />
                 <Route path='/login' component={Login} />
                 <NavigationMenu />
             </div>

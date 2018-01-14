@@ -53,8 +53,7 @@ const initialState = [{
     }, {
         id: 6,
         name: 'Cable',
-    },
-    {
+    }, {
         id: 7,
         name: 'Internet',
     }],
@@ -64,8 +63,7 @@ const initialState = [{
     subcategories: [{
         id: 1,
         name: 'Children Clothing',
-    },
-    {
+    }, {
         id: 2,
         name: 'Adult Clothing',
     }],
@@ -75,23 +73,19 @@ const initialState = [{
     subcategories: [{
         id: 1,
         name: 'Fuel',
-    },
-    {
+    }, {
         id: 2,
         name: 'Tires',
-    },
-    {
+    }, {
         id: 3,
         name: 'Oil Changes',
     }, {
         id: 4,
         name: 'Maintenance',
-    },
-    {
+    }, {
         id: 5,
         name: 'Parking Fees',
-    },
-    {
+    }, {
         id: 6,
         name: 'Repairs',
     }],
@@ -101,19 +95,16 @@ const initialState = [{
     subcategories: [{
         id: 1,
         name: 'Primary Care',
-    },
-    {
+    }, {
         id: 2,
         name: 'Dental Care',
-    },
-    {
+    }, {
         id: 3,
         name: 'Specialty Care',
     }, {
         id: 4,
         name: 'Medications',
-    },
-    {
+    }, {
         id: 5,
         name: 'Medical Devices',
     }],

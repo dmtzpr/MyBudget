@@ -26,7 +26,7 @@ var Budget = React.createClass({
         return (
             <div>
                 <StatusBar statusBarTitle="Budget" okButtonClick={this._onSetBudgetButtonClick}/>
-                <div className="add-cash-container container text-center content-layer">
+                <div className="add-cash-container">
                     <div className="input-block">
                         <p>Month budget: {this.state.monthBudget} $</p>
                         <input type="number" className="form-control" name="points" min="0" step="1"
