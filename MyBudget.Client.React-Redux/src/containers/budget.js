@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 
 import Budget from '../components/budget/budget.jsx';
-//import { login } from '../actions/budget';
+import { setMonthBudget } from '../actions/budget';
 
 const mapStateToProps = state => ({
     monthBudget: state.budget,
 });
-/*
+
 const mapDispatchToProps = dispatch => ({
-    onLogin: (username, password) => dispatch(login(username, password)),
+    onMonthBudgetChange: monthBudget => dispatch(setMonthBudget(monthBudget)),
 });
-*/
-export default connect(mapStateToProps/*, mapDispatchToProps*/)(Budget);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Budget);

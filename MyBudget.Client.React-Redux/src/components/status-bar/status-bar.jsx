@@ -1,40 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row } from 'react-bootstrap';
+import { Grid, Row, Col, Glyphicon, Button } from 'react-bootstrap';
 
+import './status-bar.less';
 
 class StatusBar extends React.PureComponent {
-    constructor(props) {
-        super();
+    constructor(...args) {
+        super(...args);
     }
 
     render() {
         return (
             <Grid>
-                <div className="status-bar">
-                    <div className="row">
-                        <div className="col-xs-2 fa-2x">
-                            <a onClick={this.props.cancelButtonClick}>
-                                <i className="fa fa-times-circle"></i>
+                <div className='status-bar'>
+                    <Row>
+                        <Col xs={2}>
+                            <a onClick={this.props.onDeclineButtonClick}>
+                                <Glyphicon glyph='remove-sign' />
                             </a>
-                        </div>
-                        <div className="col-xs-8 status-bar-title">{this.props.statusBarTitle}</div>
-                        <div className="col-xs-2 fa-2x">
-                            {this.props.okButtonClick ? <a onClick={this.props.okButtonClick}>
-                                <i className="fa fa-check-circle"></i>
+                        </Col>
+                        <Col xs={8} className='status-bar-title'>{this.props.statusBarTitle}</Col>
+                        <Col xs={2}>
+                            {this.props.onAcceptButtonClick ? <a onClick={this.props.onAcceptButtonClick}>
+                                <Glyphicon glyph='ok-sign' />
                             </a> : null}
-                        </div>
-                    </div>
+                        </Col>
+                    </Row>
                 </div>
             </Grid>
         );
     }
 }
 
-/*StatusBar.propTypes = {
+StatusBar.propTypes = {
     statusBarTitle: PropTypes.string.isRequired,
-    okButtonClick: PropTypes.func.isRequired,
-    cancelButtonClick: PropTypes.func.isRequired,
-};*/
+    onAcceptButtonClick: PropTypes.func,
+    onDeclineButtonClick: PropTypes.func,
+};
 
 export default StatusBar;
