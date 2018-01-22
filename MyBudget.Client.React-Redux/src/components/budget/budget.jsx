@@ -27,7 +27,11 @@ class Budget extends React.PureComponent {
     render() {
         return (
             <div>
-                <StatusBar statusBarTitle='Budget' onAcceptButtonClick={this.onSetMonthBudgetButtonClick} />
+                <StatusBar
+                    statusBarTitle='Budget'
+                    onAcceptButtonClick={this.onSetMonthBudgetButtonClick}
+                    onDeclineButtonClick={this.props.onGoHomeClick}
+                />
                 <Grid className='add-cash-container text-center content-layer'>
                     <FormGroup className='input-block'>
                         <ControlLabel>Month budget: {this.state.monthBudget} $</ControlLabel>
@@ -49,6 +53,7 @@ class Budget extends React.PureComponent {
 Budget.propTypes = {
     monthBudget: PropTypes.number.isRequired,
     onMonthBudgetChange: PropTypes.func.isRequired,
+    onGoHomeClick: PropTypes.func.isRequired,
 };
 
 export default Budget;

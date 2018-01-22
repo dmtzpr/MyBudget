@@ -34,8 +34,8 @@ class StatusBar extends React.PureComponent {
 
 StatusBar.propTypes = {
     statusBarTitle: PropTypes.string.isRequired,
-    onAcceptButtonClick: PropTypes.func,
-    onDeclineButtonClick: PropTypes.func,
+    onAcceptButtonClick: PropTypes.func.isRequired,
+    onDeclineButtonClick: PropTypes.func.isRequired,
 };
 
 export default StatusBar;
