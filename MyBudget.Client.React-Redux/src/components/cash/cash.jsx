@@ -17,30 +17,22 @@ export default class Cash extends React.PureComponent {
         note: '',
     };
 
-    onAddCashButtonClick = () => this.onAddCashButtonClick();
-    onDateChange = () => this.onDateChange();
-    onAmountChange = () => this.onAmountChange();
-    onNoteChange = () => this.onNoteChange();
-
-    onAddCashButtonClick() {
+    onAddCashButtonClick = () => {
         this.props.onAddCash(this.state);
-    }
-
-    onDateChange(value) {
+    };
+    onDateChange = (value) => {
         this.setState({ date: value });
-    }
-
-    onAmountChange(e) {
+    };
+    onAmountChange = (e) => {
         this.setState({ amount: parseInt(e.target.value) });
     }
-
-    onNoteChange(e) {
+    onNoteChange = (e) => {
         this.setState({ note: e.target.value });
     }
 
     render() {
         return (
-            <div>
+            <div className='add-cash-component'>
                 <StatusBar
                     statusBarTitle='Add cash'
                     onAcceptButtonClick={this.onAddCashButtonClick}
