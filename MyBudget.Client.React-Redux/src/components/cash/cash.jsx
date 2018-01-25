@@ -18,14 +18,23 @@ export default class Cash extends React.PureComponent {
     };
 
     onAddCashButtonClick = () => {
-        this.props.onAddCash(this.state);
-    };
+        const state = this.state;
+
+        this.props.onAddCash({
+            date: state.date,
+            amount: state.amount,
+            note: state.note,
+        });
+    }
+
     onDateChange = (value) => {
         this.setState({ date: value });
-    };
+    }
+
     onAmountChange = (e) => {
         this.setState({ amount: parseInt(e.target.value) });
     }
+
     onNoteChange = (e) => {
         this.setState({ note: e.target.value });
     }
