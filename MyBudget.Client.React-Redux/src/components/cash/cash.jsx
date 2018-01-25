@@ -1,26 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DatePicker from 'react-16-bootstrap-date-picker';
 import { Grid, ControlLabel, FormGroup, FormControl } from 'react-bootstrap';
 
 import StatusBar from '../status-bar/status-bar.jsx';
 
-class Cash extends React.PureComponent {
-    constructor(...args) {
-        super(...args);
+export default class Cash extends React.PureComponent {
+    static propTypes = {
+        onAddCash: PropTypes.func.isRequired,
+        onGoHome: PropTypes.func.isRequired,
+    };
 
-        this.state = {
-            date: new Date(),//moment().format(AppConfig.Date.DATE_FORMAT),
-            amount: 0,
-            note: '',
-        };
+    state = {
+        date: new Date().toISOString(),
+        amount: 0,
+        note: '',
+    };
 
-        this.onAddCashButtonClick = this.onAddCashButtonClick.bind(this);
-        this.onAmountChange = this.onAmountChange.bind(this);
-        this.onNoteChange = this.onNoteChange.bind(this);
-    }
+    onAddCashButtonClick = () => this.onAddCashButtonClick();
+    onDateChange = () => this.onDateChange();
+    onAmountChange = () => this.onAmountChange();
+    onNoteChange = () => this.onNoteChange();
 
     onAddCashButtonClick() {
         this.props.onAddCash(this.state);
+    }
+
+    onDateChange(value) {
+        this.setState({ date: value });
     }
 
     onAmountChange(e) {
@@ -42,7 +49,7 @@ class Cash extends React.PureComponent {
                 <Grid className='add-cash-container text-center content-layer'>
                     <FormGroup className='input-block'>
                         <ControlLabel>Date</ControlLabel>
-
+                        <DatePicker value={this.state.date} onChange={this.onDateChange} />
                     </FormGroup>
                     <FormGroup className='input-block'>
                         <ControlLabel>Amount</ControlLabel>
@@ -67,20 +74,3 @@ class Cash extends React.PureComponent {
         );
     }
 }
-
-/*
-<DateTimeField
-                            dateTime={this.state.date}
-                            format={AppConfig.Date.DATE_FORMAT}
-                            viewMode="date"
-                            inputFormat={AppConfig.Date.DATE_FORMAT}
-                            onChange={this._onDateChange}
-                        />
-*/
-
-Cash.propTypes = {
-    onAddCash: PropTypes.func.isRequired,
-    onGoHome: PropTypes.func.isRequired,
-};
-
-export default Cash;
