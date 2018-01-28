@@ -1,4 +1,4 @@
-import ActionTypes from '../constants/cards';
+import ActionTypes from '../constants/card';
 
 const initialState = [{
     id: 1,
@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
             return state.filter(card =>
                 card.id !== action.id,
             );
-        case ActionTypes.RECHARGE_CARD:
+        case ActionTypes.RECHARGE_CARD_SUCCESS:
             return state.map(card =>
                 (card.id === action.id ? {
                     ...card,

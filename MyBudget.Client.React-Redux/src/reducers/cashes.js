@@ -1,4 +1,4 @@
-import ActionTypes from '../constants/cashes';
+import ActionTypes from '../constants/cash';
 
 const initialState = [{
     id: 1,
@@ -20,13 +20,13 @@ const initialState = [{
 
 export default function cashes(state = initialState, action) {
     switch (action.type) {
-        case ActionTypes.ADD_CASH:
+        case ActionTypes.ADD_CASH_SUCCESS:
             return [
                 ...state, {
                     id: state.reduce((maxId, cash) => Math.max(cash.id, maxId), -1) + 1,
-                    date: action.date,
-                    amount: action.amount,
-                    note: action.note,
+                    date: action.cash.date,
+                    amount: action.cash.amount,
+                    note: action.cash.note,
                 },
             ];
         default:
