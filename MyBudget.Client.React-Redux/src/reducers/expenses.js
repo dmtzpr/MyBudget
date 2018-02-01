@@ -1,4 +1,4 @@
-import ActionTypes from '../constants/expenses';
+import ActionTypes from '../constants/expense';
 
 const initialState = [
     {
@@ -27,7 +27,7 @@ const initialState = [
 
 export default function expenses(state = initialState, action) {
     switch (action.type) {
-        case ActionTypes.ADD_EXPENSE:
+        case ActionTypes.ADD_EXPENSE_SUCCESS:
             return [
                 ...state, {
                     id: state.reduce((maxId, expense) => Math.max(expense.id, maxId), -1) + 1,

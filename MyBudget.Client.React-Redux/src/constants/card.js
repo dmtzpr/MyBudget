@@ -12,6 +12,4 @@ export default keymirror({
     DELETE_CARD_REQUEST: null,
     DELETE_CARD_SUCCESS: null,
     DELETE_CARD_FAILURE: null,
-
-    ADD_CARD_EXPENSE: null,
 });
