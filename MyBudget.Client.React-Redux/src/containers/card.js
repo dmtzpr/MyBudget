@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onAddCard: card => dispatch(addCard(card)),
+    onAddCard: cardName => dispatch(addCard(cardName)),
     onRechargeCard: cardTransaction => dispatch(rechargeCard(cardTransaction)),
     onDeleteCard: cardId => dispatch(deleteCard(cardId)),
     onGoHome: () => dispatch(push('/')),

@@ -20,7 +20,7 @@ export default class Card extends React.PureComponent {
         amount: 1,
         note: '',
         newCardName: '',
-        isAddDebitCardFormShow: false,
+        isAddCardFormShow: false,
         isCardSelected: true,
     };
 
@@ -58,7 +58,7 @@ export default class Card extends React.PureComponent {
         });
     }
 
-    onDeleteDebitCardClick = () => {
+    onDeleteCardClick = () => {
         if (this.state.selectedCardId !== 0) {
             this.props.onDeleteCard(this.state.selectedCardId);
         } else {
@@ -70,24 +70,23 @@ export default class Card extends React.PureComponent {
         this.setState({ newCardName: e.target.value });
     }
 
-    onAddDebitCardNameFormClick = () => {
-        this.setState({ isAddDebitCardFormShow: true });
+    onAddCardNameFormClick = () => {
+        this.setState({ isAddCardFormShow: true });
     }
 
-    onHideDebitCardNameFormClick = () => {
+    onHideCardNameFormClick = () => {
         this.setState({
             newCardName: '',
-            isAddDebitCardFormShow: false,
+            isAddCardFormShow: false,
         });
     }
 
-    onAddNewDebitCardClick = () => {
+    onAddNewCardClick = () => {
         if (this.state.newCardName) {
             this.props.onAddCard(this.state.newCardName);
-            //CardsActions.addDebitCard(this.state.newDebitCardName);
             this.setState({
-                newDebitCardName: '',
-                isAddDebitCardFormShow: false,
+                newCardName: '',
+                isAddCardFormShow: false,
             });
         }
     }
@@ -120,11 +119,11 @@ export default class Card extends React.PureComponent {
                     </FormGroup>
                     <FormGroup className='input-block'>
                         <ButtonGroup>
-                            <Button onClick={this.onDeleteDebitCardClick}>Delete debit card</Button>
-                            <Button onClick={this.onAddDebitCardNameFormClick}>Add debit card</Button>
+                            <Button onClick={this.onDeleteCardClick}>Delete debit card</Button>
+                            <Button onClick={this.onAddCardNameFormClick}>Add debit card</Button>
                         </ButtonGroup>
                     </FormGroup>
-                    <div className={this.state.isAddDebitCardFormShow ? 'show' : 'hidden'}>
+                    <div className={this.state.isAddCardFormShow ? 'show' : 'hidden'}>
                         <div className='input-block'>
                             <InputGroup className='pull-right'>
                                 <FormControl
@@ -134,10 +133,10 @@ export default class Card extends React.PureComponent {
                                     onChange={this.onNewCardNameChange}
                                 />
                                 <InputGroup.Button>
-                                    <Button title='Close' onClick={this.onHideDebitCardNameFormClick} >
+                                    <Button title='Close' onClick={this.onHideCardNameFormClick} >
                                         <Glyphicon glyph='remove-sign' />
                                     </Button>
-                                    <Button title='Add' onClick={this.onAddNewDebitCardClick}>
+                                    <Button title='Add' onClick={this.onAddNewCardClick}>
                                         <Glyphicon glyph='ok-sign' />
                                     </Button>
                                 </InputGroup.Button>

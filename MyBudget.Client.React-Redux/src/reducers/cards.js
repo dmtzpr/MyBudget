@@ -22,12 +22,12 @@ const initialState = [{
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case ActionTypes.ADD_CARD:
+        case ActionTypes.ADD_CARD_SUCCESS:
             return [
                 ...state, {
                     id: state.reduce((maxId, card) => Math.max(card.id, maxId), -1) + 1,
-                    name: action.name,
-                    balance: action.balance,
+                    name: action.cardName,
+                    balance: 0,
                     debitCardRecharges: [],
                 },
             ];
