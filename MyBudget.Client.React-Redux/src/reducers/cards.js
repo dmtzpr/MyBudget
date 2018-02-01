@@ -31,16 +31,16 @@ export default (state = initialState, action) => {
                     debitCardRecharges: [],
                 },
             ];
-        case ActionTypes.DELETE_CARD:
+        case ActionTypes.DELETE_CARD_SUCCESS:
             return state.filter(card =>
-                card.id !== action.id,
+                card.id !== action.cardId,
             );
         case ActionTypes.RECHARGE_CARD_SUCCESS:
             return state.map(card =>
-                (card.id === action.id ? {
+                (card.id === action.cardTransaction.id ? {
                     ...card,
-                    balance: card.balance + action.balance,
-                    debitCardRecharges: card.debitCardRecharges.push(action.expense),
+                    balance: card.balance + action.cardTransaction.amount,
+                    debitCardRecharges: card.debitCardRecharges.push(action.cardTransaction.expense),
                 } : card),
             );
         case ActionTypes.ADD_CARD_EXPENSE:

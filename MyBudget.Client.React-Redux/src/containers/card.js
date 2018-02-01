@@ -2,14 +2,16 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import Card from '../components/card/card.jsx';
-import { rechargeCard } from '../actions/card';
+import { addCard, rechargeCard, deleteCard } from '../actions/card';
 
 const mapStateToProps = state => ({
     debitCards: state.cards,
 });
 
 const mapDispatchToProps = dispatch => ({
+    onAddCard: card => dispatch(addCard(card)),
     onRechargeCard: cardTransaction => dispatch(rechargeCard(cardTransaction)),
+    onDeleteCard: cardId => dispatch(deleteCard(cardId)),
     onGoHome: () => dispatch(push('/')),
 });
 

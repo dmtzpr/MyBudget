@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-16-bootstrap-date-picker';
-import { Grid, ControlLabel, FormGroup, FormControl, ButtonGroup, Button, InputGroup, Glyphicon } from 'react-bootstrap';
+import { Grid, ControlLabel, FormGroup, FormControl, ButtonGroup, Button, InputGroup, Glyphicon, HelpBlock } from 'react-bootstrap';
 
 import StatusBar from '../status-bar/status-bar.jsx';
 
 export default class Card extends React.PureComponent {
     static propTypes = {
+        onAddCard: PropTypes.func.isRequired,
         onRechargeCard: PropTypes.func.isRequired,
+        onDeleteCard: PropTypes.func.isRequired,
         onGoHome: PropTypes.func.isRequired,
         debitCards: PropTypes.array.isRequired,
     };
@@ -15,10 +17,11 @@ export default class Card extends React.PureComponent {
     state = {
         selectedCardId: 0,
         date: new Date().toISOString(),
-        amount: 0,
+        amount: 1,
         note: '',
-        newDebitCardName: '',
+        newCardName: '',
         isAddDebitCardFormShow: false,
+        isCardSelected: true,
     };
 
     onRechargeCardButtonClick = () => {
@@ -26,14 +29,13 @@ export default class Card extends React.PureComponent {
 
         if (this.state.selectedCardId && this.state.amount > 0) {
             this.props.onRechargeCard({
-                selectedCardId: state.selectedCardId,
+                id: state.selectedCardId,
                 amount: this.state.amount,
                 date: this.state.date,
                 note: this.state.note,
             });
-            //browserHistory.push('/');
         } else {
-            alert('please input correct amount or select debit card');
+            this.setState({ isCardSelected: false });
         }
     }
 
@@ -50,20 +52,22 @@ export default class Card extends React.PureComponent {
     }
 
     onSelectedCardChange = (e) => {
-        this.setState({ selectedCardId: parseInt(e.target.value) });
+        this.setState({
+            isCardSelected: true,
+            selectedCardId: parseInt(e.target.value),
+        });
     }
 
     onDeleteDebitCardClick = () => {
         if (this.state.selectedCardId !== 0) {
-            //CardsActions.deleteDebitCard(this.state.selectedCardId);
-            this.setState({ selectedCardId: 0 });
+            this.props.onDeleteCard(this.state.selectedCardId);
         } else {
-            alert('please select debit card');
+            this.setState({ isCardSelected: false });
         }
     }
 
-    onNewDebitCardNameChange = (e) => {
-        this.setState({ newDebitCardName: e.target.value });
+    onNewCardNameChange = (e) => {
+        this.setState({ newCardName: e.target.value });
     }
 
     onAddDebitCardNameFormClick = () => {
@@ -72,13 +76,14 @@ export default class Card extends React.PureComponent {
 
     onHideDebitCardNameFormClick = () => {
         this.setState({
-            newDebitCardName: '',
+            newCardName: '',
             isAddDebitCardFormShow: false,
         });
     }
 
     onAddNewDebitCardClick = () => {
-        if (this.state.newDebitCardName) {
+        if (this.state.newCardName) {
+            this.props.onAddCard(this.state.newCardName);
             //CardsActions.addDebitCard(this.state.newDebitCardName);
             this.setState({
                 newDebitCardName: '',
@@ -96,7 +101,10 @@ export default class Card extends React.PureComponent {
                     onDeclineButtonClick={this.props.onGoHome}
                 />
                 <Grid className='add-cash-container text-center content-layer'>
-                    <FormGroup className='input-block'>
+                    <FormGroup
+                        className='input-block'
+                        validationState={this.state.isCardSelected ? null : 'error'}
+                    >
                         <ControlLabel>Select debit card</ControlLabel>
                         <FormControl
                             componentClass='select'
@@ -108,6 +116,7 @@ export default class Card extends React.PureComponent {
                             {this.props.debitCards.map((card, index) =>
                                 <option key={index} value={card.id}>{card.name}</option>)}
                         </FormControl>
+                        {this.state.isCardSelected ? null : <HelpBlock>Please select debit card</HelpBlock>}
                     </FormGroup>
                     <FormGroup className='input-block'>
                         <ButtonGroup>
@@ -121,8 +130,8 @@ export default class Card extends React.PureComponent {
                                 <FormControl
                                     type='text'
                                     placeholder='Input debit card name'
-                                    value={this.state.newDebitCardName}
-                                    onChange={this.onNewDebitCardNameChange}
+                                    value={this.state.newCardName}
+                                    onChange={this.onNewCardNameChange}
                                 />
                                 <InputGroup.Button>
                                     <Button title='Close' onClick={this.onHideDebitCardNameFormClick} >
