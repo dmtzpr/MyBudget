@@ -29,7 +29,7 @@ ReactDOM.render(
             <div>
                 <Route exact path='/' component={Home} />
                 <Route path='/cash' component={Cash} />
-                <Route path='/card' component={Card} />
+                <Route path='/cards' component={Card} />
                 <Route path='/budget' component={Budget} />
                 <Route path='/login' component={Login} />
                 <NavigationMenu />

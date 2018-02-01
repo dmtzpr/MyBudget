@@ -5,7 +5,7 @@ import Card from '../components/card/card.jsx';
 import { rechargeCard } from '../actions/card';
 
 const mapStateToProps = state => ({
-    monthBudget: state.budget,
+    debitCards: state.cards,
 });
 
 const mapDispatchToProps = dispatch => ({
