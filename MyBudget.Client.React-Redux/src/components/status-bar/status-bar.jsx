@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col, Glyphicon, Button } from 'react-bootstrap';
+import { Grid, Row, Col, Glyphicon } from 'react-bootstrap';
 
 import './status-bar.less';
 
-class StatusBar extends React.PureComponent {
-    constructor(...args) {
-        super(...args);
+export default class StatusBar extends React.PureComponent {
+    propTypes = {
+        statusBarTitle: PropTypes.string.isRequired,
+        onAcceptButtonClick: PropTypes.func.isRequired,
+        onDeclineButtonClick: PropTypes.func.isRequired,
     }
 
     render() {
@@ -31,11 +33,3 @@ class StatusBar extends React.PureComponent {
         );
     }
 }
-
-StatusBar.propTypes = {
-    statusBarTitle: PropTypes.string.isRequired,
-    onAcceptButtonClick: PropTypes.func.isRequired,
-    onDeclineButtonClick: PropTypes.func.isRequired,
-};
-
-export default StatusBar;
