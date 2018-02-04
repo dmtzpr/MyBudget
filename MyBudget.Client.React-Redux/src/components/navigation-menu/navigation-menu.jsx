@@ -5,7 +5,7 @@ import NavigationButton from '../navigation-button/navigation-button.jsx';
 
 import './navigation-menu.less';
 
-const NavigationMenu = () => (
+export default () => (
     <div id='navigation-menu' className='navbar navbar-fixed-bottom'>
         <Grid>
             <Row>
@@ -17,5 +17,3 @@ const NavigationMenu = () => (
         </Grid>
     </div>
 );
-
-export default NavigationMenu;
