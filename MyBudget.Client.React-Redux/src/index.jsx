@@ -14,6 +14,8 @@ import Cash from './containers/cash';
 import Card from './containers/card';
 import Expense from './containers/expense';
 import Budget from './containers/budget';
+import Chart from './components/chart/chart.jsx';
+import PieChart from './components/pie-chart/pie-chart.jsx';
 import Login from './containers/login';
 import NavigationMenu from './components/navigation-menu/navigation-menu.jsx';
 
@@ -33,6 +35,8 @@ ReactDOM.render(
                 <Route path='/cards' component={Card} />
                 <Route path='/expense' component={Expense} />
                 <Route path='/budget' component={Budget} />
+                <Route path='/barchart' component={Chart} />
+                <Route path='/piechart' component={PieChart} />
                 <Route path='/login' component={Login} />
                 <NavigationMenu />
             </div>
