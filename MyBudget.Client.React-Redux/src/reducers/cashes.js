@@ -2,18 +2,18 @@ import ActionTypes from '../constants/cash';
 
 const initialState = [{
     id: 1,
-    date: '2017-12-02T23:12:00.121Z',
+    date: '2018-02-02T23:12:00.121Z',
     amount: 300,
     note: 'add cash',
 }, {
     id: 2,
-    date: '2018-01-12T20:58:00.231Z',
-    amount: 700,
+    date: '2018-02-12T20:58:00.231Z',
+    amount: 1700,
     note: 'found cash',
 },
 {
     id: 3,
-    date: '2017-01-10T12:14:01.122Z',
+    date: '2018-02-10T12:14:01.122Z',
     amount: -350,
     note: 'buy bicycle',
 }];

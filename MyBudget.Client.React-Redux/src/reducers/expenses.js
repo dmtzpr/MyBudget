@@ -6,14 +6,14 @@ const initialState = [
         categoryId: 4,
         subcategoryId: 2,
         amount: 100,
-        date: '2018-01-12T20:51:00.121Z',
+        date: '2018-02-12T20:51:00.121Z',
         note: 'is bought adult clothing',
     }, {
         id: 2,
         categoryId: 2,
         subcategoryId: 3,
         amount: 1250,
-        date: '2017-11-02T11:21:00.317Z',
+        date: '2018-02-02T11:21:00.317Z',
         note: '250$',
     }, {
         id: 3,

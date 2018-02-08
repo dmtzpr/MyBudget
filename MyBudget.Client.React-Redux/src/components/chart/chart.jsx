@@ -39,6 +39,6 @@ export default class Chart extends React.PureComponent {
                     </BarChart>
                 </div>
             </div>
-        )
+        );
     }
 }

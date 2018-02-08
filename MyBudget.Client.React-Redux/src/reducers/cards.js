@@ -3,19 +3,19 @@ import ActionTypes from '../constants/card';
 const initialState = [{
     id: 1,
     name: 'My favorite debit card',
-    balance: 300,
+    balance: 1300,
     debitCardRecharges: [{
-        amount: 300,
-        date: '2017-11-02T11:21:00.317Z',
+        amount: 1300,
+        date: '2018-02-02T11:21:00.317Z',
         note: 'my first salary',
     }],
 }, {
     id: 2,
     name: 'Many dollars debit card',
-    balance: 1500,
+    balance: 1530,
     debitCardRecharges: [{
         amount: 1530,
-        date: '2018-01-06T13:21:08.125Z',
+        date: '2018-02-06T13:21:08.125Z',
         note: 'my second job first salary',
     }],
 }];
