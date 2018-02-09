@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Grid } from 'react-bootstrap';
 
 import ReChart from './pie-rechart.jsx';
 import StatusBar from '../status-bar/status-bar.jsx';
@@ -22,9 +23,9 @@ export default class PieChart extends React.PureComponent {
         return (
             <div>
                 <StatusBar statusBarTitle='Current month balance chart' onDeclineButtonClick={this.props.onGoHome} />
-                <div className='chart-container container content-layer'>
+                <Grid className='chart-container container content-layer'>
                     <ReChart chartData={this.props.chartData} chartColors={this.props.chartColors} />
-                </div>
+                </Grid>
             </div>
         );
     }

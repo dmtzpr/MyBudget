@@ -16,8 +16,8 @@ import Expense from './containers/expense';
 import Budget from './containers/budget';
 import Login from './containers/login';
 
-// import Chart from './components/chart/chart.jsx';
-import Chart from './containers/chart';
+import BarChart from './containers/bar-chart';
+import PieChart from './containers/pie-chart';
 import NavigationMenu from './components/navigation-menu/navigation-menu.jsx';
 
 import reducer from './reducers';
@@ -36,8 +36,8 @@ ReactDOM.render(
                 <Route path='/cards' component={Card} />
                 <Route path='/expense' component={Expense} />
                 <Route path='/budget' component={Budget} />
-                <Route path='/barchart' component={Chart} />
-                <Route path='/piechart' component={Chart} />
+                <Route path='/barchart' component={BarChart} />
+                <Route path='/piechart' component={PieChart} />
                 <Route path='/login' component={Login} />
                 <NavigationMenu />
             </div>
