@@ -14,9 +14,10 @@ import Cash from './containers/cash';
 import Card from './containers/card';
 import Expense from './containers/expense';
 import Budget from './containers/budget';
+import Login from './containers/login';
+
 import Chart from './components/chart/chart.jsx';
 import PieChart from './containers/pie-chart';
-import Login from './containers/login';
 import NavigationMenu from './components/navigation-menu/navigation-menu.jsx';
 
 import reducer from './reducers';
@@ -40,7 +41,7 @@ ReactDOM.render(
                 <Route path='/login' component={Login} />
                 <NavigationMenu />
             </div>
-        </ConnectedRouter >
+        </ConnectedRouter>
     </Provider>,
     document.getElementById('mybudgetapp'),
 );

@@ -18,26 +18,26 @@ export default class Cash extends React.PureComponent {
     };
 
     onAddCashButtonClick = () => {
-        const state = this.state;
+        const { date, amount, note } = this.state;
 
         this.props.onAddCash({
-            date: state.date,
-            amount: state.amount,
-            note: state.note,
+            date,
+            amount,
+            note,
         });
-    }
+    };
 
     onDateChange = (value) => {
         this.setState({ date: value });
-    }
+    };
 
     onAmountChange = (e) => {
         this.setState({ amount: parseInt(e.target.value) });
-    }
+    };
 
     onNoteChange = (e) => {
         this.setState({ note: e.target.value });
-    }
+    };
 
     render() {
         return (
@@ -64,11 +64,7 @@ export default class Cash extends React.PureComponent {
                     </FormGroup>
                     <FormGroup className='input-block'>
                         <ControlLabel>Note</ControlLabel>
-                        <FormControl
-                            componentClass='textarea'
-                            value={this.state.note}
-                            onChange={this.onNoteChange}
-                        />
+                        <FormControl componentClass='textarea' value={this.state.note} onChange={this.onNoteChange} />
                     </FormGroup>
                 </Grid>
             </div>

@@ -22,14 +22,18 @@ const getCurrentMonthEntityAmount = (entities, property) => {
     }, 0);
 };
 
-const getCurrentMonthIncomeAmount = (cashes, cards) => getCurrentMonthEntityAmount(cashes, 'amount') + getCurrentMonthEntityAmount(cards, 'balance');
+const getCurrentMonthIncomeAmount = (cashes, cards) =>
+    getCurrentMonthEntityAmount(cashes, 'amount') + getCurrentMonthEntityAmount(cards, 'balance');
 
 const getCurrentMonthExpensesAmount = expenses => getCurrentMonthEntityAmount(expenses, 'amount');
 
 const mapStateToProps = state => ({
-    totalExpensesAmount: getEntityAmount(state.expenses, 'amount'),
-    currentMonthIncomeAmount: getCurrentMonthIncomeAmount(state.cashes, state.cards),
-    currentMonthExpensesAmount: getCurrentMonthExpensesAmount(state.expenses),
+    chartData: [
+        { name: 'Income', value: getCurrentMonthIncomeAmount(state.cashes, state.cards) },
+        { name: 'Total', value: getEntityAmount(state.expenses, 'amount') },
+        { name: 'Expenses', value: getCurrentMonthExpensesAmount(state.expenses) },
+    ],
+    colors: ['#008E4C', '#FFC400', '#DE4334'],
 });
 
 const mapDispatchToProps = dispatch => ({
