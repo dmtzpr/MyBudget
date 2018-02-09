@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import PieChart from '../components/pie-chart/pie-chart.jsx';
+import PieChart from '../components/charts/pie-chart.jsx';
 
 const getEntityAmount = (entities, property) =>
     entities.reduce((totalAmount, entity) => totalAmount + entity[property], 0);
@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
         { name: 'Total', value: getEntityAmount(state.expenses, 'amount') },
         { name: 'Expenses', value: getCurrentMonthExpensesAmount(state.expenses) },
     ],
-    colors: ['#008E4C', '#FFC400', '#DE4334'],
+    chartColors: ['#008E4C', '#FFC400', '#DE4334'],
 });
 
 const mapDispatchToProps = dispatch => ({

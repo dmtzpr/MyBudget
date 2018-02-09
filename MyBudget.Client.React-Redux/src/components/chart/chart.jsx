@@ -6,9 +6,7 @@ import StatusBar from '../status-bar/status-bar.jsx';
 import './chart.less';
 
 export default class Chart extends React.PureComponent {
-    static propTypes = {
-
-    };
+    static propTypes = {};
 
     state = {
         data: [
@@ -20,22 +18,26 @@ export default class Chart extends React.PureComponent {
             { name: 'Page F', uv: 2390, pv: 3800, amt: 2500 },
             { name: 'Page G', uv: 3490, pv: 4300, amt: 2100 },
         ],
-    }
+    };
 
     render() {
         return (
             <div>
-                <StatusBar statusBarTitle="Current month balance chart" />
-                <div className="chart-container container content-layer">
-                    <BarChart width={600} height={400} data={this.state.data}
-                        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                        <XAxis dataKey="name" />
+                <StatusBar statusBarTitle='Current month balance chart' />
+                <div className='chart-container container content-layer'>
+                    <BarChart
+                        width={600}
+                        height={400}
+                        data={this.state.data}
+                        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                    >
+                        <XAxis dataKey='name' />
                         <YAxis />
-                        <CartesianGrid strokeDasharray="3 3" />
+                        <CartesianGrid strokeDasharray='3 3' />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey="pv" fill="#8884d8" />
-                        <Bar dataKey="uv" fill="#82ca9d" />
+                        <Bar dataKey='pv' fill='#8884d8' />
+                        <Bar dataKey='uv' fill='#82ca9d' />
                     </BarChart>
                 </div>
             </div>

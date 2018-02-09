@@ -28,4 +28,3 @@ export const userService = {
         localStorage.removeItem('user');
     },
 };
-

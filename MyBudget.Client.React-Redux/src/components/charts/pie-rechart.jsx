@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 
 const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -17,8 +17,13 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
 export default class PieReChart extends React.PureComponent {
     static propTypes = {
-        chartData: PropTypes.array.isRequired,
-        chartColors: PropTypes.array.isRequired,
+        chartData: PropTypes.arrayOf(
+            PropTypes.shape({
+                name: PropTypes.string,
+                value: PropTypes.number,
+            }),
+        ).isRequired,
+        chartColors: PropTypes.arrayOf(PropTypes.string).isRequired,
     };
 
     render() {
