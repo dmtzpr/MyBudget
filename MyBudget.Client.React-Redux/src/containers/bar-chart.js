@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
+import { chartColors } from '../constants/chart';
 import BarChart from '../components/charts/bar-chart.jsx';
 
 const getEntityAmount = (entities, property) =>
@@ -42,7 +43,7 @@ const mapStateToProps = state => ({
             expenses: getCurrentMonthExpensesAmount(state.expenses),
         },
     ],
-    chartColors: ['#008E4C', '#FFC400', '#DE4334'],
+    chartColors,
 });
 
 const mapDispatchToProps = dispatch => ({
