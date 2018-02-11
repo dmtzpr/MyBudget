@@ -18,6 +18,8 @@ import Login from './containers/login';
 
 import BarChart from './containers/bar-chart';
 import PieChart from './containers/pie-chart';
+
+import Settings from './components/settings/settings.jsx';
 import NavigationMenu from './components/navigation-menu/navigation-menu.jsx';
 
 import reducer from './reducers';
@@ -38,6 +40,7 @@ ReactDOM.render(
                 <Route path='/budget' component={Budget} />
                 <Route path='/barchart' component={BarChart} />
                 <Route path='/piechart' component={PieChart} />
+                <Route path='/settings' component={Settings} />
                 <Route path='/login' component={Login} />
                 <NavigationMenu />
             </div>

@@ -4,34 +4,23 @@ import { Grid, ControlLabel, FormGroup, FormControl } from 'react-bootstrap';
 
 import StatusBar from '../status-bar/status-bar.jsx';
 
-class Budget extends React.PureComponent {
-    constructor(...args) {
-        super(...args);
+export default class Budget extends React.PureComponent {
+    static propTypes = {
+        monthBudget: PropTypes.number.isRequired,
+        onMonthBudgetChange: PropTypes.func.isRequired,
+    };
 
-        this.state = {
-            monthBudget: this.props.monthBudget,
-        };
+    state = {
+        monthBudget: this.props.monthBudget,
+    };
 
-        this.onSetMonthBudgetButtonClick = this.onSetMonthBudgetButtonClick.bind(this);
-        this.onMonthBudgetChange = this.onMonthBudgetChange.bind(this);
-    }
-
-    onSetMonthBudgetButtonClick() {
-        this.props.onMonthBudgetChange(parseInt(this.state.monthBudget));
-    }
-
-    onMonthBudgetChange(e) {
-        this.setState({ monthBudget: e.target.value });
-    }
+    onSetMonthBudgetButtonClick = () => this.props.onMonthBudgetChange(parseInt(this.state.monthBudget));
+    onMonthBudgetChange = e => this.setState({ monthBudget: e.target.value });
 
     render() {
         return (
             <div>
-                <StatusBar
-                    statusBarTitle='Budget'
-                    onAcceptButtonClick={this.onSetMonthBudgetButtonClick}
-                    onDeclineButtonClick={this.props.onGoHomeClick}
-                />
+                <StatusBar statusBarTitle='Budget' onAcceptButtonClick={this.onSetMonthBudgetButtonClick} />
                 <Grid className='add-cash-container text-center content-layer'>
                     <FormGroup className='input-block'>
                         <ControlLabel>Month budget: {this.state.monthBudget} $</ControlLabel>
@@ -49,11 +38,3 @@ class Budget extends React.PureComponent {
         );
     }
 }
-
-Budget.propTypes = {
-    monthBudget: PropTypes.number.isRequired,
-    onMonthBudgetChange: PropTypes.func.isRequired,
-    onGoHomeClick: PropTypes.func.isRequired,
-};
-
-export default Budget;

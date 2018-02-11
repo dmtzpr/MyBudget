@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 
 import { chartColors } from '../constants/chart';
 import BarChart from '../components/charts/bar-chart.jsx';
@@ -46,8 +45,4 @@ const mapStateToProps = state => ({
     chartColors,
 });
 
-const mapDispatchToProps = dispatch => ({
-    onGoHome: () => dispatch(push('/')),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(BarChart);
+export default connect(mapStateToProps)(BarChart);

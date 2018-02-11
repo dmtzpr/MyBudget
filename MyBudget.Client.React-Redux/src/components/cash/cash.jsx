@@ -8,7 +8,6 @@ import StatusBar from '../status-bar/status-bar.jsx';
 export default class Cash extends React.PureComponent {
     static propTypes = {
         onAddCash: PropTypes.func.isRequired,
-        onGoHome: PropTypes.func.isRequired,
     };
 
     state = {
@@ -42,11 +41,7 @@ export default class Cash extends React.PureComponent {
     render() {
         return (
             <div className='add-cash-component'>
-                <StatusBar
-                    statusBarTitle='Add cash'
-                    onAcceptButtonClick={this.onAddCashButtonClick}
-                    onDeclineButtonClick={this.props.onGoHome}
-                />
+                <StatusBar statusBarTitle='Add cash' onAcceptButtonClick={this.onAddCashButtonClick} />
                 <Grid className='add-cash-container text-center content-layer'>
                     <FormGroup className='input-block'>
                         <ControlLabel>Date</ControlLabel>

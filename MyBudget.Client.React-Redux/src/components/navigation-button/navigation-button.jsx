@@ -5,7 +5,12 @@ import { Col, Glyphicon } from 'react-bootstrap';
 
 import './navigation-button.less';
 
-class NavigationButton extends React.PureComponent {
+export default class NavigationButton extends React.PureComponent {
+    static propTypes = {
+        link: PropTypes.string.isRequired,
+        glyph: PropTypes.string.isRequired,
+    };
+
     render() {
         const { link, glyph } = this.props;
 
@@ -18,10 +23,3 @@ class NavigationButton extends React.PureComponent {
         );
     }
 }
-
-NavigationButton.propTypes = {
-    link: PropTypes.string.isRequired,
-    glyph: PropTypes.string.isRequired,
-};
-
-export default NavigationButton;

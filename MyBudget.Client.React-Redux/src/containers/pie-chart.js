@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 
 import { chartColors } from '../constants/chart';
 import PieChart from '../components/charts/pie-chart.jsx';
@@ -37,8 +36,4 @@ const mapStateToProps = state => ({
     chartColors,
 });
 
-const mapDispatchToProps = dispatch => ({
-    onGoHome: () => dispatch(push('/')),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PieChart);
+export default connect(mapStateToProps)(PieChart);

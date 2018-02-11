@@ -15,14 +15,13 @@ export default class PieChart extends React.PureComponent {
                 value: PropTypes.number,
             }),
         ).isRequired,
-        chartColors: PropTypes.arrayOf(PropTypes.string).isRequired,
-        onGoHome: PropTypes.func.isRequired,
+        chartColors: PropTypes.arrayOf(PropTypes.string).isRequired
     };
 
     render() {
         return (
             <div>
-                <StatusBar statusBarTitle='Current month balance chart' onDeclineButtonClick={this.props.onGoHome} />
+                <StatusBar statusBarTitle='Current month balance chart' />
                 <Grid className='chart-container container content-layer'>
                     <ReChart chartData={this.props.chartData} chartColors={this.props.chartColors} />
                 </Grid>

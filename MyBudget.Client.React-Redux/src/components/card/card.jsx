@@ -20,7 +20,6 @@ export default class Card extends React.PureComponent {
         onAddCard: PropTypes.func.isRequired,
         onRechargeCard: PropTypes.func.isRequired,
         onDeleteCard: PropTypes.func.isRequired,
-        onGoHome: PropTypes.func.isRequired,
         debitCards: PropTypes.array.isRequired,
     };
 
@@ -107,7 +106,6 @@ export default class Card extends React.PureComponent {
                 <StatusBar
                     statusBarTitle='Add balance to debit card'
                     onAcceptButtonClick={this.onRechargeCardButtonClick}
-                    onDeclineButtonClick={this.props.onGoHome}
                 />
                 <Grid className='add-cash-container text-center content-layer'>
                     <FormGroup className='input-block' validationState={this.state.isCardSelected ? null : 'error'}>

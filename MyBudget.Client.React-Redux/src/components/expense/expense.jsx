@@ -8,7 +8,6 @@ import StatusBar from '../status-bar/status-bar.jsx';
 export default class Cash extends React.PureComponent {
     static propTypes = {
         onAddCash: PropTypes.func.isRequired,
-        onGoHome: PropTypes.func.isRequired,
     };
 
     state = {
@@ -25,28 +24,24 @@ export default class Cash extends React.PureComponent {
             amount: state.amount,
             note: state.note,
         });
-    }
+    };
 
     onDateChange = (value) => {
         this.setState({ date: value });
-    }
+    };
 
     onAmountChange = (e) => {
         this.setState({ amount: parseInt(e.target.value) });
-    }
+    };
 
     onNoteChange = (e) => {
         this.setState({ note: e.target.value });
-    }
+    };
 
     render() {
         return (
             <div className='add-cash-component'>
-                <StatusBar
-                    statusBarTitle='Add cash'
-                    onAcceptButtonClick={this.onAddCashButtonClick}
-                    onDeclineButtonClick={this.props.onGoHome}
-                />
+                <StatusBar statusBarTitle='Add cash' onAcceptButtonClick={this.onAddCashButtonClick} />
                 <Grid className='add-cash-container text-center content-layer'>
                     <FormGroup className='input-block'>
                         <ControlLabel>Date</ControlLabel>
@@ -64,11 +59,7 @@ export default class Cash extends React.PureComponent {
                     </FormGroup>
                     <FormGroup className='input-block'>
                         <ControlLabel>Note</ControlLabel>
-                        <FormControl
-                            componentClass='textarea'
-                            value={this.state.note}
-                            onChange={this.onNoteChange}
-                        />
+                        <FormControl componentClass='textarea' value={this.state.note} onChange={this.onNoteChange} />
                     </FormGroup>
                 </Grid>
             </div>
