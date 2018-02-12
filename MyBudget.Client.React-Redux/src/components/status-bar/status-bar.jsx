@@ -9,10 +9,8 @@ export default class StatusBar extends React.PureComponent {
     static propTypes = {
         statusBarTitle: PropTypes.string.isRequired,
         onAcceptButtonClick: PropTypes.func.isRequired,
-        onDeclineButtonClick: PropTypes.func.isRequired,
+        onDeclineButtonClick: PropTypes.func,
     };
-
-    getRemoveIcon = () => <Glyphicon glyph='remove-sign' />;
 
     render() {
         return (
@@ -21,9 +19,13 @@ export default class StatusBar extends React.PureComponent {
                     <Row>
                         <Col xs={2}>
                             {this.props.onDeclineButtonClick ? (
-                                <a onClick={this.props.onDeclineButtonClick}>{this.getRemoveIcon()}</a>
+                                <a onClick={this.props.onDeclineButtonClick}>
+                                    <Glyphicon glyph='remove-sign' />
+                                </a>
                             ) : (
-                                <Link to='/'>{this.getRemoveIcon()}</Link>
+                                <Link to='/'>
+                                    <Glyphicon glyph='circle-arrow-left' />
+                                </Link>
                             )}
                         </Col>
                         <Col xs={8} className='status-bar-title'>

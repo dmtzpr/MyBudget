@@ -4,7 +4,7 @@ import { routerReducer } from 'react-router-redux';
 import authentication from './authentication';
 import budget from './budget';
 import cards from './cards';
-import cashes from './cashes';
+import cash from './cash';
 import expenses from './expenses';
 import expenseCategories from './expense-categories';
 
@@ -13,7 +13,7 @@ export default combineReducers({
     authentication,
     budget,
     cards,
-    cashes,
+    cash,
     expenses,
     expenseCategories,
 });

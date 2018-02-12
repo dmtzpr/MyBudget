@@ -31,7 +31,7 @@ const mapStateToProps = state => ({
     chartData: [
         {
             name: 'income',
-            income: getCurrentMonthIncomeAmount(state.cashes, state.cards),
+            income: getCurrentMonthIncomeAmount(state.cash.cashes, state.cards),
         },
         {
             name: 'total',

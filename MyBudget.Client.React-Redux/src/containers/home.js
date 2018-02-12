@@ -21,17 +21,18 @@ const getCurrentMonthEntityAmount = (entities, property) => {
     }, 0);
 };
 
-const getCurrentMonthIncomeAmount = (cashes, cards) => getCurrentMonthEntityAmount(cashes, 'amount') + getCurrentMonthEntityAmount(cards, 'balance');
+const getCurrentMonthIncomeAmount = (cashes, cards) =>
+    getCurrentMonthEntityAmount(cashes, 'amount') + getCurrentMonthEntityAmount(cards, 'balance');
 
 const getCurrentMonthExpensesAmount = expenses => getCurrentMonthEntityAmount(expenses, 'amount');
 
 const mapStateToProps = state => ({
     userName: state.authentication.user,
     cardsBalance: getEntityAmount(state.cards, 'balance'),
-    cashBalance: getEntityAmount(state.cashes, 'amount'),
+    cashBalance: state.cash.balance,
     monthBudget: state.budget,
     totalExpensesAmount: getEntityAmount(state.expenses, 'amount'),
-    currentMonthIncomeAmount: getCurrentMonthIncomeAmount(state.cashes, state.cards),
+    currentMonthIncomeAmount: getCurrentMonthIncomeAmount(state.cash.cashes, state.cards),
     currentMonthExpensesAmount: getCurrentMonthExpensesAmount(state.expenses),
 });
 

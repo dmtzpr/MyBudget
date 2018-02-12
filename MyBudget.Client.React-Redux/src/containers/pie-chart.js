@@ -29,7 +29,7 @@ const getCurrentMonthExpensesAmount = expenses => getCurrentMonthEntityAmount(ex
 
 const mapStateToProps = state => ({
     chartData: [
-        { name: 'Income', value: getCurrentMonthIncomeAmount(state.cashes, state.cards) },
+        { name: 'Income', value: getCurrentMonthIncomeAmount(state.cash.cashes, state.cards) },
         { name: 'Total', value: getEntityAmount(state.expenses, 'amount') },
         { name: 'Expenses', value: getCurrentMonthExpensesAmount(state.expenses) },
     ],

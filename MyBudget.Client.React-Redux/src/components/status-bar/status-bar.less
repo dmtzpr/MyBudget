@@ -11,11 +11,14 @@
     .row [class^='col-'] {
         height: 100%;
     }
-    .glyphicon[class$='-sign'] {
-        margin-top: 11px;
+    .glyphicon {
+        &.glyphicon-circle-arrow-left,
+        &[class$='-sign'] {
+            margin-top: 11px;
 
-        cursor: pointer;
+            cursor: pointer;
 
-        font-size: 2em;
+            font-size: 2em;
+        }
     }
 }

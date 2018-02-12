@@ -14,7 +14,6 @@ export default class Home extends React.PureComponent {
         cardsBalance: PropTypes.number.isRequired,
         cashBalance: PropTypes.number.isRequired,
         monthBudget: PropTypes.number.isRequired,
-        totalExpensesAmount: PropTypes.number.isRequired,
         currentMonthIncomeAmount: PropTypes.number.isRequired,
         currentMonthExpensesAmount: PropTypes.number.isRequired,
     };
