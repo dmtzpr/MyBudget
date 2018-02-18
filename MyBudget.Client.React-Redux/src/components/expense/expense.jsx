@@ -5,6 +5,8 @@ import { Grid, Col, ControlLabel, FormGroup, FormControl, HelpBlock, ButtonGroup
 
 import StatusBar from '../status-bar/status-bar.jsx';
 
+import './expense.less';
+
 export default class Expense extends React.PureComponent {
     static propTypes = {
         categories: PropTypes.array.isRequired,
@@ -59,8 +61,8 @@ export default class Expense extends React.PureComponent {
             <div className='add-expense-component'>
                 <StatusBar statusBarTitle='Add expense' onAcceptButtonClick={this.onAddExpenseButtonClick} />
                 <Grid className='expense-container text-center content-layer'>
-                    <Col xs={6}>
-                        <FormGroup className='input-block' validationState={categoryId === 0 ? 'error' : null}>
+                    <Col xs={6} className='category-select'>
+                        <FormGroup validationState={categoryId === 0 ? 'error' : null}>
                             <ControlLabel>Category</ControlLabel>
                             <FormControl
                                 componentClass='select'
@@ -79,8 +81,8 @@ export default class Expense extends React.PureComponent {
                         </FormGroup>
                     </Col>
                     {!!categoryId && (
-                        <Col xs={6}>
-                            <FormGroup className='input-block' validationState={subcategoryId === 0 ? 'error' : null}>
+                        <Col xs={6} className='subcategory-select'>
+                            <FormGroup validationState={subcategoryId === 0 ? 'error' : null}>
                                 <ControlLabel>Subcategory</ControlLabel>
                                 <FormControl
                                     componentClass='select'
