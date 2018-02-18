@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import DatePicker from 'react-16-bootstrap-date-picker';
-import { Grid, Col, ControlLabel, FormGroup, FormControl, HelpBlock, ButtonGroup, Button } from 'react-bootstrap';
+import { Grid, Col, ControlLabel, FormGroup, FormControl, HelpBlock } from 'react-bootstrap';
 
 import StatusBar from '../status-bar/status-bar.jsx';
 
@@ -30,7 +31,7 @@ export default class Expense extends React.PureComponent {
     };
 
     onExpenseCategoryChange = (e) => {
-        this.setState({ categoryId: parseInt(e.target.value) });
+        this.setState({ categoryId: parseInt(e.target.value), subcategoryId: null });
     };
 
     onExpenseSubcategoryChange = (e) => {
@@ -91,16 +92,21 @@ export default class Expense extends React.PureComponent {
                                     onChange={this.onExpenseSubcategoryChange}
                                 >
                                     <option value='0'>-- choose subcategory --</option>
-                                    {categories[categoryId].subcategories.map((subcategory, index) => (
-                                        <option key={index} value={subcategory.id}>
-                                            {subcategory.name}
-                                        </option>
-                                    ))}
+                                    {categories
+                                        .find(category => category.id === categoryId)
+                                        .subcategories.map((subcategory, index) => (
+                                            <option key={index} value={subcategory.id}>
+                                                {subcategory.name}
+                                            </option>
+                                        ))}
                                 </FormControl>
                                 {subcategoryId === 0 && <HelpBlock>Please select subcategory</HelpBlock>}
                             </FormGroup>
                         </Col>
                     )}
+                    <Link to='/expense-category' className='add-expense-category'>
+                        Add expense categories
+                    </Link>
                     {!!subcategoryId && (
                         <FormGroup className='input-block' validationState={paymentTypeId === 0 ? 'error' : null}>
                             <ControlLabel>Pay from</ControlLabel>

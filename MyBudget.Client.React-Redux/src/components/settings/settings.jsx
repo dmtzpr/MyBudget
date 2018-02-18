@@ -15,6 +15,9 @@ export default () => (
                     <Link to='/login'>Logout</Link>
                 </Button>
                 <Button>
+                    <Link to='/expense-category'>Add expense categories</Link>
+                </Button>
+                <Button>
                     <Link to='/'>Go home</Link>
                 </Button>
             </ButtonGroup>

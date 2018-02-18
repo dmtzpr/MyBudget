@@ -13,6 +13,7 @@ import Home from './containers/home';
 import Cash from './containers/cash';
 import Card from './containers/card';
 import Expense from './containers/expense';
+import ExpenseCategory from './containers/expense-category';
 import Budget from './containers/budget';
 import Login from './containers/login';
 
@@ -37,6 +38,7 @@ ReactDOM.render(
                 <Route path='/cash' component={Cash} />
                 <Route path='/cards' component={Card} />
                 <Route path='/expense' component={Expense} />
+                <Route path='/expense-category' component={ExpenseCategory} />
                 <Route path='/budget' component={Budget} />
                 <Route path='/barchart' component={BarChart} />
                 <Route path='/piechart' component={PieChart} />
