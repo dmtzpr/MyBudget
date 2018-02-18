@@ -4,27 +4,26 @@ import { Row, Form, Col, Button, FormGroup, InputGroup, Glyphicon, FormControl }
 
 import './login.less';
 
-class Login extends React.PureComponent {
-    constructor(props) {
-        super(props);
+export default class Login extends React.PureComponent {
+    static propTypes = {
+        isSignInFailed: PropTypes.bool,
+        loggingIn: PropTypes.bool,
+        onLogin: PropTypes.func.isRequired,
+    };
 
-        this.state = {
-            username: '',
-            password: '',
-            submitted: false,
-        };
+    state = {
+        username: '',
+        password: '',
+        submitted: false,
+    };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(e) {
+    handleChange = (e) => {
         const { name, value } = e.target;
 
         this.setState({ [name]: value });
-    }
+    };
 
-    handleSubmit(e) {
+    handleSubmit = (e) => {
         const { username, password } = this.state;
 
         this.setState({ submitted: true });
@@ -34,7 +33,7 @@ class Login extends React.PureComponent {
         }
 
         e.preventDefault();
-    }
+    };
 
     render() {
         const { loggingIn, isSignInFailed } = this.props;
@@ -48,27 +47,40 @@ class Login extends React.PureComponent {
                 <Row>
                     <Col md={6} mdOffset={3}>
                         <Form name='form' className='signin-form' onSubmit={this.handleSubmit}>
-                            <FormGroup validationState={isSignInFailed || (submitted && (!username && !password)) ? 'error' : null} >
-                                <InputGroup bsSize='large' >
+                            <FormGroup
+                                validationState={
+                                    isSignInFailed || (submitted && (!username && !password)) ? 'error' : null
+                                }
+                            >
+                                <InputGroup bsSize='large'>
                                     <InputGroup.Addon>
                                         <Glyphicon glyph='user' />
                                     </InputGroup.Addon>
-                                    <FormControl type='text' name='username' placeholder='Username' required onChange={this.handleChange} />
+                                    <FormControl
+                                        type='text'
+                                        name='username'
+                                        placeholder='Username'
+                                        required
+                                        onChange={this.handleChange}
+                                    />
                                 </InputGroup>
                                 <InputGroup bsSize='large'>
                                     <InputGroup.Addon>
                                         <Glyphicon glyph='lock' />
                                     </InputGroup.Addon>
-                                    <FormControl type='password' name='password' placeholder='Password' required onChange={this.handleChange} />
+                                    <FormControl
+                                        type='password'
+                                        name='password'
+                                        placeholder='Password'
+                                        required
+                                        onChange={this.handleChange}
+                                    />
                                 </InputGroup>
                             </FormGroup>
                             <FormGroup>
-                                <Button
-                                    type='submit'
-                                    bsSize='large'
-                                    block
-                                    disabled={loggingIn}
-                                >{loggingIn ? 'Signing in...' : 'Sign in'}</Button>
+                                <Button type='submit' bsSize='large' block disabled={loggingIn}>
+                                    {loggingIn ? 'Signing in...' : 'Sign in'}
+                                </Button>
                             </FormGroup>
                         </Form>
                     </Col>
@@ -80,11 +92,3 @@ class Login extends React.PureComponent {
         );
     }
 }
-
-Login.propTypes = {
-    isSignInFailed: PropTypes.bool,
-    loggingIn: PropTypes.bool,
-    onLogin: PropTypes.func.isRequired,
-};
-
-export default Login;
