@@ -44,6 +44,7 @@ ReactDOM.render(
                 <Route path='/piechart' component={PieChart} />
                 <Route path='/settings' component={Settings} />
                 <Route path='/login' component={Login} />
+
                 <NavigationMenu />
             </div>
         </ConnectedRouter>
