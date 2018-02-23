@@ -1,4 +1,4 @@
-import { Budget } from '../models';
+import Budget from '../models/budget';
 
 export default {
     async createBudget(data) {

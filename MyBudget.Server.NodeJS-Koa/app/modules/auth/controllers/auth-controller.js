@@ -1,7 +1,7 @@
 import pick from 'lodash/pick';
 import { User } from '../../users';
 import jwtService from '../../../services/jwt-service';
-import { UserService } from '../../users/services';
+import UserService from '../../users/services/user-service';
 
 export default {
     async signUp(ctx) {
@@ -14,15 +14,15 @@ export default {
     },
 
     async signIn(ctx) {
-        const { email, password } = ctx.request.body;
+        const { username, password } = ctx.request.body;
 
-        if (!email || !password) {
+        if (!username || !password) {
             ctx.throw(400, {
                 message: 'Invalid data',
             });
         }
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ username });
 
         if (!user) {
             ctx.throw(400, {
@@ -36,7 +36,7 @@ export default {
             });
         }
 
-        const token = await jwtService.genToken({ email });
+        const token = await jwtService.genToken({ username });
 
         ctx.body = { data: token };
     },
