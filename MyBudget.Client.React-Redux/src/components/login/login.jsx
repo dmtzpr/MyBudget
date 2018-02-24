@@ -9,6 +9,7 @@ export default class Login extends React.PureComponent {
         isSignInFailed: PropTypes.bool,
         loggingIn: PropTypes.bool,
         onLogin: PropTypes.func.isRequired,
+        onLogout: PropTypes.func.isRequired,
     };
 
     state = {
@@ -16,6 +17,10 @@ export default class Login extends React.PureComponent {
         password: '',
         submitted: false,
     };
+
+    componentWillMount() {
+        this.props.onLogout();
+    }
 
     handleChange = (e) => {
         const { name, value } = e.target;
