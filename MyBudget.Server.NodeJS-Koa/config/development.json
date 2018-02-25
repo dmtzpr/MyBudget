@@ -1,0 +1,9 @@
+{
+    "env": "development",
+    "mongo": {
+        "uri": "mongodb://mybudget_admin:admin@ds247078.mlab.com:47078/mybudget"
+    },
+    "jwt": {
+        "secret": "mybudgetsectertoken"
+    }
+}
