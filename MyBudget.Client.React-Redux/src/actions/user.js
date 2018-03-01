@@ -17,8 +17,7 @@ export const login = (username, password) => (dispatch) => {
     );
 };
 
-export const logout = () => {
+export const logout = () => (dispatch) => {
     userService.logout();
-
-    return { type: ActionTypes.LOGOUT };
+    dispatch({ type: ActionTypes.LOGOUT });
 };
