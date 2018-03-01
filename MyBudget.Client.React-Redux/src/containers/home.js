@@ -27,7 +27,7 @@ const getCurrentMonthIncomeAmount = (cashes, cards) =>
 const getCurrentMonthExpensesAmount = expenses => getCurrentMonthEntityAmount(expenses, 'amount');
 
 const mapStateToProps = state => ({
-    userName: state.authentication.user,
+    userName: state.authentication.user.username,
     cardsBalance: getEntityAmount(state.cards, 'balance'),
     cashBalance: state.cash.balance,
     monthBudget: state.budget,

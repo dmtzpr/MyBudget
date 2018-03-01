@@ -38,6 +38,6 @@ export default {
 
         const token = await jwtService.genToken({ username });
 
-        ctx.body = { data: token };
+        ctx.body = { username, token };
     },
 };

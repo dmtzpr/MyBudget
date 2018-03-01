@@ -22,6 +22,7 @@ import PieChart from './containers/pie-chart';
 
 import Settings from './components/settings/settings.jsx';
 import NavigationMenu from './components/navigation-menu/navigation-menu.jsx';
+import PrivateRoute from './components/private-route/private-route.jsx';
 
 import reducer from './reducers';
 
@@ -34,15 +35,15 @@ ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <div>
-                <Route exact path='/' component={Home} />
-                <Route path='/cash' component={Cash} />
-                <Route path='/cards' component={Card} />
-                <Route path='/expense' component={Expense} />
-                <Route path='/expense-category' component={ExpenseCategory} />
-                <Route path='/budget' component={Budget} />
-                <Route path='/barchart' component={BarChart} />
-                <Route path='/piechart' component={PieChart} />
-                <Route path='/settings' component={Settings} />
+                <PrivateRoute exact path='/' component={Home} />
+                <PrivateRoute path='/cash' component={Cash} />
+                <PrivateRoute path='/cards' component={Card} />
+                <PrivateRoute path='/expense' component={Expense} />
+                <PrivateRoute path='/expense-category' component={ExpenseCategory} />
+                <PrivateRoute path='/budget' component={Budget} />
+                <PrivateRoute path='/barchart' component={BarChart} />
+                <PrivateRoute path='/piechart' component={PieChart} />
+                <PrivateRoute path='/settings' component={Settings} />
                 <Route path='/login' component={Login} />
 
                 <NavigationMenu />

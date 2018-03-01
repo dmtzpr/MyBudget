@@ -6,8 +6,8 @@ import './login.less';
 
 export default class Login extends React.PureComponent {
     static propTypes = {
-        isSignInFailed: PropTypes.bool,
-        loggingIn: PropTypes.bool,
+        isSignInFailed: PropTypes.bool.isRequired,
+        loggingIn: PropTypes.bool.isRequired,
         onLogin: PropTypes.func.isRequired,
         onLogout: PropTypes.func.isRequired,
     };
