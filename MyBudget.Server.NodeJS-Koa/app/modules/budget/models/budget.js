@@ -4,6 +4,7 @@ const BudgetSchema = new Schema({
     userId: {
         type: String,
         required: 'User id is required',
+        select: false,
     },
     monthBudget: {
         type: Number,

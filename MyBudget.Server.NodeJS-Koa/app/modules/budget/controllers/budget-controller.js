@@ -21,21 +21,17 @@ export default {
     },
 
     async update(ctx) {
-        const { params: { id: _id }, request: { body }, user: { _id: userId } } = ctx;
+        const { request: { body }, user: { _id: userId } } = ctx;
 
-        const budget = await Budget.findOne({ _id });
+        const budget = await Budget.findOne({ userId });
 
         if (!budget) {
-            ctx.throw(404, `Budget with id "${_id}" not found`);
-        }
-
-        if (budget.userId !== userId.toHexString()) {
-            ctx.throw(403, `Forbidden. Budget with id "${_id}" dont belong to user with id ${userId}`);
+            ctx.throw(404, `User budget with id "${userId}" not found`);
         }
 
         const newData = pick(body, Budget.createFields);
         const updatedBudget = await BudgetService.updateBudget(newData, budget);
 
-        ctx.body = { data: updatedBudget };
+        ctx.body = updatedBudget;
     },
 };

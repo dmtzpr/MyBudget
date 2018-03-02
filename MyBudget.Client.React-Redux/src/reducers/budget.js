@@ -1,6 +1,6 @@
 import ActionTypes from '../constants/budget';
 
-const initialState = 1500;
+const initialState = 0;
 
 export default function budget(state = initialState, action) {
     switch (action.type) {
