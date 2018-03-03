@@ -43,7 +43,6 @@ export default class App extends React.PureComponent {
                     <PrivateRoute path='/piechart' component={PieChart} />
                     <PrivateRoute path='/settings' component={Settings} />
                     <Route path='/login' component={Login} />
-
                     <NavigationMenu />
                 </div>
             </ConnectedRouter>

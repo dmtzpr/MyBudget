@@ -4,6 +4,8 @@ const initialState = 0;
 
 export default function budget(state = initialState, action) {
     switch (action.type) {
+        case ActionTypes.GET_MONTH_BUDGET_SUCCESS:
+            return action.monthBudget;
         case ActionTypes.SET_MONTH_BUDGET_SUCCESS:
             return action.monthBudget;
         default:

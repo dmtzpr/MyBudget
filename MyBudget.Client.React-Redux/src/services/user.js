@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 
-export const userService = {
+export default {
     login: (username, password) =>
         axios({
             method: 'post',
