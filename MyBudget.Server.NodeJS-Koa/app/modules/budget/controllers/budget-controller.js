@@ -3,6 +3,18 @@ import Budget from '../models/budget';
 import BudgetService from '../services/budget-service';
 
 export default {
+    async get(ctx) {
+        const { user: { _id: userId } } = ctx;
+
+        const budget = await Budget.findOne({ userId });
+
+        if (!budget) {
+            ctx.throw(404, `User budget with id "${userId}" not found`);
+        }
+
+        ctx.body = budget;
+    },
+
     async create(ctx) {
         const budgetData = {
             ...pick(ctx.request.body, Budget.createFields),

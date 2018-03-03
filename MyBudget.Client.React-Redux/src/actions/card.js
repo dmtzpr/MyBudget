@@ -2,7 +2,6 @@ import { push } from 'react-router-redux';
 
 import ActionTypes from '../constants/card';
 
-
 export const addCard = cardName => (dispatch) => {
     dispatch({ type: ActionTypes.ADD_CARD_SUCCESS, cardName });
 };

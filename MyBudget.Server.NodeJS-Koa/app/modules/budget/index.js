@@ -5,7 +5,10 @@ import Budget from './models/budget';
 
 const router = new Router({ prefix: '/budget' });
 
-router.post('/', checkUser(), budgetController.create).put('/', checkUser(), budgetController.update);
+router
+    .get('/', checkUser(), budgetController.get)
+    .post('/', checkUser(), budgetController.create)
+    .put('/', checkUser(), budgetController.update);
 
 export { Budget };
 
