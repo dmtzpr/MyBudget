@@ -5,7 +5,6 @@ import cashService from '../services/cash';
 
 export const addCash = cash => (dispatch) => {
     dispatch({ type: ActionTypes.ADD_CASH_REQUEST, cash });
-    debugger;
     cashService.addCash(cash).then(
         (cashes) => {
             dispatch({ type: ActionTypes.ADD_CASH_SUCCESS, cash: cashes });

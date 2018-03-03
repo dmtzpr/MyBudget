@@ -1,6 +1,10 @@
 import keymirror from 'keymirror';
 
 export default keymirror({
+    GET_CARDS_REQUEST: null,
+    GET_CARDS_SUCCESS: null,
+    GET_CARDS_FAILURE: null,
+
     ADD_CARD_REQUEST: null,
     ADD_CARD_SUCCESS: null,
     ADD_CARD_FAILURE: null,

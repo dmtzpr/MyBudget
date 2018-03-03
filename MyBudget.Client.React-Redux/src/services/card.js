@@ -4,10 +4,10 @@ import qs from 'qs';
 import authHeader from '../helpers/auth-header';
 
 export default {
-    getCash: () =>
+    getCards: () =>
         axios({
             method: 'get',
-            url: '/api/cash/',
+            url: '/api/cards/',
 
             headers: {
                 ...authHeader(),
@@ -18,24 +18,24 @@ export default {
                 return Promise.reject(response.statusText);
             }
 
-            return Promise.resolve(response.data.cash);
+            return Promise.resolve(response.data.cards);
         }),
 
-    addCash: cash =>
+    addCard: cardName =>
         axios({
             method: 'post',
-            url: '/api/cash/',
+            url: '/api/cards/',
 
             headers: {
                 ...authHeader(),
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            data: qs.stringify(cash),
+            data: qs.stringify({ name: cardName }),
         }).then((response) => {
-            if (response.status !== 200) {
+            if (response.status !== 201) {
                 return Promise.reject(response.statusText);
             }
 
-            return Promise.resolve(response.data.cash);
+            return Promise.resolve(response.data.card);
         }),
 };

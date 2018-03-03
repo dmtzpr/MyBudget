@@ -1,9 +1,18 @@
 import { push } from 'react-router-redux';
 
 import ActionTypes from '../constants/card';
+import cardService from '../services/card';
 
 export const addCard = cardName => (dispatch) => {
-    dispatch({ type: ActionTypes.ADD_CARD_SUCCESS, cardName });
+    dispatch({ type: ActionTypes.ADD_CARD_REQUEST, cardName });
+    cardService.addCard(cardName).then(
+        (card) => {
+            dispatch({ type: ActionTypes.ADD_CARD_SUCCESS, card });
+        },
+        (error) => {
+            dispatch({ type: ActionTypes.ADD_CARD_FAILURE, error });
+        },
+    );
 };
 
 export const rechargeCard = cardTransaction => (dispatch) => {

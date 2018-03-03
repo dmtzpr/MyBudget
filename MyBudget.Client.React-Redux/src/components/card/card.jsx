@@ -63,7 +63,7 @@ export default class Card extends React.PureComponent {
     onSelectedCardChange = (e) => {
         this.setState({
             isCardSelected: true,
-            selectedCardId: parseInt(e.target.value),
+            selectedCardId: e.target.value,
         });
     };
 

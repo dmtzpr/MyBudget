@@ -1,6 +1,7 @@
 import ActionTypes from '../constants/budget';
 import CashActionTypes from '../constants/cash';
-import { budgetService, cashService } from '../services';
+import CardActionTypes from '../constants/card';
+import { budgetService, cashService, cardService } from '../services';
 
 export const appLoad = () => (dispatch) => {
     budgetService.getBudget().then(
@@ -18,6 +19,15 @@ export const appLoad = () => (dispatch) => {
         },
         (error) => {
             dispatch({ type: CashActionTypes.GET_CASH_FAILURE, error });
+        },
+    );
+
+    cardService.getCards().then(
+        (cards) => {
+            dispatch({ type: CardActionTypes.GET_CARDS_SUCCESS, cards });
+        },
+        (error) => {
+            dispatch({ type: CardActionTypes.GET_CARDS_FAILURE, error });
         },
     );
 };
