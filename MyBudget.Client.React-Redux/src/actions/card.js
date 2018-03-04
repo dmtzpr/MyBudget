@@ -21,5 +21,14 @@ export const rechargeCard = cardTransaction => (dispatch) => {
 };
 
 export const deleteCard = cardId => (dispatch) => {
-    dispatch({ type: ActionTypes.DELETE_CARD_SUCCESS, cardId });
+    debugger;
+    dispatch({ type: ActionTypes.DELETE_CARD_REQUEST, cardId });
+    cardService.deleteCard(cardId).then(
+        (id) => {
+            dispatch({ type: ActionTypes.DELETE_CARD_SUCCESS, cardId: id });
+        },
+        (error) => {
+            dispatch({ type: ActionTypes.DELETE_CARD_FAILURE, error });
+        },
+    );
 };

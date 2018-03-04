@@ -5,7 +5,6 @@ const CardSchema = new Schema(
         userId: {
             type: String,
             required: 'User id is required',
-            select: false,
         },
         name: {
             type: String,

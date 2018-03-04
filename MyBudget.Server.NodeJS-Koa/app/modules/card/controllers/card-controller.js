@@ -27,5 +27,15 @@ export default {
         }
     },
 
-    async delete(ctx) {},
+    async delete(ctx) {
+        const { user: { _id: userId }, card } = ctx;
+
+        if (card.userId !== userId.toHexString()) {
+            ctx.throw(403, `Forbidden. Card with id "${card._id}" dont belong to user with id ${userId}`);
+        }
+
+        await card.remove();
+
+        ctx.body = { id: card._id };
+    },
 };

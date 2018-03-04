@@ -38,4 +38,22 @@ export default {
 
             return Promise.resolve(response.data.card);
         }),
+
+    deleteCard: id =>
+        axios({
+            method: 'delete',
+            url: id,
+            baseURL: '/api/cards/',
+
+            headers: {
+                ...authHeader(),
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        }).then((response) => {
+            if (response.status !== 200) {
+                return Promise.reject(response.statusText);
+            }
+
+            return Promise.resolve(response.data.id);
+        }),
 };
