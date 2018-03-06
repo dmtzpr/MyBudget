@@ -37,7 +37,7 @@ export default class ExpenseCategory extends React.PureComponent {
 
     onExpenseCategoryChange = (e) => {
         this.setState({
-            categoryId: parseInt(e.target.value),
+            categoryId: e.target.value,
             subcategoryId: null,
             isAddSubcategoryFormShow: false,
             newSubcategoryName: '',
@@ -45,7 +45,7 @@ export default class ExpenseCategory extends React.PureComponent {
     };
 
     onExpenseSubcategoryChange = (e) => {
-        this.setState({ subcategoryId: parseInt(e.target.value) });
+        this.setState({ subcategoryId: e.target.value });
     };
 
     onNewCategoryNameChange = (e) => {

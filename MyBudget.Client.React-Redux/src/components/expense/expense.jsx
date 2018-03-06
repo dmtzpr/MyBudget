@@ -31,11 +31,11 @@ export default class Expense extends React.PureComponent {
     };
 
     onExpenseCategoryChange = (e) => {
-        this.setState({ categoryId: parseInt(e.target.value), subcategoryId: null });
+        this.setState({ categoryId: e.target.value, subcategoryId: null });
     };
 
     onExpenseSubcategoryChange = (e) => {
-        this.setState({ subcategoryId: parseInt(e.target.value) });
+        this.setState({ subcategoryId: e.target.value });
     };
 
     onPaymentTypeChange = (e) => {
