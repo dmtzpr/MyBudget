@@ -5,10 +5,8 @@ export default function expenseCategories(state = [], action) {
         case ActionTypes.GET_EXPENSE_CATEGORY_SUCCESS:
             return action.categories;
         case ActionTypes.ADD_EXPENSE_CATEGORY_SUCCESS:
-            debugger;
             return [...state, action.expenseCategory];
         case ActionTypes.ADD_EXPENSE_SUBCATEGORY_SUCCESS:
-            debugger;
             return state.map(
                 category =>
                     (category.id === action.subcategory.categoryId

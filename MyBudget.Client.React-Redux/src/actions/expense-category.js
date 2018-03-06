@@ -31,7 +31,6 @@ export const addExpenseSubcategory = newSubcategory => (dispatch) => {
     dispatch({ type: ActionTypes.ADD_EXPENSE_SUBCATEGORY_REQUEST, newSubcategory });
     expenseService.addSubcategory(newSubcategory).then(
         (subcategory) => {
-            debugger;
             dispatch({ type: ActionTypes.ADD_EXPENSE_SUBCATEGORY_SUCCESS, subcategory });
         },
         (error) => {
@@ -41,11 +40,9 @@ export const addExpenseSubcategory = newSubcategory => (dispatch) => {
 };
 
 export const deleteExpenseSubcategory = category => (dispatch) => {
-    debugger;
     dispatch({ type: ActionTypes.DELETE_EXPENSE_SUBCATEGORY_REQUEST, category });
     expenseService.deleteSubcategory(category).then(
         (subcategory) => {
-            debugger;
             dispatch({ type: ActionTypes.DELETE_EXPENSE_SUBCATEGORY_SUCCESS, subcategory });
         },
         (error) => {
