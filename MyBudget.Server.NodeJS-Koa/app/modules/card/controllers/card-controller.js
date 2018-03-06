@@ -26,6 +26,22 @@ export default {
             ctx.throw(400, e);
         }
     },
+    async update(ctx) {
+        const { request: { body }, user: { _id: userId }, card } = ctx;
+
+        if (card.userId !== userId.toHexString()) {
+            ctx.throw(403, `Forbidden. Card with id "${card._id}" dont belong to user with id ${userId}`);
+        }
+
+        const newData = pick(body, Card.rechargeFields);
+        const updatedCard = await CardService.updateCard(newData, card);
+        const cardTransaction = updatedCard.debitCardRecharges[updatedCard.debitCardRecharges.length - 1];
+
+        ctx.body = {
+            cardTransaction,
+            cardId: updatedCard._id,
+        };
+    },
 
     async delete(ctx) {
         const { user: { _id: userId }, card } = ctx;

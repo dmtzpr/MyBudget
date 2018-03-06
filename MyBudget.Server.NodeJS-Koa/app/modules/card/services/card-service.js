@@ -11,9 +11,10 @@ export default {
         return Card.create(data);
     },
 
-    // async updateCash(monthBudget, budget) {
-    //     budget.set(monthBudget);
+    async updateCard(cardRecharge, card) {
+        card.balance += cardRecharge.amount;
+        card.debitCardRecharges.push(cardRecharge);
 
-    //     return await budget.save();
-    // },
+        return await card.save();
+    },
 };

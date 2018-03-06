@@ -39,6 +39,25 @@ export default {
             return Promise.resolve(response.data.card);
         }),
 
+    updateCard: cardTransaction =>
+        axios({
+            method: 'put',
+            url: cardTransaction.cardId,
+            baseURL: '/api/cards/',
+
+            headers: {
+                ...authHeader(),
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            data: qs.stringify(cardTransaction),
+        }).then((response) => {
+            if (response.status !== 200) {
+                return Promise.reject(response.statusText);
+            }
+
+            return Promise.resolve(response.data);
+        }),
+
     deleteCard: id =>
         axios({
             method: 'delete',

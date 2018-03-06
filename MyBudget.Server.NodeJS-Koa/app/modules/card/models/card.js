@@ -31,5 +31,5 @@ const CardSchema = new Schema(
 );
 
 CardSchema.statics.createFields = ['name', 'balance', 'debitCardRecharges'];
-
+CardSchema.statics.rechargeFields = ['amount', 'note', 'date'];
 export default mongoose.model('card', CardSchema);

@@ -16,12 +16,19 @@ export const addCard = cardName => (dispatch) => {
 };
 
 export const rechargeCard = cardTransaction => (dispatch) => {
-    dispatch({ type: ActionTypes.RECHARGE_CARD_SUCCESS, cardTransaction });
-    dispatch(push('/'));
+    dispatch({ type: ActionTypes.RECHARGE_CARD_REQUEST, cardTransaction });
+    cardService.updateCard(cardTransaction).then(
+        (cardRecharge) => {
+            dispatch({ type: ActionTypes.RECHARGE_CARD_SUCCESS, cardRecharge });
+            dispatch(push('/'));
+        },
+        (error) => {
+            dispatch({ type: ActionTypes.RECHARGE_CARD_FAILURE, error });
+        },
+    );
 };
 
 export const deleteCard = cardId => (dispatch) => {
-    debugger;
     dispatch({ type: ActionTypes.DELETE_CARD_REQUEST, cardId });
     cardService.deleteCard(cardId).then(
         (id) => {

@@ -11,22 +11,22 @@ export default (state = [], action) => {
         case ActionTypes.RECHARGE_CARD_SUCCESS:
             return state.map(
                 card =>
-                    (card.id === action.cardTransaction.id
+                    (card.id === action.cardRecharge.cardId
                         ? {
                             ...card,
-                            balance: card.balance + action.cardTransaction.amount,
-                            debitCardRecharges: card.debitCardRecharges.push(action.cardTransaction.expense),
+                            balance: card.balance + action.cardRecharge.cardTransaction.amount,
+                            debitCardRecharges: card.debitCardRecharges.push(action.cardRecharge.cardTransaction),
                         }
                         : card),
             );
         case ActionTypes.ADD_CARD_EXPENSE:
             return state.map(
                 card =>
-                    (card.id === action.id
+                    (card.id === action.cardRecharge.cardId
                         ? {
                             ...card,
-                            balance: card.balance - action.expense.amount,
-                            debitCardRecharges: card.debitCardRecharges.push(action.expense),
+                            balance: card.balance - action.cardRecharge.cardTransaction.amount,
+                            debitCardRecharges: card.debitCardRecharges.push(action.cardRecharge.cardTransaction),
                         }
                         : card),
             );

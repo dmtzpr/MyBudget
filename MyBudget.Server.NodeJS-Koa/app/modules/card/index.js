@@ -10,7 +10,7 @@ router
     .get('/', checkUser(), cardController.get)
     .post('/', checkUser(), cardController.create)
     .param('id', checkCard())
-    // .put('/')
+    .put('/:id', checkUser(), cardController.update)
     .delete('/:id', checkUser(), cardController.delete);
 
 export { Card };

@@ -38,7 +38,7 @@ export default class Card extends React.PureComponent {
 
         if (this.state.selectedCardId && this.state.amount > 0) {
             this.props.onRechargeCard({
-                id: state.selectedCardId,
+                cardId: state.selectedCardId,
                 amount: this.state.amount,
                 date: this.state.date,
                 note: this.state.note,
