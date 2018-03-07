@@ -5,6 +5,7 @@ import { appLoad } from '../actions/app';
 
 const mapStateToProps = state => ({
     isLoading: state.app.isLoading,
+    isLoggedIn: state.authentication.loggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({

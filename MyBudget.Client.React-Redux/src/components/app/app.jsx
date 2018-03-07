@@ -26,10 +26,21 @@ export default class App extends React.PureComponent {
     static propTypes = {
         onAppLoad: PropTypes.func.isRequired,
         isLoading: PropTypes.bool.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
     };
 
     componentWillMount() {
-        this.props.onAppLoad();
+        const { isLoggedIn, onAppLoad } = this.props;
+
+        if (isLoggedIn) {
+            onAppLoad();
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!this.props.isLoggedIn && nextProps.isLoggedIn) {
+            this.props.onAppLoad();
+        }
     }
 
     render() {

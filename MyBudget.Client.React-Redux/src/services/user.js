@@ -15,7 +15,6 @@ export default {
                 return response.data;
             })
             .then((user) => {
-                debugger;
                 if (user && user.token) {
                     localStorage.setItem('user', JSON.stringify(user));
                     Object.assign(axios.defaults.headers.common, authHeader());

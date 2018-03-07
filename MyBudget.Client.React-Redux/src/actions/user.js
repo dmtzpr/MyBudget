@@ -8,7 +8,6 @@ export const login = (username, password) => (dispatch) => {
 
     userService.login(username, password).then(
         (user) => {
-            debugger;
             dispatch({ type: ActionTypes.LOGIN_SUCCESS, user });
             dispatch(push('/'));
         },
