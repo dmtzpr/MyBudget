@@ -4,8 +4,8 @@ import ActionTypes from '../constants/budget';
 import budgetService from '../services/budget';
 
 export const getMonthBudget = () => (dispatch) => {
+    // TODO
     // dispatch({ type: ActionTypes.SET_MONTH_BUDGET_REQUEST,  });
-
     budgetService.getBudget().then(
         (budget) => {
             dispatch({ type: ActionTypes.SET_MONTH_BUDGET_SUCCESS, monthBudget: budget });

@@ -1,19 +1,9 @@
 import axios from 'axios';
 import qs from 'qs';
 
-import authHeader from '../helpers/auth-header';
-
 export default {
     getExpenses: () =>
-        axios({
-            method: 'get',
-            url: '/api/expense/',
-
-            headers: {
-                ...authHeader(),
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-        }).then((response) => {
+        axios.get('expense').then((response) => {
             if (response.status !== 200) {
                 return Promise.reject(response.statusText);
             }
@@ -22,15 +12,7 @@ export default {
         }),
 
     getCategories: () =>
-        axios({
-            method: 'get',
-            url: '/api/expense-category/',
-
-            headers: {
-                ...authHeader(),
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-        }).then((response) => {
+        axios.get('expense-category').then((response) => {
             if (response.status !== 200) {
                 return Promise.reject(response.statusText);
             }
@@ -39,16 +21,7 @@ export default {
         }),
 
     addExpense: expense =>
-        axios({
-            method: 'post',
-            url: '/api/expense/',
-
-            headers: {
-                ...authHeader(),
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            data: qs.stringify(expense),
-        }).then((response) => {
+        axios.post('expense', qs.stringify(expense)).then((response) => {
             if (response.status !== 201) {
                 return Promise.reject(response.statusText);
             }
@@ -57,16 +30,7 @@ export default {
         }),
 
     addCategory: name =>
-        axios({
-            method: 'post',
-            url: '/api/expense-category/',
-
-            headers: {
-                ...authHeader(),
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            data: qs.stringify({ name }),
-        }).then((response) => {
+        axios.post('expense-category', qs.stringify({ name })).then((response) => {
             if (response.status !== 201) {
                 return Promise.reject(response.statusText);
             }
@@ -74,16 +38,7 @@ export default {
             return Promise.resolve(response.data.expenseCategory);
         }),
     deleteCategory: id =>
-        axios({
-            method: 'delete',
-            url: id,
-            baseURL: '/api/expense-category/',
-
-            headers: {
-                ...authHeader(),
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-        }).then((response) => {
+        axios.delete(`expense-category/${id}`).then((response) => {
             if (response.status !== 200) {
                 return Promise.reject(response.statusText);
             }
@@ -91,39 +46,26 @@ export default {
             return Promise.resolve(response.data.id);
         }),
     addSubcategory: subcategory =>
-        axios({
-            method: 'post',
-            url: subcategory.categoryId,
-            baseURL: '/api/expense-category/subcategory/',
+        axios
+            .post(
+                `expense-category/subcategory/${subcategory.categoryId}`,
+                qs.stringify({ name: subcategory.newSubcategoryName }),
+            )
+            .then((response) => {
+                if (response.status !== 200) {
+                    return Promise.reject(response.statusText);
+                }
 
-            headers: {
-                ...authHeader(),
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            data: qs.stringify({ name: subcategory.newSubcategoryName }),
-        }).then((response) => {
-            if (response.status !== 200) {
-                return Promise.reject(response.statusText);
-            }
-
-            return Promise.resolve(response.data);
-        }),
+                return Promise.resolve(response.data);
+            }),
     deleteSubcategory: category =>
-        axios({
-            method: 'PATCH',
-            url: category.id,
-            baseURL: '/api/expense-category/',
+        axios
+            .patch(`expense-category/${category.id}`, qs.stringify({ subcategoryId: category.subcategoryId }))
+            .then((response) => {
+                if (response.status !== 200) {
+                    return Promise.reject(response.statusText);
+                }
 
-            headers: {
-                ...authHeader(),
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            data: qs.stringify({ subcategoryId: category.subcategoryId }),
-        }).then((response) => {
-            if (response.status !== 200) {
-                return Promise.reject(response.statusText);
-            }
-
-            return Promise.resolve(response.data.id);
-        }),
+                return Promise.resolve(response.data.id);
+            }),
 };
