@@ -4,6 +4,23 @@ import qs from 'qs';
 import authHeader from '../helpers/auth-header';
 
 export default {
+    getExpenses: () =>
+        axios({
+            method: 'get',
+            url: '/api/expense/',
+
+            headers: {
+                ...authHeader(),
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        }).then((response) => {
+            if (response.status !== 200) {
+                return Promise.reject(response.statusText);
+            }
+
+            return Promise.resolve(response.data.expenses);
+        }),
+
     getCategories: () =>
         axios({
             method: 'get',
@@ -19,6 +36,24 @@ export default {
             }
 
             return Promise.resolve(response.data.categories);
+        }),
+
+    addExpense: expense =>
+        axios({
+            method: 'post',
+            url: '/api/expense/',
+
+            headers: {
+                ...authHeader(),
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            data: qs.stringify(expense),
+        }).then((response) => {
+            if (response.status !== 201) {
+                return Promise.reject(response.statusText);
+            }
+
+            return Promise.resolve(response.data.expense);
         }),
 
     addCategory: name =>

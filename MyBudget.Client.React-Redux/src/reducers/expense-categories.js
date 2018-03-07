@@ -2,7 +2,7 @@ import ActionTypes from '../constants/expense-category';
 
 export default function expenseCategories(state = [], action) {
     switch (action.type) {
-        case ActionTypes.GET_EXPENSE_CATEGORY_SUCCESS:
+        case ActionTypes.GET_EXPENSE_CATEGORIES_SUCCESS:
             return action.categories;
         case ActionTypes.ADD_EXPENSE_CATEGORY_SUCCESS:
             return [...state, action.expenseCategory];

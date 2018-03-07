@@ -31,7 +31,7 @@ export default class Expense extends React.PureComponent {
     };
 
     onExpenseCategoryChange = (e) => {
-        this.setState({ categoryId: e.target.value, subcategoryId: null });
+        this.setState({ categoryId: e.target.value });
     };
 
     onExpenseSubcategoryChange = (e) => {
@@ -39,7 +39,7 @@ export default class Expense extends React.PureComponent {
     };
 
     onPaymentTypeChange = (e) => {
-        this.setState({ paymentTypeId: parseInt(e.target.value) });
+        this.setState({ paymentTypeId: e.target.value });
     };
 
     onAmountChange = (e) => {

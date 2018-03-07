@@ -1,16 +1,19 @@
-import ActionTypes from '../constants/budget';
-import CashActionTypes from '../constants/cash';
-import CardActionTypes from '../constants/card';
-import ExpenseCategoryTypes from '../constants/expense-category';
+import {
+    BudgetActionTypes,
+    CardActionTypes,
+    CashActionTypes,
+    ExpenseCategoryActionTypes,
+    ExpenseActionTypes,
+} from '../constants';
 import { budgetService, cashService, cardService, expenseService } from '../services';
 
 export const appLoad = () => (dispatch) => {
     budgetService.getBudget().then(
         (budget) => {
-            dispatch({ type: ActionTypes.GET_MONTH_BUDGET_SUCCESS, monthBudget: budget });
+            dispatch({ type: BudgetActionTypes.GET_MONTH_BUDGET_SUCCESS, monthBudget: budget });
         },
         (error) => {
-            dispatch({ type: ActionTypes.GET_MONTH_BUDGET_FAILURE, error });
+            dispatch({ type: BudgetActionTypes.GET_MONTH_BUDGET_FAILURE, error });
         },
     );
 
@@ -34,10 +37,19 @@ export const appLoad = () => (dispatch) => {
 
     expenseService.getCategories().then(
         (categories) => {
-            dispatch({ type: ExpenseCategoryTypes.GET_EXPENSE_CATEGORY_SUCCESS, categories });
+            dispatch({ type: ExpenseCategoryActionTypes.GET_EXPENSE_CATEGORIES_SUCCESS, categories });
         },
         (error) => {
-            dispatch({ type: ExpenseCategoryTypes.GET_EXPENSE_CATEGORY_FAILURE, error });
+            dispatch({ type: ExpenseCategoryActionTypes.GET_EXPENSE_CATEGORIES_FAILURE, error });
+        },
+    );
+
+    expenseService.getExpenses().then(
+        (expenses) => {
+            dispatch({ type: ExpenseActionTypes.GET_EXPENSE_SUCCESS, expenses });
+        },
+        (error) => {
+            dispatch({ type: ExpenseActionTypes.GET_EXPENSE_FAILURE, error });
         },
     );
 };
