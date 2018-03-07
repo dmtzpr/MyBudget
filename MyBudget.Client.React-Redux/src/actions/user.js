@@ -1,6 +1,6 @@
 import { push } from 'react-router-redux';
 
-import { ActionTypes } from '../constants/user';
+import ActionTypes from '../constants/user';
 import userService from '../services/user';
 
 export const login = (username, password) => (dispatch) => {
