@@ -10,9 +10,11 @@ class Header extends React.PureComponent {
 
         return (
             <div className='status-bar'>
-                <Row >
+                <Row>
                     <Col xs={6}>
-                        <div><Glyphicon glyph='user' /> {userName}</div>
+                        <div>
+                            <Glyphicon glyph='user' /> {userName}
+                        </div>
                     </Col>
                     <Col xs={6}>
                         <span>Balance: {totalBalance} $</span>

@@ -1,4 +1,5 @@
 import {
+    AppActionTypes,
     BudgetActionTypes,
     CardActionTypes,
     CashActionTypes,
@@ -8,7 +9,9 @@ import {
 import { budgetService, cashService, cardService, expenseService } from '../services';
 
 export const appLoad = () => (dispatch) => {
-    budgetService.getBudget().then(
+    dispatch({ type: AppActionTypes.IS_LOADING_START });
+
+    const getBudgetPromise = budgetService.getBudget().then(
         (budget) => {
             dispatch({ type: BudgetActionTypes.GET_MONTH_BUDGET_SUCCESS, monthBudget: budget });
         },
@@ -17,7 +20,7 @@ export const appLoad = () => (dispatch) => {
         },
     );
 
-    cashService.getCash().then(
+    const getCashPromise = cashService.getCash().then(
         (cash) => {
             dispatch({ type: CashActionTypes.GET_CASH_SUCCESS, cash });
         },
@@ -26,7 +29,7 @@ export const appLoad = () => (dispatch) => {
         },
     );
 
-    cardService.getCards().then(
+    const getCardsPromise = cardService.getCards().then(
         (cards) => {
             dispatch({ type: CardActionTypes.GET_CARDS_SUCCESS, cards });
         },
@@ -35,7 +38,7 @@ export const appLoad = () => (dispatch) => {
         },
     );
 
-    expenseService.getCategories().then(
+    const getCategoriesPromise = expenseService.getCategories().then(
         (categories) => {
             dispatch({ type: ExpenseCategoryActionTypes.GET_EXPENSE_CATEGORIES_SUCCESS, categories });
         },
@@ -44,12 +47,21 @@ export const appLoad = () => (dispatch) => {
         },
     );
 
-    expenseService.getExpenses().then(
+    const getExpensesPromise = expenseService.getExpenses().then(
         (expenses) => {
             dispatch({ type: ExpenseActionTypes.GET_EXPENSE_SUCCESS, expenses });
         },
         (error) => {
             dispatch({ type: ExpenseActionTypes.GET_EXPENSE_FAILURE, error });
+        },
+    );
+
+    Promise.all([getBudgetPromise, getCashPromise, getCardsPromise, getCategoriesPromise, getExpensesPromise]).then(
+        () => {
+            dispatch({ type: AppActionTypes.IS_LOADING_FINISH });
+        },
+        (reason) => {
+            dispatch({ type: AppActionTypes.IS_LOADING_ERROR, reason });
         },
     );
 };

@@ -20,9 +20,12 @@ import Settings from '../../components/settings/settings.jsx';
 import NavigationMenu from '../../components/navigation-menu/navigation-menu.jsx';
 import PrivateRoute from '../../components/private-route/private-route.jsx';
 
+import './app.less';
+
 export default class App extends React.PureComponent {
     static propTypes = {
         onAppLoad: PropTypes.func.isRequired,
+        isLoading: PropTypes.bool.isRequired,
     };
 
     componentWillMount() {
@@ -30,22 +33,30 @@ export default class App extends React.PureComponent {
     }
 
     render() {
+        const { isLoading } = this.props;
+
         return (
-            <ConnectedRouter history={history}>
-                <div>
-                    <PrivateRoute exact path='/' component={Home} />
-                    <PrivateRoute path='/cash' component={Cash} />
-                    <PrivateRoute path='/cards' component={Card} />
-                    <PrivateRoute path='/expense' component={Expense} />
-                    <PrivateRoute path='/expense-category' component={ExpenseCategory} />
-                    <PrivateRoute path='/budget' component={Budget} />
-                    <PrivateRoute path='/barchart' component={BarChart} />
-                    <PrivateRoute path='/piechart' component={PieChart} />
-                    <PrivateRoute path='/settings' component={Settings} />
-                    <Route path='/login' component={Login} />
-                    <NavigationMenu />
-                </div>
-            </ConnectedRouter>
+            <div>
+                {isLoading ? (
+                    <div className='loading'>Loading...</div>
+                ) : (
+                    <ConnectedRouter history={history}>
+                        <div>
+                            <PrivateRoute exact path='/' component={Home} />
+                            <PrivateRoute path='/cash' component={Cash} />
+                            <PrivateRoute path='/cards' component={Card} />
+                            <PrivateRoute path='/expense' component={Expense} />
+                            <PrivateRoute path='/expense-category' component={ExpenseCategory} />
+                            <PrivateRoute path='/budget' component={Budget} />
+                            <PrivateRoute path='/barchart' component={BarChart} />
+                            <PrivateRoute path='/piechart' component={PieChart} />
+                            <PrivateRoute path='/settings' component={Settings} />
+                            <Route path='/login' component={Login} />
+                            <NavigationMenu />
+                        </div>
+                    </ConnectedRouter>
+                )}
+            </div>
         );
     }
 }

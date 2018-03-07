@@ -5,7 +5,7 @@ const initialState = {
     cashes: [],
 };
 
-export default function cashes(state = initialState, action) {
+export default (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.GET_CASH_SUCCESS:
             return {
@@ -20,4 +20,4 @@ export default function cashes(state = initialState, action) {
         default:
             return state;
     }
-}
+};

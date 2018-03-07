@@ -1,8 +1,6 @@
 import ActionTypes from '../constants/budget';
 
-const initialState = 0;
-
-export default function budget(state = initialState, action) {
+export default (state = 0, action) => {
     switch (action.type) {
         case ActionTypes.GET_MONTH_BUDGET_SUCCESS:
             return action.monthBudget;
@@ -11,4 +9,4 @@ export default function budget(state = initialState, action) {
         default:
             return state;
     }
-}
+};

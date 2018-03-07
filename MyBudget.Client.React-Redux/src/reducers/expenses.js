@@ -1,6 +1,6 @@
 import ActionTypes from '../constants/expense';
 
-export default function expenses(state = [], action) {
+export default (state = [], action) => {
     switch (action.type) {
         case ActionTypes.GET_EXPENSE_SUCCESS:
             return action.expenses;
@@ -9,4 +9,4 @@ export default function expenses(state = [], action) {
         default:
             return state;
     }
-}
+};
