@@ -32,7 +32,7 @@ export default class RegisterPage extends React.PureComponent {
         submitted: false,
     };
 
-    handleChange = (event) => {
+    onFormControlChange = (event) => {
         const { name, value } = event.target;
         const { user } = this.state;
 
@@ -44,7 +44,7 @@ export default class RegisterPage extends React.PureComponent {
         });
     };
 
-    handleSubmit = (event) => {
+    onSignUpFormSubmit = (event) => {
         event.preventDefault();
 
         this.setState({ submitted: true });
@@ -64,7 +64,7 @@ export default class RegisterPage extends React.PureComponent {
                 <Row>
                     <Col md={6} mdOffset={3}>
                         <h2>Register form</h2>
-                        <Form name='form' className='signup-form' onSubmit={this.handleSubmit}>
+                        <Form name='form' className='signup-form' onSubmit={this.onSignUpFormSubmit}>
                             <FormGroup validationState={submitted && !user.username ? 'error' : null}>
                                 <InputGroup bsSize='large'>
                                     <ControlLabel>Username</ControlLabel>
@@ -73,7 +73,7 @@ export default class RegisterPage extends React.PureComponent {
                                         className='form-control'
                                         name='username'
                                         value={user.username}
-                                        onChange={this.handleChange}
+                                        onChange={this.onFormControlChange}
                                     />
                                     {submitted && !user.username && <HelpBlock>Username is required</HelpBlock>}
                                 </InputGroup>
@@ -86,7 +86,7 @@ export default class RegisterPage extends React.PureComponent {
                                         className='form-control'
                                         name='password'
                                         value={user.password}
-                                        onChange={this.handleChange}
+                                        onChange={this.onFormControlChange}
                                     />
                                     {submitted && !user.password && <HelpBlock>Username is required</HelpBlock>}
                                 </InputGroup>

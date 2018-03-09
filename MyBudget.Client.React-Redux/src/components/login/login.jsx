@@ -26,13 +26,13 @@ export default class Login extends React.PureComponent {
         this.props.onLogout();
     }
 
-    handleChange = (e) => {
+    onFormControlChange = (e) => {
         const { name, value } = e.target;
 
         this.setState({ [name]: value });
     };
 
-    handleSubmit = (e) => {
+    onSignInFormSubmit = (e) => {
         const { username, password } = this.state;
 
         this.setState({ submitted: true });
@@ -53,7 +53,7 @@ export default class Login extends React.PureComponent {
                 <Row>
                     <LogoPanel />
                     <Col md={6} mdOffset={3}>
-                        <Form name='form' className='signin-form' onSubmit={this.handleSubmit}>
+                        <Form name='form' className='signin-form' onSubmit={this.onSignInFormSubmit}>
                             <FormGroup
                                 validationState={
                                     isSignInFailed || (submitted && (!username && !password)) ? 'error' : null
@@ -68,7 +68,7 @@ export default class Login extends React.PureComponent {
                                         name='username'
                                         placeholder='Username'
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.onFormControlChange}
                                     />
                                 </InputGroup>
                                 <InputGroup bsSize='large'>
@@ -80,7 +80,7 @@ export default class Login extends React.PureComponent {
                                         name='password'
                                         placeholder='Password'
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.onFormControlChange}
                                     />
                                 </InputGroup>
                             </FormGroup>
