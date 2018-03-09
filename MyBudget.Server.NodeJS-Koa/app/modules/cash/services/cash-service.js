@@ -2,12 +2,10 @@ import Cash from '../models/cash';
 
 export default {
     async createCash(data) {
-        return Cash.create(data);
+        try {
+            return Cash.create(data);
+        } catch (e) {
+            throw new AppError({ status: 400, ...e });
+        }
     },
-
-    // async updateCash(monthBudget, budget) {
-    //     budget.set(monthBudget);
-
-    //     return await budget.save();
-    // },
 };

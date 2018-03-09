@@ -5,10 +5,14 @@ export default {
         const cardNameCountByUserId = await Card.count({ name: data.name, userId: data.userId });
 
         if (cardNameCountByUserId !== 0) {
-            throw Error('Card with this name is exist');
+            throw new AppError({ status: 400, message: 'Card with this name is exist' });
         }
 
-        return Card.create(data);
+        try {
+            return Card.create(data);
+        } catch (e) {
+            throw new AppError({ status: 400, ...e });
+        }
     },
 
     async updateCard(cardRecharge, card) {

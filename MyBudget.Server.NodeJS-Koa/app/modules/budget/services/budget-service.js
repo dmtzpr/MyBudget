@@ -6,10 +6,14 @@ export default {
         const budgetCountByUserId = await Budget.count({ userId });
 
         if (budgetCountByUserId > 1) {
-            throw Error('User can have no more than one budget');
+            throw new AppError({ status: 400, message: 'User can have no more than one budget' });
         }
 
-        return Budget.create(data);
+        try {
+            return Budget.create(data);
+        } catch (e) {
+            throw new AppError({ status: 400, ...e });
+        }
     },
 
     async updateBudget(monthBudget, budget) {
