@@ -1,14 +1,13 @@
 import Router from 'koa-router';
 import budgetController from './controllers/budget-controller';
-import checkUser from '../../handlers/checkUser';
 import Budget from './models/budget';
 
 const router = new Router({ prefix: '/budget' });
 
 router
-    .get('/', checkUser(), budgetController.get)
-    .post('/', checkUser(), budgetController.create)
-    .put('/', checkUser(), budgetController.update);
+    .get('/', budgetController.get)
+    .post('/', budgetController.create)
+    .put('/', budgetController.update);
 
 export { Budget };
 
