@@ -6,9 +6,9 @@ export default () => async (ctx, next) => {
 
     if (authorization) {
         try {
-            const { email } = await jwtService.verify(authorization);
+            const { username } = await jwtService.verify(authorization);
 
-            ctx.user = await User.findOne({ email });
+            ctx.user = await User.findOne({ username });
         } catch (e) {
             ctx.throw(401, { message: 'Unauthorized. Invalid token' });
         }
