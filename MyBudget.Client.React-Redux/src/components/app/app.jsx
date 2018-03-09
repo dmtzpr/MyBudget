@@ -12,6 +12,7 @@ import Expense from '../../containers/expense';
 import ExpenseCategory from '../../containers/expense-category';
 import Budget from '../../containers/budget';
 import Login from '../../containers/login';
+import Register from '../../containers/register';
 
 import BarChart from '../../containers/bar-chart';
 import PieChart from '../../containers/pie-chart';
@@ -63,6 +64,7 @@ export default class App extends React.PureComponent {
                             <PrivateRoute path='/piechart' component={PieChart} />
                             <PrivateRoute path='/settings' component={Settings} />
                             <Route path='/login' component={Login} />
+                            <Route path='/register' component={Register} />
                             <NavigationMenu />
                         </div>
                     </ConnectedRouter>

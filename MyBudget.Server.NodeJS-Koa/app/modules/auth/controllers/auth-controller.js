@@ -40,4 +40,11 @@ export default {
 
         ctx.body = { username, token };
     },
+
+    async currentUser(ctx) {
+        const { state: { user: { _id } } } = ctx;
+        const user = await UserService.getUserWithPublicFields({ _id });
+
+        ctx.body = { data: user };
+    },
 };

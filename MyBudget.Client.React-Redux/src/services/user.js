@@ -23,6 +23,15 @@ export default {
                 return user;
             }),
 
+    register: user =>
+        axios.post('auth/signup', qs.stringify(user)).then((response) => {
+            if (response.status !== 201) {
+                return Promise.reject(response.statusText);
+            }
+
+            return response.data;
+        }),
+
     logout: () => {
         localStorage.removeItem('user');
         delete axios.defaults.headers.common.Authorization;

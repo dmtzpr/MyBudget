@@ -7,8 +7,6 @@ const router = new Router({ prefix: '/auth' });
 router
     .post('/signup', authController.signUp)
     .post('/signin', authController.signIn)
-    .get('/private', checkUser(), (ctx) => {
-        ctx.body = ctx.user;
-    });
+    .get('/user', checkUser(), authController.currentUser);
 
 export default router.routes();

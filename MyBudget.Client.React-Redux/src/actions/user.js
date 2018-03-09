@@ -17,6 +17,19 @@ export const login = (username, password) => (dispatch) => {
     );
 };
 
+export const register = user => (dispatch) => {
+    dispatch({ type: ActionTypes.REGISTER_REQUEST });
+    userService.register(user).then(
+        (registeredUser) => {
+            dispatch({ type: ActionTypes.REGISTER_SUCCESS, user: registeredUser });
+            dispatch(push('/login'));
+        },
+        (error) => {
+            dispatch({ type: ActionTypes.REGISTER_FAILURE, error });
+        },
+    );
+};
+
 export const logout = () => (dispatch) => {
     userService.logout();
     dispatch({ type: ActionTypes.LOGOUT });

@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Form, Col, Button, FormGroup, InputGroup, Glyphicon, FormControl } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Grid, Row, Form, Col, Button, FormGroup, InputGroup, Glyphicon, FormControl } from 'react-bootstrap';
+
+import LogoPanel from '../logo-panel/logo-panel.jsx';
+import FooterPanel from '../footer-panel/footer-panel.jsx';
 
 import './login.less';
 
@@ -45,11 +49,9 @@ export default class Login extends React.PureComponent {
         const { username, password, submitted } = this.state;
 
         return (
-            <div className='container sing-in-container'>
-                <div className='logo-panel'>
-                    <span className='budget-icon' />
-                </div>
+            <Grid className='sing-in-container'>
                 <Row>
+                    <LogoPanel />
                     <Col md={6} mdOffset={3}>
                         <Form name='form' className='signin-form' onSubmit={this.handleSubmit}>
                             <FormGroup
@@ -86,14 +88,15 @@ export default class Login extends React.PureComponent {
                                 <Button type='submit' bsSize='large' block disabled={loggingIn}>
                                     {loggingIn ? 'Signing in...' : 'Sign in'}
                                 </Button>
+                                <Button bsStyle='link' bsSize='large'>
+                                    <Link to='/register'>Register</Link>
+                                </Button>
                             </FormGroup>
                         </Form>
                     </Col>
                 </Row>
-                <div className='signin-footer-panel'>
-                    <span>myBudget application</span>
-                </div>
-            </div>
+                <FooterPanel />
+            </Grid>
         );
     }
 }

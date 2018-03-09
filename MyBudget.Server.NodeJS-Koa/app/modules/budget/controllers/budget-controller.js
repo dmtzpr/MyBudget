@@ -26,7 +26,7 @@ export default {
             const monthBudget = await Budget.findOne({ _id });
 
             ctx.status = 201;
-            ctx.body = { data: monthBudget };
+            ctx.body = monthBudget;
         } catch (e) {
             ctx.throw(400, e);
         }
@@ -36,14 +36,13 @@ export default {
         const { request: { body }, user: { _id: userId } } = ctx;
 
         const budget = await Budget.findOne({ userId });
+        const budgetData = pick(body, Budget.createFields);
 
         if (!budget) {
-            ctx.throw(404, `User budget with id "${userId}" not found`);
+            budgetData.userId = userId;
+            ctx.body = await BudgetService.createBudget(budgetData);
+        } else {
+            ctx.body = await BudgetService.updateBudget(budgetData, budget);
         }
-
-        const newData = pick(body, Budget.createFields);
-        const updatedBudget = await BudgetService.updateBudget(newData, budget);
-
-        ctx.body = updatedBudget;
     },
 };

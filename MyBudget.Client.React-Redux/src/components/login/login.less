@@ -1,18 +1,5 @@
 ﻿@import "../../styles/variables";
 .sing-in-container {
-    .logo-panel {
-        padding: 20px 0 30px;
-        .budget-icon {
-            display: block;
-
-            width: 118px;
-            height: 118px;
-            margin: auto;
-
-            background-image: url('/assets/img/budget.png');
-            background-size: 118px;
-        }
-    }
     .signin-form {
         margin: 0 20px;
         .form-group {
@@ -34,24 +21,9 @@
                     }
                 }
             }
-        }
-    }
-    .signin-footer-panel {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-
-        width: 100%;
-        height: @footerHeight;
-
-        text-align: center;
-
-        color: white;
-        background: #413B17;
-        span {
-            display: block;
-
-            padding-top: 15px;
+            .btn.btn-link {
+                float: right;
+            }
         }
     }
     &+#navigation-menu {
