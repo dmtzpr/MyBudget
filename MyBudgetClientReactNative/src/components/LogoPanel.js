@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Image, Platform, StyleSheet, Text, View } from 'react-native';
 
-export default class Login extends Component {
+export default class LogoPanel extends Component {
     render() {
         return (
             <View style={styles.container}>
