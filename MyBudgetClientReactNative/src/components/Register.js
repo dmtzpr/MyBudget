@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { TextInput, TouchableOpacity, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { TextInput, TouchableOpacity, ScrollView, StyleSheet, Text, View, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-import LogoPanel from './LogoPanel';
+// import Button from 'react-native-button';
+
 import FooterPanel from './FooterPanel';
 
 const styles = StyleSheet.create({
@@ -19,7 +20,11 @@ const styles = StyleSheet.create({
         marginBottom: 50,
     },
 
-    signInForm: {
+    title: {
+        fontSize: 30,
+    },
+
+    signUpForm: {
         flexGrow: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -35,19 +40,10 @@ const styles = StyleSheet.create({
         color: '#333',
         borderWidth: 1,
         borderColor: '#ccc',
+        marginVertical: 5,
     },
 
-    emptyTopBorderRadius: {
-        borderTopLeftRadius: 0,
-        borderTopRightRadius: 0,
-    },
-
-    emptyBottomBorderRadius: {
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
-    },
-
-    signInButton: {
+    signUpButton: {
         width: 300,
         backgroundColor: '#fff',
         borderColor: '#ccc',
@@ -55,58 +51,65 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         paddingVertical: 10,
     },
-    signInButtonText: {
+
+    signUpButtonText: {
         fontSize: 18,
         fontWeight: '400',
         color: '#333',
         textAlign: 'center',
     },
-    signUpButton: {
+
+    cancelButton: {
         width: 300,
     },
 
-    signUpButtonText: {
+    cancelButtonText: {
         color: '#337ab7',
         textAlign: 'right',
         paddingHorizontal: 10,
     },
 });
 
-export default class Login extends Component {
+export default class Register extends Component {
     render() {
         return (
             <View style={styles.container}>
                 <ScrollView>
                     <View style={[styles.content]}>
-                        <LogoPanel />
-                        <View style={styles.signInForm}>
+                        <Text style={styles.title}>Register form</Text>
+                        <View style={styles.signUpForm}>
+                            <Text>Username</Text>
                             <TextInput
-                                style={[styles.inputBox, styles.emptyBottomBorderRadius]}
+                                style={[styles.inputBox]}
                                 underlineColorAndroid='rgba(0,0,0,0)'
-                                placeholder='Username'
                                 returnKeyType='next'
-                                placeholderTextColor='#999'
                                 autoCorrect={false}
                                 autoCapitalize='none'
-                                onSubmitEditing={() => this.passwordInput.focus()}
                             />
+                            <Text>Password</Text>
                             <TextInput
-                                style={[styles.inputBox, styles.emptyTopBorderRadius]}
+                                style={[styles.inputBox]}
                                 underlineColorAndroid='rgba(0,0,0,0)'
-                                placeholder='Password'
                                 returnKeyType='go'
                                 secureTextEntry={true}
-                                placeholderTextColor='#999'
                                 autoCorrect={false}
                                 autoCapitalize='none'
-                                ref={input => (this.passwordInput = input)}
                             />
-                            <TouchableOpacity style={styles.signInButton}>
-                                <Text style={styles.signInButtonText}>Sign in</Text>
+                            <Text>Confirm Password</Text>
+                            <TextInput
+                                style={[styles.inputBox]}
+                                underlineColorAndroid='rgba(0,0,0,0)'
+                                returnKeyType='go'
+                                secureTextEntry={true}
+                                autoCorrect={false}
+                                autoCapitalize='none'
+                            />
+                            <TouchableOpacity style={styles.signUpButton} onPress={Actions.home}>
+                                <Text style={styles.signUpButtonText}>Register</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.signUpButton}>
-                                <Text onPress={() => Actions.register()} style={styles.signUpButtonText}>
-                                    Register
+                            <TouchableOpacity style={styles.cancelButton}>
+                                <Text style={styles.cancelButtonText} onPress={Actions.login}>
+                                    Cancel
                                 </Text>
                             </TouchableOpacity>
                         </View>

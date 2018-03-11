@@ -1,15 +1,5 @@
-import React, { Component } from 'react';
-import { Image, Platform, StyleSheet, Text, View } from 'react-native';
-
-export default class LogoPanel extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Image style={styles.logo} source={require('../images/budget.png')} />
-            </View>
-        );
-    }
-}
+import React from 'react';
+import { Image, StyleSheet, View } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -22,3 +12,9 @@ const styles = StyleSheet.create({
         height: 118,
     },
 });
+
+export default () => (
+    <View style={styles.container}>
+        <Image style={styles.logo} source={require('../images/budget.png')} />
+    </View>
+);
