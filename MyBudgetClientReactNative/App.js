@@ -1,20 +1,10 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
-
+import { Provider } from 'react-redux';
+import { store } from './src/helpers/store';
 import Routes from './src/Routes';
-import FooterPanel from './src/components/FooterPanel';
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#E7DB63',
-    },
-});
 
 export default () => (
-    <View style={styles.container}>
-        <StatusBar backgroundColor='#e7db63' barStyle='light-content' />
+    <Provider store={store}>
         <Routes />
-        <FooterPanel />
-    </View>
+    </Provider>
 );
