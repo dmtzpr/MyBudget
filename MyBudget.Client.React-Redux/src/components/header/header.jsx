@@ -4,7 +4,12 @@ import { Row, Col, Glyphicon } from 'react-bootstrap';
 
 import './header.less';
 
-class Header extends React.PureComponent {
+export default class Header extends React.PureComponent {
+    static propTypes = {
+        userName: PropTypes.string.isRequired,
+        totalBalance: PropTypes.number.isRequired,
+    };
+
     render() {
         const { userName, totalBalance } = this.props;
 
@@ -24,10 +29,3 @@ class Header extends React.PureComponent {
         );
     }
 }
-
-Header.propTypes = {
-    userName: PropTypes.string.isRequired,
-    totalBalance: PropTypes.number.isRequired,
-};
-
-export default Header;

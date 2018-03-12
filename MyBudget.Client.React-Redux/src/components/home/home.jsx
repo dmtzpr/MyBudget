@@ -19,36 +19,38 @@ export default class Home extends React.PureComponent {
     };
 
     render() {
-        const totalBalance = this.props.cashBalance + this.props.cardsBalance;
-        const availableBudget = this.props.monthBudget - this.props.currentMonthExpensesAmount;
-        const currentMonthTotalBalance = this.props.currentMonthIncomeAmount - this.props.currentMonthExpensesAmount;
+        const {
+            userName,
+            cardsBalance,
+            cashBalance,
+            monthBudget,
+            currentMonthIncomeAmount,
+            currentMonthExpensesAmount,
+        } = this.props;
+        const totalBalance = cashBalance + cardsBalance;
+        const availableBudget = monthBudget - currentMonthExpensesAmount;
+        const currentMonthTotalBalance = currentMonthIncomeAmount - currentMonthExpensesAmount;
 
         return (
             <Grid>
-                <Header userName={this.props.userName} totalBalance={totalBalance} />
+                <Header userName={userName} totalBalance={totalBalance} />
                 <div className='content-layer'>
                     <Row className='show-grid'>
                         <LinkMenu
                             name='credit-card-area'
                             glyph='credit-card'
                             label='Debit cards'
-                            balance={this.props.cardsBalance}
+                            balance={cardsBalance}
                             link='/cards'
                         />
-                        <LinkMenu
-                            name='cash-area'
-                            glyph='briefcase'
-                            label='Cash'
-                            balance={this.props.cashBalance}
-                            link='/cash'
-                        />
+                        <LinkMenu name='cash-area' glyph='briefcase' label='Cash' balance={cashBalance} link='/cash' />
                     </Row>
                     <Row className='show-grid'>
                         <LinkMenu
                             name='budget-area'
                             glyph='folder-open'
                             label='Month budget'
-                            balance={this.props.monthBudget}
+                            balance={monthBudget}
                             link='/budget'
                         />
                         <LinkMenu
@@ -67,7 +69,7 @@ export default class Home extends React.PureComponent {
                             name='month-income-area'
                             glyph='log-in'
                             label='Income'
-                            balance={this.props.currentMonthIncomeAmount}
+                            balance={currentMonthIncomeAmount}
                         />
                         <BalanceArea
                             name='month-total-area'
@@ -79,7 +81,7 @@ export default class Home extends React.PureComponent {
                             name='month-expenses-area'
                             glyph='log-out'
                             label='Expenses'
-                            balance={this.props.currentMonthExpensesAmount}
+                            balance={currentMonthExpensesAmount}
                         />
                     </Row>
                 </div>

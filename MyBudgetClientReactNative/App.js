@@ -2,6 +2,7 @@ import React from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 
 import Routes from './src/Routes';
+import FooterPanel from './src/components/FooterPanel';
 
 const styles = StyleSheet.create({
     container: {
@@ -14,5 +15,6 @@ export default () => (
     <View style={styles.container}>
         <StatusBar backgroundColor='#e7db63' barStyle='light-content' />
         <Routes />
+        <FooterPanel />
     </View>
 );

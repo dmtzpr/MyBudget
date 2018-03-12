@@ -115,7 +115,6 @@ export default class Register extends Component {
                         </View>
                     </View>
                 </ScrollView>
-                <FooterPanel />
             </View>
         );
     }

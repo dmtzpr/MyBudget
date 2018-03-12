@@ -112,7 +112,6 @@ export default class Login extends Component {
                         </View>
                     </View>
                 </ScrollView>
-                <FooterPanel />
             </View>
         );
     }

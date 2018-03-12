@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { TextInput, TouchableOpacity, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Actions } from 'react-native-router-flux';
 
 import LogoPanel from './LogoPanel';
+import Header from './Header';
 import FooterPanel from './FooterPanel';
+import LinkMenu from './LinkMenu';
+import BalanceArea from './BalanceArea';
 
 const styles = StyleSheet.create({
     container: {
@@ -74,20 +78,83 @@ const styles = StyleSheet.create({
 });
 
 export default class Home extends Component {
+    static propTypes = {
+        userName: PropTypes.string.isRequired,
+        cardsBalance: PropTypes.number.isRequired,
+        cashBalance: PropTypes.number.isRequired,
+        monthBudget: PropTypes.number.isRequired,
+        currentMonthIncomeAmount: PropTypes.number.isRequired,
+        currentMonthExpensesAmount: PropTypes.number.isRequired,
+    };
+
     render() {
+        const {
+            userName,
+            cardsBalance,
+            cashBalance,
+            monthBudget,
+            currentMonthIncomeAmount,
+            currentMonthExpensesAmount,
+        } = this.props;
+        const totalBalance = cashBalance + cardsBalance;
+        const availableBudget = monthBudget - currentMonthExpensesAmount;
+        const currentMonthTotalBalance = currentMonthIncomeAmount - currentMonthExpensesAmount;
+
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <View style={{ flexDirection: 'row' }}>
-                        <View style={{ flex: 50 }}>
-                            <Text style={{ textAlign: 'center' }}>Sign in</Text>
-                        </View>
-                        <View style={{ flex: 50 }}>
-                            <Text style={{ textAlign: 'center' }}>Sign in</Text>
-                        </View>
-                    </View>
+                    <Header userName={userName} totalBalance={totalBalance} />
+                    <Row>
+                        <LinkMenu
+                            name='credit-card-area'
+                            glyph='credit-card'
+                            label='Debit cards'
+                            balance={cardsBalance}
+                            link='/cards'
+                        />
+                        <LinkMenu name='cash-area' glyph='briefcase' label='Cash' balance={cashBalance} link='/cash' />
+                    </Row>
+                    <Row>
+                        <LinkMenu
+                            name='budget-area'
+                            glyph='folder-open'
+                            label='Month budget'
+                            balance={monthBudget}
+                            link='/budget'
+                        />
+                        <LinkMenu
+                            name='expenses-area'
+                            glyph='shopping-cart'
+                            label='Available budget'
+                            balance={availableBudget}
+                            link='/expense'
+                        />
+                    </Row>
+                    <Row
+                        style={{
+                            flex: 1,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Text>Current month balance</Text>
+                    </Row>
+                    <Row className='show-grid month-balance-area'>
+                        <BalanceArea color='#008E4C' glyph='log-in' label='Income' balance={currentMonthIncomeAmount} />
+                        <BalanceArea
+                            color='#FFC400'
+                            glyph='transfer'
+                            label='Total'
+                            balance={currentMonthTotalBalance}
+                        />
+                        <BalanceArea
+                            color='#DE4334'
+                            glyph='log-out'
+                            label='Expenses'
+                            balance={currentMonthExpensesAmount}
+                        />
+                    </Row>
                 </ScrollView>
-                <FooterPanel />
             </View>
         );
     }
