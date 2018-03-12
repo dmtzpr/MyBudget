@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import App from '../components/app/app.jsx';
+import App from '../components/app/app';
 import { appLoad } from '../actions/app';
 
 const mapStateToProps = state => ({
