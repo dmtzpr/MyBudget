@@ -50,7 +50,7 @@ export default class RegisterPage extends React.PureComponent {
         this.setState({ submitted: true });
         const { user } = this.state;
         const { onRegister } = this.props;
-        if (user.username && user.password) {
+        if (user.username && user.password && user.password === user.confirmPassword) {
             onRegister(user);
         }
     };
@@ -89,6 +89,24 @@ export default class RegisterPage extends React.PureComponent {
                                         onChange={this.onFormControlChange}
                                     />
                                     {submitted && !user.password && <HelpBlock>Username is required</HelpBlock>}
+                                </InputGroup>
+                            </FormGroup>
+                            <FormGroup
+                                validationState={submitted && user.password !== user.confirmPassword ? 'error' : null}
+                            >
+                                <InputGroup bsSize='large'>
+                                    <ControlLabel>Confirm Password</ControlLabel>
+                                    <FormControl
+                                        type='password'
+                                        className='form-control'
+                                        name='confirmPassword'
+                                        value={user.confirmPassword}
+                                        onChange={this.onFormControlChange}
+                                    />
+                                    {submitted &&
+                                        user.password !== user.confirmPassword && (
+                                            <HelpBlock>Password and confirm password does not match</HelpBlock>
+                                        )}
                                 </InputGroup>
                             </FormGroup>
                             <FormGroup>
