@@ -4,14 +4,14 @@ import ActionTypes from '../constants/budget';
 import budgetService from '../services/budget';
 
 export const getMonthBudget = () => (dispatch) => {
-    // TODO
-    // dispatch({ type: ActionTypes.SET_MONTH_BUDGET_REQUEST,  });
+    dispatch({ type: ActionTypes.GET_MONTH_BUDGET_REQUEST });
+
     budgetService.getBudget().then(
         (budget) => {
-            dispatch({ type: ActionTypes.SET_MONTH_BUDGET_SUCCESS, monthBudget: budget });
+            dispatch({ type: ActionTypes.GET_MONTH_BUDGET_SUCCESS, monthBudget: budget });
         },
         (error) => {
-            dispatch({ type: ActionTypes.SET_MONTH_BUDGET_FAILURE, error });
+            dispatch({ type: ActionTypes.GET_MONTH_BUDGET_FAILURE, error });
         },
     );
 };

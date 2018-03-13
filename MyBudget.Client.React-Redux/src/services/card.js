@@ -1,40 +1,15 @@
 import axios from 'axios';
 import qs from 'qs';
 
+import responseHandler from '../helpers/response-handler';
+
 export default {
-    getCards: () =>
-        axios.get('cards').then((response) => {
-            if (response.status !== 200) {
-                return Promise.reject(response.statusText);
-            }
+    getCards: () => axios.get('cards').then(responseHandler('cards')),
 
-            return Promise.resolve(response.data.cards);
-        }),
-
-    addCard: cardName =>
-        axios.post('cards', qs.stringify({ name: cardName })).then((response) => {
-            if (response.status !== 201) {
-                return Promise.reject(response.statusText);
-            }
-
-            return Promise.resolve(response.data.card);
-        }),
+    addCard: cardName => axios.post('cards', qs.stringify({ name: cardName })).then(responseHandler('card')),
 
     updateCard: cardTransaction =>
-        axios.put(`cards/${cardTransaction.cardId}`, qs.stringify(cardTransaction)).then((response) => {
-            if (response.status !== 200) {
-                return Promise.reject(response.statusText);
-            }
+        axios.put(`cards/${cardTransaction.cardId}`, qs.stringify(cardTransaction)).then(responseHandler()),
 
-            return Promise.resolve(response.data);
-        }),
-
-    deleteCard: id =>
-        axios.delete(`cards/${id}`).then((response) => {
-            if (response.status !== 200) {
-                return Promise.reject(response.statusText);
-            }
-
-            return Promise.resolve(response.data.id);
-        }),
+    deleteCard: id => axios.delete(`cards/${id}`).then(responseHandler('id')),
 };

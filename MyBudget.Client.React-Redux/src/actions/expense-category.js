@@ -17,6 +17,7 @@ export const addExpenseCategory = categoryName => (dispatch) => {
 
 export const deleteExpenseCategory = categoryId => (dispatch) => {
     dispatch({ type: ActionTypes.DELETE_EXPENSE_CATEGORY_REQUEST, categoryId });
+
     expenseService.deleteCategory(categoryId).then(
         (id) => {
             dispatch({ type: ActionTypes.DELETE_EXPENSE_CATEGORY_SUCCESS, categoryId: id });
@@ -29,6 +30,7 @@ export const deleteExpenseCategory = categoryId => (dispatch) => {
 
 export const addExpenseSubcategory = newSubcategory => (dispatch) => {
     dispatch({ type: ActionTypes.ADD_EXPENSE_SUBCATEGORY_REQUEST, newSubcategory });
+
     expenseService.addSubcategory(newSubcategory).then(
         (subcategory) => {
             dispatch({ type: ActionTypes.ADD_EXPENSE_SUBCATEGORY_SUCCESS, subcategory });
@@ -41,6 +43,7 @@ export const addExpenseSubcategory = newSubcategory => (dispatch) => {
 
 export const deleteExpenseSubcategory = category => (dispatch) => {
     dispatch({ type: ActionTypes.DELETE_EXPENSE_SUBCATEGORY_REQUEST, category });
+
     expenseService.deleteSubcategory(category).then(
         (subcategory) => {
             dispatch({ type: ActionTypes.DELETE_EXPENSE_SUBCATEGORY_SUCCESS, subcategory });

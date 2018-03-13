@@ -19,6 +19,7 @@ export const login = (username, password) => (dispatch) => {
 
 export const register = user => (dispatch) => {
     dispatch({ type: ActionTypes.REGISTER_REQUEST });
+
     userService.register(user).then(
         (registeredUser) => {
             dispatch({ type: ActionTypes.REGISTER_SUCCESS, user: registeredUser });

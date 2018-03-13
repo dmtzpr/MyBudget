@@ -2,18 +2,13 @@ import axios from 'axios';
 import qs from 'qs';
 
 import authHeader from '../helpers/auth-header';
+import responseHandler from '../helpers/response-handler';
 
 export default {
     login: (username, password) =>
         axios
             .post('auth/signin', qs.stringify({ username, password }))
-            .then((response) => {
-                if (response.status !== 200) {
-                    return Promise.reject(response.statusText);
-                }
-
-                return response.data;
-            })
+            .then(responseHandler())
             .then((user) => {
                 if (user && user.token) {
                     localStorage.setItem('user', JSON.stringify(user));
@@ -23,14 +18,7 @@ export default {
                 return user;
             }),
 
-    register: user =>
-        axios.post('auth/signup', qs.stringify(user)).then((response) => {
-            if (response.status !== 201) {
-                return Promise.reject(response.statusText);
-            }
-
-            return response.data;
-        }),
+    register: user => axios.post('auth/signup', qs.stringify(user)).then(responseHandler()),
 
     logout: () => {
         localStorage.removeItem('user');

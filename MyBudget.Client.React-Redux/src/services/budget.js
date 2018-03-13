@@ -1,22 +1,11 @@
 import axios from 'axios';
 import qs from 'qs';
 
-export default {
-    getBudget: () =>
-        axios.get('budget').then((response) => {
-            if (response.status !== 200) {
-                return Promise.reject(response.statusText);
-            }
+import responseHandler from '../helpers/response-handler';
 
-            return Promise.resolve(response.data.monthBudget);
-        }),
+export default {
+    getBudget: () => axios.get('budget').then(responseHandler('monthBudget')),
 
     updateBudget: monthBudget =>
-        axios.put('budget', qs.stringify({ monthBudget })).then((response) => {
-            if (response.status !== 200) {
-                return Promise.reject(response.statusText);
-            }
-
-            return Promise.resolve(response.data.monthBudget);
-        }),
+        axios.put('budget', qs.stringify({ monthBudget })).then(responseHandler('monthBudget')),
 };

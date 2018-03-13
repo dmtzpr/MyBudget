@@ -34,6 +34,7 @@ export default {
         }
 
         const newData = pick(body, Card.rechargeFields);
+        newData.amount = parseInt(newData.amount);
         const updatedCard = await CardService.updateCard(newData, card);
         const cardTransaction = updatedCard.debitCardRecharges[updatedCard.debitCardRecharges.length - 1];
 
