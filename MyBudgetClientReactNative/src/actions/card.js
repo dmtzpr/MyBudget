@@ -5,6 +5,7 @@ import cardService from '../services/card';
 
 export const addCard = cardName => (dispatch) => {
     dispatch({ type: ActionTypes.ADD_CARD_REQUEST, cardName });
+
     cardService.addCard(cardName).then(
         (card) => {
             dispatch({ type: ActionTypes.ADD_CARD_SUCCESS, card });
@@ -17,6 +18,7 @@ export const addCard = cardName => (dispatch) => {
 
 export const rechargeCard = cardTransaction => (dispatch) => {
     dispatch({ type: ActionTypes.RECHARGE_CARD_REQUEST, cardTransaction });
+
     cardService.updateCard(cardTransaction).then(
         (cardRecharge) => {
             dispatch({ type: ActionTypes.RECHARGE_CARD_SUCCESS, cardRecharge });
@@ -30,6 +32,7 @@ export const rechargeCard = cardTransaction => (dispatch) => {
 
 export const deleteCard = cardId => (dispatch) => {
     dispatch({ type: ActionTypes.DELETE_CARD_REQUEST, cardId });
+
     cardService.deleteCard(cardId).then(
         (id) => {
             dispatch({ type: ActionTypes.DELETE_CARD_SUCCESS, cardId: id });
