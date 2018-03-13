@@ -5,7 +5,7 @@ import Home from '../components/home/home.jsx';
 const getEntityAmount = (entities, property) =>
     entities.reduce((totalAmount, entity) => totalAmount + entity[property], 0);
 
-const getCurrentMonthEntityAmount = (entities, property) => {
+const getCurrentMonthEntityAmount = (entities, property = 'amount') => {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
@@ -21,10 +21,13 @@ const getCurrentMonthEntityAmount = (entities, property) => {
     }, 0);
 };
 
-const getCurrentMonthIncomeAmount = (cashes, cards) =>
-    getCurrentMonthEntityAmount(cashes, 'amount') + getCurrentMonthEntityAmount(cards, 'balance');
+const getCardsCurrentMonthIncomeAmount = cards =>
+    cards.reduce((totalAmount, card) => totalAmount + getCurrentMonthEntityAmount(card.debitCardRecharges), 0);
 
-const getCurrentMonthExpensesAmount = expenses => getCurrentMonthEntityAmount(expenses, 'amount');
+const getCurrentMonthIncomeAmount = (cashes, cards) =>
+    getCurrentMonthEntityAmount(cashes) + getCardsCurrentMonthIncomeAmount(cards);
+
+const getCurrentMonthExpensesAmount = expenses => getCurrentMonthEntityAmount(expenses);
 
 const mapStateToProps = state => ({
     userName: state.authentication.user.username,

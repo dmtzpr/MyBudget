@@ -15,7 +15,7 @@ export default (state = [], action) => {
                         ? {
                             ...card,
                             balance: card.balance + action.cardRecharge.cardTransaction.amount,
-                            debitCardRecharges: card.debitCardRecharges.push(action.cardRecharge.cardTransaction),
+                            debitCardRecharges: [...card.debitCardRecharges, action.cardRecharge.cardTransaction],
                         }
                         : card),
             );
@@ -26,7 +26,7 @@ export default (state = [], action) => {
                         ? {
                             ...card,
                             balance: card.balance - action.cardRecharge.cardTransaction.amount,
-                            debitCardRecharges: card.debitCardRecharges.push(action.cardRecharge.cardTransaction),
+                            debitCardRecharges: [...card.debitCardRecharges, action.cardRecharge.cardTransaction],
                         }
                         : card),
             );
