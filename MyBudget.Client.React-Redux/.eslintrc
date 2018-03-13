@@ -66,6 +66,8 @@
         "no-debugger": 0,
         "no-useless-escape": "off",
         "react/no-danger": 0,
+        "react/require-default-props": 0,
+        "react/forbid-prop-types": 0,
         "react/prop-types": [
             "error",
             {

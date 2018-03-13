@@ -8,7 +8,7 @@ import './status-bar.less';
 export default class StatusBar extends React.PureComponent {
     static propTypes = {
         statusBarTitle: PropTypes.string.isRequired,
-        onAcceptButtonClick: PropTypes.func.isRequired,
+        onAcceptButtonClick: PropTypes.func,
         onDeclineButtonClick: PropTypes.func,
     };
 
