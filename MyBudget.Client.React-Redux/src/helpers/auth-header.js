@@ -1,5 +1,7 @@
+import { getUser } from './user-storage';
+
 export default () => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = getUser();
 
     if (user && user.token) {
         return { Authorization: user.token };

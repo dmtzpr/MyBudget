@@ -31,16 +31,14 @@ export default class App extends React.PureComponent {
     };
 
     componentWillMount() {
-        const { isLoggedIn, onAppLoad } = this.props;
-
-        if (isLoggedIn) {
-            onAppLoad();
-        }
+        this.props.onAppLoad();
     }
 
     componentWillReceiveProps(nextProps) {
-        if (!this.props.isLoggedIn && nextProps.isLoggedIn) {
-            this.props.onAppLoad();
+        const { isLoggedIn, onAppLoad } = this.props;
+
+        if (!isLoggedIn && nextProps.isLoggedIn) {
+            onAppLoad();
         }
     }
 
