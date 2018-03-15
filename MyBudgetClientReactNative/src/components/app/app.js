@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Router, Stack, Scene } from 'react-native-router-flux';
 
-import Login from '../Login';
+import Login from '../../containers/login';
 import Register from '../Register';
 import Home from '../Home';
 

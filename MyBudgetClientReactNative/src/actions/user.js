@@ -1,4 +1,4 @@
-import { push } from 'react-router-redux';
+import { Actions } from 'react-native-router-flux';
 
 import ActionTypes from '../constants/user';
 import userService from '../services/user';
@@ -9,7 +9,7 @@ export const login = (username, password) => (dispatch) => {
     userService.login(username, password).then(
         (user) => {
             dispatch({ type: ActionTypes.LOGIN_SUCCESS, user });
-            dispatch(push('/'));
+            Actions.home();
         },
         (error) => {
             dispatch({ type: ActionTypes.LOGIN_FAILURE, error });
@@ -23,7 +23,7 @@ export const register = user => (dispatch) => {
     userService.register(user).then(
         (registeredUser) => {
             dispatch({ type: ActionTypes.REGISTER_SUCCESS, user: registeredUser });
-            dispatch(push('/login'));
+            Actions.login();
         },
         (error) => {
             dispatch({ type: ActionTypes.REGISTER_FAILURE, error });
