@@ -10,4 +10,5 @@ export default keymirror({
     REGISTER_FAILURE: null,
 
     LOGOUT: null,
+    SET_USER: null,
 });

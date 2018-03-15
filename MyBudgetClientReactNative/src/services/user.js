@@ -1,7 +1,8 @@
 import axios from 'axios';
 import qs from 'qs';
 
-import authHeader from '../helpers/auth-header';
+import { addAuthHeader, removeAuthHeader } from './base';
+import { setUser, removeUser } from '../helpers/user-storage';
 import responseHandler from '../helpers/response-handler';
 
 export default {
@@ -11,8 +12,8 @@ export default {
             .then(responseHandler())
             .then((user) => {
                 if (user && user.token) {
-                    localStorage.setItem('user', JSON.stringify(user));
-                    Object.assign(axios.defaults.headers.common, authHeader());
+                    setUser(user);
+                    addAuthHeader();
                 }
 
                 return user;
@@ -21,6 +22,7 @@ export default {
     register: user => axios.post('auth/signup', qs.stringify(user)).then(responseHandler()),
 
     logout: () => {
-        delete axios.defaults.headers.common.Authorization;
+        removeUser();
+        removeAuthHeader();
     },
 };

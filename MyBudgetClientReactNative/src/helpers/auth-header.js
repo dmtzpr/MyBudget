@@ -1,9 +1,11 @@
-export default () =>
-    // const user = JSON.parse(localStorage.getItem('user'));
+import { getUser } from './user-storage';
 
-    // if (user && user.token) {
-    //     return { Authorization: user.token };
-    // }
+export default () => {
+    const user = getUser();
 
-    ({});
+    if (user && user.token) {
+        return { Authorization: user.token };
+    }
 
+    return {};
+};
