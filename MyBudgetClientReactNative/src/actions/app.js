@@ -15,9 +15,7 @@ import { getUser } from '../helpers/user-storage';
 export const appLoad = () => (dispatch) => {
     const user = getUser();
 
-    if (!user) {
-        Actions.login();
-    } else {
+    if (user) {
         dispatch({ type: UserActionTypes.SET_USER, user });
         dispatch({ type: AppActionTypes.IS_LOADING_START });
 

@@ -24,3 +24,13 @@ export const footerStyle = {
     bottom: 0,
     backgroundColor: '#413B17',
 };
+
+export const headerStyle = {
+    height: 60,
+    backgroundColor: '#C2AB20',
+};
+
+export const headerTextStyle = {
+    color: '#333',
+    fontSize: 18,
+};

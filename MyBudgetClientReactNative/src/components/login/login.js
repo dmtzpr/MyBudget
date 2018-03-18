@@ -23,10 +23,6 @@ export default class Login extends React.PureComponent {
         submitted: false,
     };
 
-    componentWillMount() {
-        this.props.onLogout();
-    }
-
     onFormControlChange = (e) => {
         const { name, value } = e.target;
 
@@ -78,7 +74,7 @@ export default class Login extends React.PureComponent {
                                 <Text style={styles.signInButtonText}>Sign in</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.signUpButton}>
-                                <Text onPress={() => Actions.register()} style={styles.signUpButtonText}>
+                                <Text onPress={Actions.register} style={styles.signUpButtonText}>
                                     Register
                                 </Text>
                             </TouchableOpacity>
