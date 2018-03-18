@@ -1,79 +1,16 @@
-import React, { Component } from 'react';
-import { TextInput, TouchableOpacity, ScrollView, StyleSheet, Text, View, Button } from 'react-native';
+import React from 'react';
+import { TextInput, TouchableOpacity, ScrollView, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-// import Button from 'react-native-button';
+import FooterPanel from '../footer-panel/footer-panel';
 
-import FooterPanel from './FooterPanel';
+import { wrapperStyle } from '../../styles/common-styles';
+import styles from './styles';
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        backgroundColor: '#e7db63',
-    },
-
-    content: {
-        alignItems: 'center',
-        marginTop: 50,
-        marginBottom: 50,
-    },
-
-    title: {
-        fontSize: 30,
-    },
-
-    signUpForm: {
-        flexGrow: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 20,
-    },
-
-    inputBox: {
-        width: 300,
-        backgroundColor: '#fff',
-        borderRadius: 6,
-        paddingHorizontal: 16,
-        fontSize: 16,
-        color: '#333',
-        borderWidth: 1,
-        borderColor: '#ccc',
-        marginVertical: 5,
-    },
-
-    signUpButton: {
-        width: 300,
-        backgroundColor: '#fff',
-        borderColor: '#ccc',
-        borderRadius: 6,
-        marginVertical: 10,
-        paddingVertical: 10,
-    },
-
-    signUpButtonText: {
-        fontSize: 18,
-        fontWeight: '400',
-        color: '#333',
-        textAlign: 'center',
-    },
-
-    cancelButton: {
-        width: 300,
-    },
-
-    cancelButtonText: {
-        color: '#337ab7',
-        textAlign: 'right',
-        paddingHorizontal: 10,
-    },
-});
-
-export default class Register extends Component {
+export default class Register extends React.PureComponent {
     render() {
         return (
-            <View style={styles.container}>
+            <View style={wrapperStyle}>
                 <ScrollView>
                     <View style={[styles.content]}>
                         <Text style={styles.title}>Register form</Text>
@@ -115,6 +52,7 @@ export default class Register extends Component {
                         </View>
                     </View>
                 </ScrollView>
+                <FooterPanel />
             </View>
         );
     }

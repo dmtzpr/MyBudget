@@ -1,6 +1,11 @@
 import ActionTypes from '../constants/user';
 
-const initialState = { loggingIn: false, loggedIn: false, isSignInFailed: false, user: null };
+const initialState = {
+    loggingIn: false,
+    loggedIn: false,
+    isSignInFailed: false,
+    user: null,
+};
 
 export default (state = initialState, action) => {
     switch (action.type) {

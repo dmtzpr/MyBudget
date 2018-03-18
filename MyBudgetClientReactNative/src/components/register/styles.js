@@ -7,7 +7,11 @@ export default StyleSheet.create({
         marginBottom: 50,
     },
 
-    signInForm: {
+    title: {
+        fontSize: 30,
+    },
+
+    signUpForm: {
         flexGrow: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -23,19 +27,10 @@ export default StyleSheet.create({
         color: '#333',
         borderWidth: 1,
         borderColor: '#ccc',
+        marginVertical: 5,
     },
 
-    emptyTopBorderRadius: {
-        borderTopLeftRadius: 0,
-        borderTopRightRadius: 0,
-    },
-
-    emptyBottomBorderRadius: {
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
-    },
-
-    signInButton: {
+    signUpButton: {
         width: 300,
         backgroundColor: '#fff',
         borderColor: '#ccc',
@@ -43,17 +38,19 @@ export default StyleSheet.create({
         marginVertical: 10,
         paddingVertical: 10,
     },
-    signInButtonText: {
+
+    signUpButtonText: {
         fontSize: 18,
         fontWeight: '400',
         color: '#333',
         textAlign: 'center',
     },
-    signUpButton: {
+
+    cancelButton: {
         width: 300,
     },
 
-    signUpButtonText: {
+    cancelButtonText: {
         color: '#337ab7',
         textAlign: 'right',
         paddingHorizontal: 10,

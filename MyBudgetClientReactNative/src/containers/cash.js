@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Cash from '../components/cash/cash.jsx';
+import Cash from '../components/cash/cashimport React from 'react';';
 import { addCash } from '../actions/cash';
 
 const mapStateToProps = state => ({

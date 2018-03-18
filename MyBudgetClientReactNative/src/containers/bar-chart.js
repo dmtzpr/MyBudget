@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { chartColors } from '../constants/chart';
-import BarChart from '../components/charts/bar-chart.jsx';
+import BarChart from '../components/charts/bar-chartimport React from 'react';';
 
 const getEntityAmount = (entities, property) =>
     entities.reduce((totalAmount, entity) => totalAmount + entity[property], 0);

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Expense from '../components/expense/expense.jsx';
+import Expense from '../components/expense/expenseimport React from 'react';';
 import { addExpense } from '../actions/expense';
 
 const getCards = cards =>

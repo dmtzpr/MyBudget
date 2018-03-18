@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Home from '../components/home/home.jsx';
+import Home from '../components/home/home';
 
 const getEntityAmount = (entities, property) =>
     entities.reduce((totalAmount, entity) => totalAmount + entity[property], 0);
@@ -38,5 +38,4 @@ const mapStateToProps = state => ({
     currentMonthIncomeAmount: getCurrentMonthIncomeAmount(state.cash.cashes, state.cards),
     currentMonthExpensesAmount: getCurrentMonthExpensesAmount(state.expenses),
 });
-
 export default connect(mapStateToProps)(Home);

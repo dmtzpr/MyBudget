@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { chartColors } from '../constants/chart';
-import PieChart from '../components/charts/pie-chart.jsx';
+import PieChart from '../components/charts/pie-chartimport React from 'react';';
 
 const getEntityAmount = (entities, property) =>
     entities.reduce((totalAmount, entity) => totalAmount + entity[property], 0);
