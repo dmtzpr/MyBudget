@@ -1,20 +1,14 @@
-// import localStorage from 'react-native-sync-localstorage';
-
 const USER_KEY_NAME = 'user';
-const localStorage = {};
+const sessionStorage = {};
 
-localStorage[USER_KEY_NAME] = {
-    username: 'dima123',
-    token:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRpbWExMjMiLCJpYXQiOjE1MjExMzIxMDN9.qQSAE_bjXZWwV9P0IlgolMUxkZRF4PmiKY2vJ0WvfEM',
-};
+sessionStorage[USER_KEY_NAME] = null;
 
-export const getUser = () => localStorage[USER_KEY_NAME];
+export const getUser = () => sessionStorage[USER_KEY_NAME];
 
 export const setUser = (user) => {
-    localStorage[USER_KEY_NAME] = user;
+    sessionStorage[USER_KEY_NAME] = user;
 };
 
 export const removeUser = () => {
-    delete localStorage[USER_KEY_NAME];
+    delete sessionStorage[USER_KEY_NAME];
 };
