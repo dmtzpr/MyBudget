@@ -1,4 +1,4 @@
-import { push } from 'react-router-redux';
+import { Actions } from 'react-native-router-flux';
 
 import ActionTypes from '../constants/budget';
 import budgetService from '../services/budget';
@@ -22,7 +22,7 @@ export const setMonthBudget = monthBudget => (dispatch) => {
     budgetService.updateBudget(monthBudget).then(
         (budget) => {
             dispatch({ type: ActionTypes.SET_MONTH_BUDGET_SUCCESS, monthBudget: budget });
-            dispatch(push('/'));
+            Actions.home();
         },
         (error) => {
             dispatch({ type: ActionTypes.SET_MONTH_BUDGET_FAILURE, error });

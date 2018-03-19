@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Budget from '../components/budget/budget.jsx';
+import Budget from '../components/budget/budget';
 import { setMonthBudget } from '../actions/budget';
 
 const mapStateToProps = state => ({

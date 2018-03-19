@@ -14,15 +14,10 @@ export default StyleSheet.create({
         marginTop: 20,
     },
 
-    inputBox: {
-        width: 300,
-        backgroundColor: '#fff',
-        borderRadius: 6,
-        paddingHorizontal: 16,
-        fontSize: 16,
-        color: '#333',
-        borderWidth: 1,
-        borderColor: '#ccc',
+    errorText: {
+        color: '#a94442',
+        fontSize: 18,
+        marginBottom: 10,
     },
 
     emptyTopBorderRadius: {

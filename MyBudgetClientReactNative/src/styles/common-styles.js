@@ -34,3 +34,14 @@ export const headerTextStyle = {
     color: '#333',
     fontSize: 18,
 };
+
+export const inputBoxStyle = {
+    width: 300,
+    backgroundColor: '#fff',
+    borderRadius: 6,
+    paddingHorizontal: 16,
+    fontSize: 16,
+    color: '#333',
+    borderWidth: 1,
+    borderColor: '#ccc',
+};

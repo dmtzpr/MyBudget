@@ -7,6 +7,7 @@ import { Router, Stack, Scene } from 'react-native-router-flux';
 import Login from '../../containers/login';
 import Register from '../../containers/register';
 import Home from '../../containers/home';
+import Budget from '../../containers/budget';
 import Settings from '../settings/settings';
 
 import { wrapperStyle } from '../../styles/common-styles';
@@ -46,6 +47,7 @@ export default class Routes extends React.PureComponent {
                             <Scene key='login' component={Login} title='Login' initial={true} />
                             <Scene key='register' component={Register} title='Register' />
                             <Scene key='home' component={Home} title='Home' />
+                            <Scene key='budget' component={Budget} title='Budget' />
                             <Scene key='settings' component={Settings} title='settings' />
                         </Stack>
                     </RouterWithRedux>
