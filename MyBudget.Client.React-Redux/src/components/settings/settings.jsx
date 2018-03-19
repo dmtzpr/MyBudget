@@ -8,7 +8,7 @@ import './settings.less';
 
 export default () => (
     <div>
-        <StatusBar statusBarTitle='Budget' />
+        <StatusBar statusBarTitle='Settings' />
         <Grid className='settings-container'>
             <ButtonGroup vertical block>
                 <Button>
