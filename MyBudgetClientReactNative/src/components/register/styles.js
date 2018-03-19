@@ -29,30 +29,4 @@ export default StyleSheet.create({
         borderColor: '#ccc',
         marginVertical: 5,
     },
-
-    signUpButton: {
-        width: 300,
-        backgroundColor: '#fff',
-        borderColor: '#ccc',
-        borderRadius: 6,
-        marginVertical: 10,
-        paddingVertical: 10,
-    },
-
-    signUpButtonText: {
-        fontSize: 18,
-        fontWeight: '400',
-        color: '#333',
-        textAlign: 'center',
-    },
-
-    cancelButton: {
-        width: 300,
-    },
-
-    cancelButtonText: {
-        color: '#337ab7',
-        textAlign: 'right',
-        paddingHorizontal: 10,
-    },
 });

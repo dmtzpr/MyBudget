@@ -38,4 +38,5 @@ const mapStateToProps = state => ({
     currentMonthIncomeAmount: getCurrentMonthIncomeAmount(state.cash.cashes, state.cards),
     currentMonthExpensesAmount: getCurrentMonthExpensesAmount(state.expenses),
 });
+
 export default connect(mapStateToProps)(Home);

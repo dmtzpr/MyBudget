@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Platform, ActivityIndicator, View } from 'react-native';
-import { Router, Stack, Scene, Actions } from 'react-native-router-flux';
+import { Platform, ActivityIndicator, View, StatusBar } from 'react-native';
+import { Router, Stack, Scene } from 'react-native-router-flux';
 
 import Login from '../../containers/login';
-import Register from '../register/register';
+import Register from '../../containers/register';
 import Home from '../../containers/home';
+import Settings from '../settings/settings';
 
 import { wrapperStyle } from '../../styles/common-styles';
-import Settings from '../settings/settings';
 
 const RouterWithRedux = connect()(Router);
 
@@ -37,15 +37,16 @@ export default class Routes extends React.PureComponent {
 
         return (
             <View style={wrapperStyle}>
+                <StatusBar backgroundColor='#e7db63' barStyle='light-content' />
                 {isLoading ? (
                     <ActivityIndicator size={Platform.OS === 'ios' ? 'large' : 50} color='rgba(0, 0, 0, 0.3)' />
                 ) : (
                     <RouterWithRedux>
                         <Stack key='root' hideNavBar={true} statusBarStyle='light-content'>
-                            <Scene key='home' component={Home} title='Home' />
-                            <Scene key='settings' component={Settings} title='settings' />
                             <Scene key='login' component={Login} title='Login' initial={true} />
                             <Scene key='register' component={Register} title='Register' />
+                            <Scene key='home' component={Home} title='Home' />
+                            <Scene key='settings' component={Settings} title='settings' />
                         </Stack>
                     </RouterWithRedux>
                 )}

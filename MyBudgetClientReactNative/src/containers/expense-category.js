@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import ExpenseCategory from '../components/expense-category/expense-categoryimport React from 'react';';
+import ExpenseCategory from '../components/expense-category/expense-category';
 import {
     deleteExpenseCategory,
     addExpenseCategory,
