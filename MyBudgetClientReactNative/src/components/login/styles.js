@@ -34,28 +34,4 @@ export default StyleSheet.create({
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,
     },
-
-    signInButton: {
-        width: 300,
-        backgroundColor: '#fff',
-        borderColor: '#ccc',
-        borderRadius: 6,
-        marginVertical: 10,
-        paddingVertical: 10,
-    },
-    signInButtonText: {
-        fontSize: 18,
-        fontWeight: '400',
-        color: '#333',
-        textAlign: 'center',
-    },
-    signUpButton: {
-        width: 300,
-    },
-
-    signUpButtonText: {
-        color: '#337ab7',
-        textAlign: 'right',
-        paddingHorizontal: 10,
-    },
 });

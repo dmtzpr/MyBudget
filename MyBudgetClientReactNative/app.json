@@ -1,5 +1,5 @@
 {
-    "name": "MyBudgetClientReactNative",
-    "displayName": "MyBudgetClientReactNative",
+    "name": "My Budget",
+    "displayName": "My Budget",
     "serverApiURL": "http://192.168.13.58:4000/api"
 }

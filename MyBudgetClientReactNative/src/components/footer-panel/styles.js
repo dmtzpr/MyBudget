@@ -4,6 +4,5 @@ export default StyleSheet.create({
     footerText: {
         color: '#fff',
         textAlign: 'center',
-        paddingTop: 15,
     },
 });

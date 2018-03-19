@@ -4,6 +4,8 @@ import { TextInput, TouchableOpacity, ScrollView, Text, View } from 'react-nativ
 import { Actions } from 'react-native-router-flux';
 
 import LogoPanel from '../logo-panel/logo-panel';
+import LightButton from '../light-button/light-button';
+import LinkButton from '../link-button/link-button';
 import FooterPanel from '../footer-panel/footer-panel';
 
 import { wrapperStyle } from '../../styles/common-styles';
@@ -70,14 +72,8 @@ export default class Login extends React.PureComponent {
                                 onChangeText={password => this.setState({ password })}
                                 onSubmitEditing={this.onSignInButtonPress}
                             />
-                            <TouchableOpacity style={styles.signInButton} onPress={this.onSignInButtonPress}>
-                                <Text style={styles.signInButtonText}>Sign in</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.signUpButton}>
-                                <Text onPress={Actions.register} style={styles.signUpButtonText}>
-                                    Register
-                                </Text>
-                            </TouchableOpacity>
+                            <LightButton text='Sign in' onPress={this.onSignInButtonPress} />
+                            <LinkButton text='Register' onPress={Actions.register} />
                         </View>
                     </View>
                 </ScrollView>

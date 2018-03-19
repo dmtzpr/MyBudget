@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { footerStyle } from '../../styles/common-styles';
+import { footerStyle, centerStyle } from '../../styles/common-styles';
 import styles from './styles';
 
 export default () => (
-    <View style={footerStyle}>
+    <View style={[centerStyle, footerStyle]}>
         <Text style={styles.footerText}>myBudget application</Text>
     </View>
 );
