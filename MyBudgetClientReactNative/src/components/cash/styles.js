@@ -1,7 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    budgetForm: {
+    datePicker: {
+        width: 300,
+    },
+
+    cashForm: {
         marginTop: -70,
     },
 });

@@ -6,7 +6,7 @@ import { Row, Col, Grid } from 'react-native-easy-grid';
 import NavigationMenu from '../navigation-menu/navigation-menu';
 import StatusBar from '../status-bar/status-bar';
 
-import { centerStyle, wrapperStyle, inputBoxStyle } from '../../styles/common-styles';
+import { centerStyle, wrapperStyle, inputBoxStyle, labelStyle } from '../../styles/common-styles';
 
 import styles from './styles';
 
@@ -20,16 +20,16 @@ export default class Budget extends React.PureComponent {
         monthBudget: this.props.monthBudget,
     };
 
-    onSetMonthBudgetButtonClick = () => this.props.onMonthBudgetChange(parseInt(this.state.monthBudget));
-    onMonthBudgetChange = e => this.setState({ monthBudget: e.target.value });
+    onSetMonthBudgetButtonClick = () => this.props.onMonthBudgetChange(this.state.monthBudget);
 
     render() {
+        const { monthBudget } = this.state;
         return (
             <Grid style={wrapperStyle}>
                 <StatusBar statusBarTitle='Budget' onAcceptButtonClick={this.onSetMonthBudgetButtonClick} />
                 <Row>
-                    <Col style={centerStyle}>
-                        <Text style={styles.label}>Month budget: {this.state.monthBudget} $</Text>
+                    <Col style={[centerStyle, styles.budgetForm]}>
+                        <Text style={labelStyle}>Month budget: {monthBudget} $</Text>
                         <TextInput
                             style={inputBoxStyle}
                             underlineColorAndroid='rgba(0,0,0,0)'
@@ -39,8 +39,8 @@ export default class Budget extends React.PureComponent {
                             placeholderTextColor='#999'
                             autoCorrect={false}
                             onSubmitEditing={this.onSetMonthBudgetButtonClick}
-                            onChangeText={monthBudget => this.setState({ monthBudget: parseInt(monthBudget) })}
-                            value={`${this.state.monthBudget}`}
+                            onChangeText={budget => this.setState({ monthBudget: parseInt(budget) })}
+                            value={`${monthBudget}`}
                         />
                     </Col>
                 </Row>

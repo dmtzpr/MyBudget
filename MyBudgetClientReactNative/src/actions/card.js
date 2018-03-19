@@ -1,4 +1,4 @@
-import { push } from 'react-router-redux';
+import { Actions } from 'react-native-router-flux';
 
 import ActionTypes from '../constants/card';
 import cardService from '../services/card';
@@ -22,7 +22,7 @@ export const rechargeCard = cardTransaction => (dispatch) => {
     cardService.updateCard(cardTransaction).then(
         (cardRecharge) => {
             dispatch({ type: ActionTypes.RECHARGE_CARD_SUCCESS, cardRecharge });
-            dispatch(push('/'));
+            Actions.home();
         },
         (error) => {
             dispatch({ type: ActionTypes.RECHARGE_CARD_FAILURE, error });

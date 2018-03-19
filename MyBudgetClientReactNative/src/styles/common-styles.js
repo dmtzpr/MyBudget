@@ -45,3 +45,10 @@ export const inputBoxStyle = {
     borderWidth: 1,
     borderColor: '#ccc',
 };
+
+export const labelStyle = {
+    fontSize: 19,
+    fontWeight: '700',
+    marginTop: 15,
+    marginBottom: 10,
+};
