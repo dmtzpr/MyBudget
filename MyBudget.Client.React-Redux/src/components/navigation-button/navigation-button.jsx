@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Col, Glyphicon } from 'react-bootstrap';
+import { Glyphicon } from 'react-bootstrap';
 
 import './navigation-button.less';
 
@@ -15,11 +15,11 @@ export default class NavigationButton extends React.PureComponent {
         const { link, glyph } = this.props;
 
         return (
-            <Col xs={3}>
+            <div className='navigation-menu__button'>
                 <Link to={link}>
                     <Glyphicon glyph={glyph} />
                 </Link>
-            </Col>
+            </div>
         );
     }
 }
