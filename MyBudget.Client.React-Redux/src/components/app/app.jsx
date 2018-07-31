@@ -18,7 +18,7 @@ import BarChart from '../../containers/bar-chart';
 import PieChart from '../../containers/pie-chart';
 
 import Settings from '../../components/settings/settings.jsx';
-import NavigationMenu from '../../components/navigation-menu/navigation-menu.jsx';
+import NavigationMenu from '../../containers/navigation-menu';
 import PrivateRoute from '../../components/private-route/private-route.jsx';
 
 import './app.less';

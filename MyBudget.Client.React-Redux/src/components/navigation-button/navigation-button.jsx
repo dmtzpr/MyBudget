@@ -5,21 +5,16 @@ import { Glyphicon } from 'react-bootstrap';
 
 import './navigation-button.less';
 
-export default class NavigationButton extends React.PureComponent {
-    static propTypes = {
-        link: PropTypes.string.isRequired,
-        glyph: PropTypes.string.isRequired,
-    };
+export default ({ link, glyph, isActive }) => (
+    <div className={`navigation-menu__button ${isActive ? 'active' : ''}`}>
+        <Link to={link}>
+            <Glyphicon glyph={glyph} />
+        </Link>
+    </div>
+);
 
-    render() {
-        const { link, glyph } = this.props;
-
-        return (
-            <div className='navigation-menu__button'>
-                <Link to={link}>
-                    <Glyphicon glyph={glyph} />
-                </Link>
-            </div>
-        );
-    }
-}
+// static propTypes = {
+//     link: PropTypes.string.isRequired,
+//     glyph: PropTypes.string.isRequired,
+//     isActive: PropTypes.bool.isRequired,
+// };

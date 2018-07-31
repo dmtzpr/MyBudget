@@ -5,13 +5,17 @@ import NavigationButton from '../navigation-button/navigation-button.jsx';
 
 import './navigation-menu.less';
 
-export default () => (
+export default ({ currentPath, navButtons }) => (
     <Navbar className='navigation-menu' fixedBottom>
         <div className='navigation-menu__row navigation-menu__row_size-default'>
-            <NavigationButton link='/' glyph='home' />
-            <NavigationButton link='/barchart' glyph='stats' />
-            <NavigationButton link='/piechart' glyph='adjust' />
-            <NavigationButton link='/settings' glyph='cog' />
+            {navButtons.map((navButton, index) => (
+                <NavigationButton
+                    key={index}
+                    link={navButton.link}
+                    glyph={navButton.glyph}
+                    isActive={navButton.link === currentPath}
+                />
+            ))}
         </div>
     </Navbar>
 );
