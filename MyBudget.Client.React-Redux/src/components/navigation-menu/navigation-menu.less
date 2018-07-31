@@ -1,18 +1,23 @@
-﻿@import "../../styles/variables";
-#navigation-menu {
+﻿@import '../../styles/variables';
+.navigation-menu {
     border: none;
     background-color: inherit;
-    .container {
-        height: 50px;
-    }
-    .row {
-        text-align: center;
+}
 
-        background-color: @footerColor;
-        .glyphicon {
-            margin-top: 6px;
+.navigation-menu__row {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
 
-            font-size: 2em;
-        }
+    background-color: @footerColor;
+    .glyphicon {
+        margin-top: 6px;
+
+        font-size: 2em;
     }
+}
+
+.navigation-menu__row_size-default {
+    height: 50px;
 }
