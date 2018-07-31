@@ -9,6 +9,7 @@ module.exports = {
         publicPath: '/assets/',
         path: path.resolve(__dirname, 'build'),
     },
+    devtool: 'eval-source-map',
     devServer: {
         port: 8080,
         proxy: {
@@ -29,6 +30,11 @@ module.exports = {
             {
                 test: /\.(css|less)$/,
                 use: ['style-loader', 'css-loader', 'less-loader'],
+            },
+            {
+                test: /\.js$/,
+                use: ['source-map-loader'],
+                enforce: 'pre',
             },
         ],
     },

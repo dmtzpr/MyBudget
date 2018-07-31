@@ -1,4 +1,4 @@
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router';
 
 import ActionTypes from '../constants/cash';
 import cashService from '../services/cash';

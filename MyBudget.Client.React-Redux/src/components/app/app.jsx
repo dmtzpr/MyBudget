@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route } from 'react-router';
-import { ConnectedRouter } from 'react-router-redux';
+import { Route, Switch } from 'react-router';
+import { ConnectedRouter } from 'connected-react-router';
 
 import { history } from '../../helpers/history';
 
@@ -52,17 +52,19 @@ export default class App extends React.PureComponent {
                 ) : (
                     <ConnectedRouter history={history}>
                         <div>
-                            <PrivateRoute exact path='/' component={Home} />
-                            <PrivateRoute path='/cash' component={Cash} />
-                            <PrivateRoute path='/cards' component={Card} />
-                            <PrivateRoute path='/expense' component={Expense} />
-                            <PrivateRoute path='/expense-category' component={ExpenseCategory} />
-                            <PrivateRoute path='/budget' component={Budget} />
-                            <PrivateRoute path='/barchart' component={BarChart} />
-                            <PrivateRoute path='/piechart' component={PieChart} />
-                            <PrivateRoute path='/settings' component={Settings} />
-                            <Route path='/login' component={Login} />
-                            <Route path='/register' component={Register} />
+                            <Switch>
+                                <PrivateRoute exact path='/' component={Home} />
+                                <PrivateRoute path='/cash' component={Cash} />
+                                <PrivateRoute path='/cards' component={Card} />
+                                <PrivateRoute path='/expense' component={Expense} />
+                                <PrivateRoute path='/expense-category' component={ExpenseCategory} />
+                                <PrivateRoute path='/budget' component={Budget} />
+                                <PrivateRoute path='/barchart' component={BarChart} />
+                                <PrivateRoute path='/piechart' component={PieChart} />
+                                <PrivateRoute path='/settings' component={Settings} />
+                                <Route path='/login' component={Login} />
+                                <Route path='/register' component={Register} />
+                            </Switch>
                             <NavigationMenu />
                         </div>
                     </ConnectedRouter>
