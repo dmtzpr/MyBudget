@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 
+import { cardsBalanceSelector, totalExpensesAmountSelector } from '../selectors';
+import { cashBalanceSelector } from '../selectors/cash';
 import Home from '../components/home/home.jsx';
-
-const getEntityAmount = (entities, property) =>
-    entities.reduce((totalAmount, entity) => totalAmount + entity[property], 0);
 
 const getCurrentMonthEntityAmount = (entities, property = 'amount') => {
     const currentDate = new Date();
@@ -31,10 +30,10 @@ const getCurrentMonthExpensesAmount = expenses => getCurrentMonthEntityAmount(ex
 
 const mapStateToProps = state => ({
     userName: state.authentication.user.username,
-    cardsBalance: getEntityAmount(state.cards, 'balance'),
-    cashBalance: state.cash.balance,
+    cardsBalance: cardsBalanceSelector(state),
+    cashBalance: cashBalanceSelector(state),
     monthBudget: state.budget,
-    totalExpensesAmount: getEntityAmount(state.expenses, 'amount'),
+    totalExpensesAmount: totalExpensesAmountSelector(state),
     currentMonthIncomeAmount: getCurrentMonthIncomeAmount(state.cash.cashes, state.cards),
     currentMonthExpensesAmount: getCurrentMonthExpensesAmount(state.expenses),
 });

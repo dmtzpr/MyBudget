@@ -13,4 +13,7 @@ const mapDispatchToProps = dispatch => ({
     onDeleteCard: cardId => dispatch(deleteCard(cardId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(Card);
