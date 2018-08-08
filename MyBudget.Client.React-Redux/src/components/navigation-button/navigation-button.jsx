@@ -1,20 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { onlyUpdateForKeys } from 'recompose';
 import { Glyphicon } from 'react-bootstrap';
+import classNames from 'classnames';
 
 import './navigation-button.less';
 
-export default ({ link, glyph, isActive }) => (
-    <div className={`navigation-menu__button ${isActive ? 'active' : ''}`}>
+const NavigationButton = ({ link, glyph, isActive }) => (
+    <div className={classNames('navigation-menu__button', { active: isActive })}>
         <Link to={link}>
             <Glyphicon glyph={glyph} />
         </Link>
     </div>
 );
 
-// static propTypes = {
-//     link: PropTypes.string.isRequired,
-//     glyph: PropTypes.string.isRequired,
-//     isActive: PropTypes.bool.isRequired,
-// };
+NavigationButton.propTypes = {
+    link: PropTypes.string.isRequired,
+    glyph: PropTypes.string.isRequired,
+    isActive: PropTypes.bool.isRequired,
+};
+
+export default onlyUpdateForKeys(['link', 'glyph', 'isActive'])(NavigationButton);
